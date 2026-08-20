@@ -99,16 +99,16 @@
               </th>
               @for (car of comparedCars(); track car.id) {
                 <td class="px-4 py-3 border-b border-[var(--color-border)]">
-                  <label class="inline-flex items-center cursor-pointer">
+                  <label class="group inline-flex items-center cursor-pointer">
                     <input
                       type="checkbox"
-                      class="sr-only peer"
+                      class="sr-only"
                       [checked]="hasFeature(car.id, feature)"
                       (change)="toggleFeature(car.id, feature)"
                       [attr.aria-label]="feature + ' on ' + car.brand + ' ' + car.model"
                     />
-                    <span class="h-5 w-9 rounded-full bg-[var(--color-border)] peer-checked:bg-[var(--color-accent)] transition-colors relative">
-                      <span class="absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white shadow-sm transition-transform peer-checked:translate-x-4"></span>
+                    <span class="h-5 w-9 rounded-full bg-[var(--color-border)] group-has-checked:bg-[var(--color-accent)] transition-colors relative">
+                      <span class="absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white shadow-sm transition-transform group-has-checked:translate-x-4"></span>
                     </span>
                   </label>
                 </td>
