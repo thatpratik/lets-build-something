@@ -36,16 +36,22 @@ No single existing source puts Danish EV pricing, specs, and long-term risk indi
 - Risk indicators per car: recall history, battery degradation, resale value.
 - Pricing shown as standard market price plus a separate breakdown of additional accessory/service costs.
 - No in-app computed rating/score for v1 — ratings stay external, app only links out.
-- Out of scope for v1: future-potential score, warranty/service-extension info and purchasing, test-drive booking integration, in-app user-submitted reviews, any runtime scraping, exterior color customization/preview (candidates for a later iteration, not permanently excluded).
+- Warranty & service info is shown per car (vehicle warranty years/km, battery warranty years/km, free service years) — built, not out of scope.
+- Exterior color customization is available on the car detail view (per-color price delta, selectable swatches) — built, not out of scope.
+- Out of scope for v1: future-potential score, service-extension purchasing (buying an extension, as opposed to showing the included warranty), test-drive booking integration, in-app user-submitted reviews, any runtime scraping.
 - Scoped to the Danish market for v1; other markets may be considered later.
 
 ## Brand Commitments
 
-None yet — no product name, tagline, logo, voice, or visual reference has been locked in. Future design work is free to propose these.
+Name: **Volt Index**. Tagline: "Electric cars, compared honestly." Locked visual identity (2026-08-20 redesign):
+- Palette: warm graphite ink (`#17130F`) as the primary dark, paper white/off-white surfaces, and voltage gold (`#F5B700`) as the sole brand accent — deliberately not the green most EV products default to. Green, amber, and red are reserved as status-only colors (battery health, resale rating, recalls), never used for brand/interactive elements.
+- Type: Bricolage Grotesque (display/headlines), Inter Tight (UI/body), JetBrains Mono (all numeric data — prices, ranges, percentages — set tabular).
+- Signature motif: a semicircle SVG "charge gauge" (gold arc on a track) standing in for every plain progress bar — range windows, battery-retention percentage — echoing an EV instrument cluster. Logo mark is a bolt icon in a dark circular badge beside the wordmark.
+- Voice: direct, plain-spoken, no filler ("Electric cars, compared honestly" — not "Your journey to the perfect EV starts here").
 
 ## Evidence on Hand
 
-All car data, images, and pricing currently in the codebase are placeholder/fake, added to unblock UI work (see commit "Add browse/filter EV screen with fake data"). None of it is real sourced Danish EV data yet — future work must not treat current values, images, or copy as factual evidence, and must not carry them into any final deliverable as if real.
+Car data started as placeholder/fake (see commit "Add browse/filter EV screen with fake data") but has since been through a dedicated verification pass (docs/diary/2026-08-20-data-verification-pass.md and two follow-ups): WLTP range windows, DKK base pricing, and warranty terms were cross-checked against manufacturer and Danish-market sources for the cars then in the dataset. Honda e was removed as discontinued; Mercedes EQA was later removed after being formally retired and replaced by the electric GLA; BYD Atto 3 was updated to the Atto 3 EVO facelift (range, pricing, features, warranty, image). Car images were spot-checked by EXIF date and visually verified for a small risk-selected sample (BYD Atto 3, Polestar 2, Tesla Model 3) after finding stale pre-facelift photos — a full pass across the remaining images has not been done. `colors.json` paint pricing was only sanity-checked at a tier level (~3,500–9,500 DKK for premium colors), not confirmed per brand. Treat current data as **researched, not exhaustively audited** — it is real Danish-market-grounded data, not placeholder, but should not be presented as independently fact-checked line-by-line. See `docs/diary/` for the full record of what was and wasn't verified.
 
 ## Product Principles
 
