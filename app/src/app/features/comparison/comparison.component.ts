@@ -18,6 +18,8 @@ export class ComparisonComponent {
 
   private readonly allCars = signal<Car[]>([]);
   private readonly featurePricing = signal<Record<string, number>>({});
+  protected readonly carImages = signal<Record<string, string>>({});
+  protected readonly failedImageIds = signal<Set<string>>(new Set());
 
   private readonly activeFeatures = signal<Map<string, Set<string>>>(new Map());
 
@@ -47,6 +49,11 @@ export class ComparisonComponent {
       this.resetActiveFeatures(cars);
     });
     this.carService.getFeaturePricing().subscribe((pricing) => this.featurePricing.set(pricing));
+    this.carService.getCarImages().subscribe((images) => this.carImages.set(images));
+  }
+
+  protected markImageFailed(carId: string): void {
+    this.failedImageIds.update((current) => new Set(current).add(carId));
   }
 
   private resetActiveFeatures(cars: Car[]): void {

@@ -46,6 +46,28 @@
         </thead>
         <tbody>
           <tr>
+            <th class="sticky left-0 bg-[var(--color-surface)] text-left font-medium text-[var(--color-ink-muted)] px-4 py-3 border-b border-[var(--color-border)]">Photo</th>
+            @for (car of comparedCars(); track car.id) {
+              <td class="px-4 py-3 border-b border-[var(--color-border)]">
+                <div class="aspect-[16/10] w-32 rounded-lg overflow-hidden bg-[var(--color-bg)]">
+                  @if (carImages()[car.id] && !failedImageIds().has(car.id)) {
+                    <img
+                      [src]="carImages()[car.id]"
+                      [alt]="car.brand + ' ' + car.model"
+                      loading="lazy"
+                      class="h-full w-full object-cover"
+                      (error)="markImageFailed(car.id)"
+                    />
+                  } @else {
+                    <div class="h-full w-full flex items-center justify-center px-1 text-center text-[10px] font-medium text-[var(--color-ink-muted)]">
+                      {{ car.brand }} {{ car.model }}
+                    </div>
+                  }
+                </div>
+              </td>
+            }
+          </tr>
+          <tr>
             <th class="sticky left-0 bg-[var(--color-surface)] text-left font-medium text-[var(--color-ink-muted)] px-4 py-3 border-b border-[var(--color-border)]">Country</th>
             @for (car of comparedCars(); track car.id) {
               <td class="px-4 py-3 border-b border-[var(--color-border)] whitespace-nowrap">{{ car.country }}</td>
