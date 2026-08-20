@@ -1,99 +1,108 @@
-<div class="mx-auto max-w-6xl px-5 sm:px-8 py-8 grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-8">
-  <aside class="lg:sticky lg:top-8 lg:self-start rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 flex flex-col gap-6">
-    <div class="flex items-center justify-between">
-      <h2 class="font-display font-semibold text-base">Find your EV</h2>
-      <button
-        type="button"
-        class="text-xs font-medium text-[var(--color-ink-muted)] hover:text-[var(--color-accent)] transition-colors cursor-pointer"
-        (click)="clearFilters()"
-      >
-        Clear
-      </button>
-    </div>
-
-    <label class="flex flex-col gap-1.5">
-      <span class="text-xs font-medium text-[var(--color-ink-muted)]">Budget (DKK)</span>
-      <input
-        type="number"
-        placeholder="e.g. 350,000"
-        class="h-11 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] px-3 text-sm font-medium tabular-nums placeholder:font-normal placeholder:text-[var(--color-ink-faint)] focus:border-[var(--color-accent)] focus:bg-[var(--color-surface)] focus:outline-none transition-colors"
-        [ngModel]="budget()"
-        (ngModelChange)="budget.set($event)"
-      />
-    </label>
-
-    <div class="flex flex-col gap-2">
-      <div class="flex items-baseline justify-between">
-        <span class="text-xs font-medium text-[var(--color-ink-muted)]">Desired range (km)</span>
-        <span class="font-mono text-xs tabular-nums text-[var(--color-ink-muted)]">
-          {{ desiredRangeMin() }}–{{ desiredRangeMax() }}
-        </span>
+<div class="flex flex-col">
+  <section class="bg-[var(--color-ink)] text-[var(--color-bg)]">
+    <div class="mx-auto max-w-6xl px-5 sm:px-8 py-5 sm:py-6 flex flex-col gap-5">
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <p class="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-[var(--color-accent)]">Set your numbers</p>
+          <h1 class="font-display font-extrabold text-xl sm:text-2xl tracking-tight mt-0.5">Find your electric car</h1>
+        </div>
+        <button
+          type="button"
+          class="shrink-0 rounded-full border border-white/15 px-3 py-1.5 text-xs font-medium text-white/70 hover:border-white/30 hover:text-white transition-colors cursor-pointer"
+          (click)="clearFilters()"
+        >
+          Reset
+        </button>
       </div>
-      <app-range-slider
-        [min]="rangeBounds().min"
-        [max]="rangeBounds().max"
-        [step]="5"
-        [(low)]="desiredRangeMin"
-        [(high)]="desiredRangeMax"
-      />
-    </div>
 
-    <fieldset class="flex flex-col gap-2 border-0 p-0 m-0">
-      <legend class="text-xs font-medium text-[var(--color-ink-muted)] mb-0.5 p-0">Country of origin</legend>
-      <div class="flex flex-wrap gap-1.5">
-        @for (country of allCountries(); track country) {
-          <label
-            class="cursor-pointer select-none rounded-full border px-3 py-1.5 text-xs font-medium transition-colors"
-            [class]="selectedCountries().has(country)
-              ? 'border-[var(--color-accent)] bg-[var(--color-accent-soft)] text-[var(--color-accent-strong)]'
-              : 'border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-ink-muted)] hover:border-[var(--color-ink-faint)]'"
-          >
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8">
+        <label class="flex flex-col gap-1.5">
+          <span class="text-[0.65rem] font-medium uppercase tracking-wide text-white/45">Budget</span>
+          <div class="flex items-baseline gap-2 border-b-2 border-white/15 focus-within:border-[var(--color-accent)] transition-colors pb-1">
             <input
-              type="checkbox"
-              class="sr-only"
-              [checked]="selectedCountries().has(country)"
-              (change)="toggleCountry(country)"
+              type="number"
+              placeholder="0"
+              class="min-w-0 flex-1 bg-transparent font-mono text-2xl sm:text-3xl font-semibold tabular-nums text-[var(--color-bg)] placeholder:text-white/25 focus:outline-none"
+              [ngModel]="budget()"
+              (ngModelChange)="budget.set($event)"
             />
-            {{ country }}
-          </label>
-        }
-      </div>
-    </fieldset>
+            <span class="text-sm text-white/45 shrink-0">DKK</span>
+          </div>
+        </label>
 
-    <fieldset class="flex flex-col gap-2 border-0 p-0 m-0">
-      <legend class="text-xs font-medium text-[var(--color-ink-muted)] mb-0.5 p-0">Features</legend>
-      <div class="flex flex-wrap gap-1.5">
-        @for (feature of allFeatures(); track feature) {
-          <label
-            class="cursor-pointer select-none rounded-full border px-3 py-1.5 text-xs font-medium transition-colors"
-            [class]="selectedFeatures().has(feature)
-              ? 'border-[var(--color-accent)] bg-[var(--color-accent-soft)] text-[var(--color-accent-strong)]'
-              : 'border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-ink-muted)] hover:border-[var(--color-ink-faint)]'"
-          >
-            <input
-              type="checkbox"
-              class="sr-only"
-              [checked]="selectedFeatures().has(feature)"
-              (change)="toggleFeature(feature)"
+        <div class="flex flex-col gap-1.5">
+          <div class="flex items-baseline justify-between">
+            <span class="text-[0.65rem] font-medium uppercase tracking-wide text-white/45">Desired range</span>
+            <span class="font-mono text-sm font-semibold tabular-nums text-[var(--color-accent)]">
+              {{ desiredRangeMin() }}–{{ desiredRangeMax() }} km
+            </span>
+          </div>
+          <div class="pt-2.5">
+            <app-range-slider
+              [min]="rangeBounds().min"
+              [max]="rangeBounds().max"
+              [step]="5"
+              [(low)]="desiredRangeMin"
+              [(high)]="desiredRangeMax"
             />
-            {{ feature }}
-          </label>
-        }
+          </div>
+        </div>
       </div>
-    </fieldset>
-  </aside>
 
-  <main class="flex flex-col gap-10 pb-28">
+      <div class="flex flex-col gap-2.5 pt-4 border-t border-white/10">
+        <fieldset class="flex flex-wrap items-center gap-1.5 border-0 p-0 m-0">
+          <legend class="text-[0.65rem] font-medium uppercase tracking-wide text-white/45 w-full mb-0.5">Country of origin</legend>
+          @for (country of allCountries(); track country) {
+            <label
+              class="cursor-pointer select-none rounded-full border px-2.5 py-1 text-xs font-medium transition-colors"
+              [class]="selectedCountries().has(country)
+                ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/15 text-[var(--color-accent)]'
+                : 'border-white/15 bg-white/[0.04] text-white/65 hover:border-white/30'"
+            >
+              <input
+                type="checkbox"
+                class="sr-only"
+                [checked]="selectedCountries().has(country)"
+                (change)="toggleCountry(country)"
+              />
+              {{ country }}
+            </label>
+          }
+        </fieldset>
+
+        <fieldset class="flex flex-wrap items-center gap-1.5 border-0 p-0 m-0">
+          <legend class="text-[0.65rem] font-medium uppercase tracking-wide text-white/45 w-full mb-0.5">Features</legend>
+          @for (feature of allFeatures(); track feature) {
+            <label
+              class="cursor-pointer select-none rounded-full border px-2.5 py-1 text-xs font-medium transition-colors"
+              [class]="selectedFeatures().has(feature)
+                ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/15 text-[var(--color-accent)]'
+                : 'border-white/15 bg-white/[0.04] text-white/65 hover:border-white/30'"
+            >
+              <input
+                type="checkbox"
+                class="sr-only"
+                [checked]="selectedFeatures().has(feature)"
+                (change)="toggleFeature(feature)"
+              />
+              {{ feature }}
+            </label>
+          }
+        </fieldset>
+      </div>
+    </div>
+  </section>
+
+  <main class="mx-auto max-w-6xl w-full px-5 sm:px-8 py-10 flex flex-col gap-12 pb-28">
     @if (hasPreferences() && recommendedCars().length > 0) {
       <section class="flex flex-col gap-4">
-        <h3 class="font-display font-semibold text-lg">Recommended for you</h3>
+        <div class="flex items-baseline gap-2.5">
+          <h2 class="font-display font-bold text-lg">Recommended for you</h2>
+          <span class="font-mono text-xs tabular-nums text-[var(--color-ink-faint)]">{{ recommendedCars().length }} match{{ recommendedCars().length === 1 ? '' : 'es' }}</span>
+        </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
           @for (car of recommendedCars(); track car.id) {
-            <article class="relative rounded-2xl border border-[var(--color-accent)] bg-[var(--color-surface)] p-5 flex flex-col gap-3 shadow-[0_1px_2px_rgba(15,110,92,0.06)]">
-              <span class="absolute -top-2.5 right-4 rounded-full bg-[var(--color-accent)] px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wide text-white">
-                Recommended
-              </span>
-
+            <article class="relative rounded-2xl border-2 border-[var(--color-accent)] bg-[var(--color-surface)] p-5 flex flex-col gap-3 shadow-[0_4px_20px_rgba(245,183,0,0.15)]">
               <div class="aspect-[16/10] rounded-xl overflow-hidden bg-[var(--color-bg)]">
                 @if (carImages()[car.id] && !failedImageIds().has(car.id)) {
                   <img
@@ -112,25 +121,24 @@
 
               <div class="flex items-start justify-between gap-2">
                 <div>
-                  <h4 class="font-display font-semibold text-base leading-tight">
+                  <h3 class="font-display font-bold text-base leading-tight">
                     {{ car.brand }} {{ car.model }}
-                  </h4>
+                  </h3>
                   <p class="text-sm text-[var(--color-ink-muted)]">{{ car.country }}</p>
                 </div>
+                <p class="font-mono text-lg font-semibold tabular-nums shrink-0">{{ totalPriceFor(car) | number }}<span class="text-xs font-normal text-[var(--color-ink-muted)]"> DKK</span></p>
               </div>
 
-              <p class="font-mono text-xl font-semibold tabular-nums">{{ totalPriceFor(car) | number }} <span class="text-sm font-normal text-[var(--color-ink-muted)]">DKK</span></p>
-
-              <div class="flex flex-col gap-1">
-                <div class="flex items-baseline justify-between">
-                  <span class="text-xs text-[var(--color-ink-muted)]">Range</span>
-                  <span class="font-mono text-xs tabular-nums text-[var(--color-ink-muted)]">{{ car.range.min }}–{{ car.range.max }} km</span>
-                </div>
+              <div class="flex items-center gap-3 rounded-xl bg-[var(--color-bg)] px-3 py-2">
                 <app-meter
                   [rangeStart]="(car.range.min / maxDisplayRangeKm) * 100"
                   [value]="(car.range.max / maxDisplayRangeKm) * 100"
                   [showLabel]="false"
                 />
+                <div class="flex flex-col leading-tight">
+                  <span class="text-[0.6rem] uppercase tracking-wide text-[var(--color-ink-faint)]">Range</span>
+                  <span class="font-mono text-sm font-semibold tabular-nums">{{ car.range.min }}–{{ car.range.max }} km</span>
+                </div>
               </div>
 
               <ul class="flex flex-wrap gap-1.5">
@@ -151,7 +159,7 @@
                 </label>
                 <button
                   type="button"
-                  class="rounded-lg border border-[var(--color-border)] px-3 py-1.5 text-xs font-medium hover:border-[var(--color-accent)] hover:text-[var(--color-accent-strong)] transition-colors cursor-pointer"
+                  class="rounded-lg border border-[var(--color-border)] px-3 py-1.5 text-xs font-semibold hover:border-[var(--color-ink)] transition-colors cursor-pointer"
                   (click)="detailService.openDetail(car.id)"
                 >
                   View details
@@ -164,9 +172,12 @@
     }
 
     <section class="flex flex-col gap-4">
-      <h3 class="font-display font-semibold text-lg">
-        {{ hasPreferences() ? 'Other options' : 'All cars' }}
-      </h3>
+      <div class="flex items-baseline gap-2.5">
+        <h2 class="font-display font-bold text-lg">
+          {{ hasPreferences() ? 'Other options' : 'All cars' }}
+        </h2>
+        <span class="font-mono text-xs tabular-nums text-[var(--color-ink-faint)]">{{ otherCars().length }}</span>
+      </div>
 
       @if (otherCars().length === 0) {
         <p class="rounded-xl border border-dashed border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-8 text-center text-sm text-[var(--color-ink-muted)]">
@@ -193,25 +204,26 @@
               }
             </div>
 
-            <div>
-              <h4 class="font-display font-semibold text-base leading-tight">
-                {{ car.brand }} {{ car.model }}
-              </h4>
-              <p class="text-sm text-[var(--color-ink-muted)]">{{ car.country }}</p>
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <h3 class="font-display font-bold text-base leading-tight">
+                  {{ car.brand }} {{ car.model }}
+                </h3>
+                <p class="text-sm text-[var(--color-ink-muted)]">{{ car.country }}</p>
+              </div>
+              <p class="font-mono text-lg font-semibold tabular-nums shrink-0">{{ totalPriceFor(car) | number }}<span class="text-xs font-normal text-[var(--color-ink-muted)]"> DKK</span></p>
             </div>
 
-            <p class="font-mono text-xl font-semibold tabular-nums">{{ totalPriceFor(car) | number }} <span class="text-sm font-normal text-[var(--color-ink-muted)]">DKK</span></p>
-
-            <div class="flex flex-col gap-1">
-              <div class="flex items-baseline justify-between">
-                <span class="text-xs text-[var(--color-ink-muted)]">Range</span>
-                <span class="font-mono text-xs tabular-nums text-[var(--color-ink-muted)]">{{ car.range.min }}–{{ car.range.max }} km</span>
-              </div>
+            <div class="flex items-center gap-3 rounded-xl bg-[var(--color-bg)] px-3 py-2">
               <app-meter
                 [rangeStart]="(car.range.min / maxDisplayRangeKm) * 100"
                 [value]="(car.range.max / maxDisplayRangeKm) * 100"
                 [showLabel]="false"
               />
+              <div class="flex flex-col leading-tight">
+                <span class="text-[0.6rem] uppercase tracking-wide text-[var(--color-ink-faint)]">Range</span>
+                <span class="font-mono text-sm font-semibold tabular-nums">{{ car.range.min }}–{{ car.range.max }} km</span>
+              </div>
             </div>
 
             <ul class="flex flex-wrap gap-1.5">
@@ -232,7 +244,7 @@
               </label>
               <button
                 type="button"
-                class="rounded-lg border border-[var(--color-border)] px-3 py-1.5 text-xs font-medium hover:border-[var(--color-accent)] hover:text-[var(--color-accent-strong)] transition-colors cursor-pointer"
+                class="rounded-lg border border-[var(--color-border)] px-3 py-1.5 text-xs font-semibold hover:border-[var(--color-ink)] transition-colors cursor-pointer"
                 (click)="detailService.openDetail(car.id)"
               >
                 View details
@@ -246,18 +258,18 @@
 
   @if (comparisonService.selectionCount() > 0) {
     <div class="fixed inset-x-0 bottom-0 z-20 flex justify-center px-4 pb-4 sm:pb-6">
-      <div class="flex items-center gap-4 rounded-2xl bg-[var(--color-ink)] px-5 py-3 text-white shadow-lg">
+      <div class="flex items-center gap-4 rounded-2xl bg-[var(--color-ink)] px-5 py-3 text-white shadow-[0_8px_30px_rgba(0,0,0,0.35)]">
         <span class="text-sm font-medium">{{ comparisonService.selectionCount() }} selected</span>
         <button
           type="button"
-          class="rounded-lg px-3 py-1.5 text-sm font-medium text-white/80 hover:text-white transition-colors cursor-pointer"
+          class="rounded-lg px-3 py-1.5 text-sm font-medium text-white/70 hover:text-white transition-colors cursor-pointer"
           (click)="comparisonService.clearSelection()"
         >
           Clear
         </button>
         <button
           type="button"
-          class="rounded-lg bg-[var(--color-accent)] px-4 py-1.5 text-sm font-semibold disabled:bg-white/15 disabled:text-white/40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+          class="rounded-lg bg-[var(--color-accent)] px-4 py-1.5 text-sm font-bold text-[var(--color-accent-ink)] disabled:bg-white/15 disabled:text-white/40 disabled:cursor-not-allowed transition-colors cursor-pointer"
           [disabled]="comparisonService.selectionCount() < 2"
           (click)="comparisonService.openComparison()"
         >

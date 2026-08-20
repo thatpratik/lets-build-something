@@ -115,20 +115,20 @@ export class CarDetailComponent {
     return `${years} yr / ${kmLabel}`;
   }
 
-  protected batteryTone(retentionPercent: number): 'accent' | 'warning' | 'danger' {
+  protected batteryTone(retentionPercent: number): 'good' | 'warning' | 'danger' {
     if (retentionPercent < 80) {
       return 'danger';
     }
     if (retentionPercent < 90) {
       return 'warning';
     }
-    return 'accent';
+    return 'good';
   }
 
   protected resaleToneClasses(rating: RiskIndicator['resaleValue']['rating']): string {
     switch (rating) {
       case 'Strong':
-        return 'bg-[var(--color-accent-soft)] text-[var(--color-accent-strong)]';
+        return 'bg-[var(--color-good-soft)] text-[var(--color-good)]';
       case 'Average':
         return 'bg-[var(--color-warning-soft)] text-[var(--color-warning)]';
       case 'Weak':

@@ -1,9 +1,12 @@
-<div class="mx-auto max-w-3xl px-5 sm:px-8 py-8 flex flex-col gap-8">
+<div class="mx-auto max-w-3xl px-5 sm:px-8 py-8 flex flex-col gap-10">
   <header class="flex items-center justify-between">
-    <h2 class="font-display font-semibold text-xl">Car details</h2>
+    <div>
+      <p class="font-mono text-[0.7rem] tracking-[0.2em] uppercase text-[var(--color-accent-strong)]">Spec sheet</p>
+      <h2 class="font-display font-extrabold text-xl mt-0.5">Car details</h2>
+    </div>
     <button
       type="button"
-      class="flex items-center gap-1.5 rounded-lg border border-[var(--color-border)] px-3 py-1.5 text-sm font-medium hover:border-[var(--color-ink-faint)] transition-colors cursor-pointer"
+      class="flex items-center gap-1.5 rounded-full border border-[var(--color-border)] px-3.5 py-1.5 text-sm font-medium hover:border-[var(--color-ink)] transition-colors cursor-pointer"
       (click)="close()"
     >
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -14,8 +17,8 @@
   </header>
 
   @if (car(); as c) {
-    <section class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 flex flex-col gap-4">
-      <div class="aspect-[16/9] rounded-xl overflow-hidden bg-[var(--color-bg)]">
+    <section class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] overflow-hidden flex flex-col">
+      <div class="aspect-[16/9] bg-[var(--color-bg)]">
         @if (imageUrl() && !imageFailed()) {
           <img
             [src]="imageUrl()"
@@ -31,68 +34,75 @@
         }
       </div>
 
-      <div>
-        <h3 class="font-display font-semibold text-2xl leading-tight">{{ c.brand }} {{ c.model }}</h3>
-        <p class="text-sm text-[var(--color-ink-muted)]">{{ c.country }}</p>
-      </div>
-
-      <p class="font-mono text-3xl font-semibold tabular-nums">
-        {{ carPrice() | number }} <span class="text-base font-normal text-[var(--color-ink-muted)]">DKK</span>
-      </p>
-
-      <div class="flex flex-col gap-1.5 max-w-xs">
-        <div class="flex items-baseline justify-between">
-          <span class="text-xs font-medium text-[var(--color-ink-muted)]">Range</span>
-          <span class="font-mono text-xs tabular-nums text-[var(--color-ink-muted)]">{{ c.range.min }}–{{ c.range.max }} km</span>
+      <div class="bg-[var(--color-ink)] text-[var(--color-bg)] px-6 py-5 flex flex-col gap-4">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <h3 class="font-display font-extrabold text-2xl leading-tight">{{ c.brand }} {{ c.model }}</h3>
+            <p class="text-sm text-white/50">{{ c.country }}</p>
+          </div>
+          <p class="font-mono text-2xl sm:text-3xl font-semibold tabular-nums shrink-0">
+            {{ carPrice() | number }} <span class="text-sm font-normal text-white/50">DKK</span>
+          </p>
         </div>
-        <app-meter
-          [rangeStart]="(c.range.min / maxDisplayRangeKm) * 100"
-          [value]="(c.range.max / maxDisplayRangeKm) * 100"
-          [showLabel]="false"
-        />
+
+        <div class="flex items-center gap-3 rounded-xl bg-white/[0.06] px-4 py-3 max-w-xs">
+          <app-meter
+            [rangeStart]="(c.range.min / maxDisplayRangeKm) * 100"
+            [value]="(c.range.max / maxDisplayRangeKm) * 100"
+            [showLabel]="false"
+            [onInk]="true"
+          />
+          <div class="flex flex-col leading-tight">
+            <span class="text-[0.65rem] uppercase tracking-wide text-white/45">Range</span>
+            <span class="font-mono text-sm font-semibold tabular-nums">{{ c.range.min }}–{{ c.range.max }} km</span>
+          </div>
+        </div>
       </div>
 
-      <ul class="flex flex-wrap gap-1.5 pt-2 border-t border-[var(--color-border)]">
-        @for (feature of c.features; track feature) {
-          <li class="rounded-md bg-[var(--color-bg)] px-2.5 py-1 text-xs text-[var(--color-ink-muted)]">{{ feature }}</li>
+      <div class="px-6 py-5 flex flex-col gap-4">
+        <ul class="flex flex-wrap gap-1.5">
+          @for (feature of c.features; track feature) {
+            <li class="rounded-md bg-[var(--color-bg)] px-2.5 py-1 text-xs text-[var(--color-ink-muted)]">{{ feature }}</li>
+          }
+        </ul>
+
+        @if (carColors().length > 0) {
+          <div class="flex flex-col gap-2 pt-4 border-t border-[var(--color-border)]">
+            <div class="flex items-baseline justify-between">
+              <span class="text-xs font-medium text-[var(--color-ink-muted)]">Exterior colour</span>
+              @if (selectedColor(); as color) {
+                <span class="text-xs text-[var(--color-ink-muted)]">
+                  {{ color.name }}
+                  @if (color.priceDelta > 0) {
+                    <span class="font-mono tabular-nums">+{{ color.priceDelta | number }} DKK</span>
+                  } @else {
+                    included
+                  }
+                </span>
+              }
+            </div>
+            <div class="flex flex-wrap gap-2">
+              @for (color of carColors(); track color.name) {
+                <button
+                  type="button"
+                  class="h-7 w-7 rounded-full border-2 transition-shadow cursor-pointer"
+                  [class]="selectedColor()?.name === color.name ? 'border-[var(--color-ink)] shadow-[0_0_0_2px_var(--color-surface)]' : 'border-[var(--color-border)]'"
+                  [style.background-color]="color.hex"
+                  [attr.aria-pressed]="selectedColor()?.name === color.name"
+                  [attr.aria-label]="color.name + (color.priceDelta > 0 ? ' (+' + color.priceDelta + ' DKK)' : ' (included)')"
+                  [title]="color.name"
+                  (click)="selectColor(color.name)"
+                ></button>
+              }
+            </div>
+          </div>
         }
-      </ul>
-
-      @if (carColors().length > 0) {
-        <div class="flex flex-col gap-2 pt-2 border-t border-[var(--color-border)]">
-          <div class="flex items-baseline justify-between">
-            <span class="text-xs font-medium text-[var(--color-ink-muted)]">Exterior colour</span>
-            @if (selectedColor(); as color) {
-              <span class="text-xs text-[var(--color-ink-muted)]">
-                {{ color.name }}
-                @if (color.priceDelta > 0) {
-                  <span class="font-mono tabular-nums">+{{ color.priceDelta | number }} DKK</span>
-                } @else {
-                  included
-                }
-              </span>
-            }
-          </div>
-          <div class="flex flex-wrap gap-2">
-            @for (color of carColors(); track color.name) {
-              <button
-                type="button"
-                class="h-7 w-7 rounded-full border-2 transition-shadow cursor-pointer"
-                [class]="selectedColor()?.name === color.name ? 'border-[var(--color-ink)] shadow-[0_0_0_2px_var(--color-surface)]' : 'border-[var(--color-border)]'"
-                [style.background-color]="color.hex"
-                [attr.aria-pressed]="selectedColor()?.name === color.name"
-                [attr.aria-label]="color.name + (color.priceDelta > 0 ? ' (+' + color.priceDelta + ' DKK)' : ' (included)')"
-                [title]="color.name"
-                (click)="selectColor(color.name)"
-              ></button>
-            }
-          </div>
-        </div>
-      }
+      </div>
     </section>
 
     <section class="flex flex-col gap-3">
-      <h3 class="font-display font-semibold text-lg">Pricing breakdown</h3>
+      <p class="font-mono text-[0.7rem] tracking-[0.2em] uppercase text-[var(--color-accent-strong)]">Cost</p>
+      <h3 class="font-display font-bold text-lg -mt-2">Pricing breakdown</h3>
       <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] divide-y divide-[var(--color-border)] overflow-hidden">
         <div class="flex items-center justify-between px-4 py-3 text-sm">
           <span class="text-[var(--color-ink-muted)]">Base price</span>
@@ -118,7 +128,7 @@
             <span class="font-mono tabular-nums">+{{ accessory.price | number }} DKK</span>
           </div>
         }
-        <div class="flex items-center justify-between px-4 py-3 text-sm font-semibold">
+        <div class="flex items-center justify-between px-4 py-3.5 text-sm font-bold bg-[var(--color-accent-soft)]">
           <span>Estimated total</span>
           <span class="font-mono tabular-nums">{{ totalEstimatedCost() | number }} DKK</span>
         </div>
@@ -130,7 +140,8 @@
 
     @if (warrantyInfo(); as w) {
       <section class="flex flex-col gap-3">
-        <h3 class="font-display font-semibold text-lg">Warranty &amp; service</h3>
+        <p class="font-mono text-[0.7rem] tracking-[0.2em] uppercase text-[var(--color-accent-strong)]">Ownership</p>
+        <h3 class="font-display font-bold text-lg -mt-2">Warranty &amp; service</h3>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 flex flex-col gap-1.5">
             <h4 class="text-xs font-medium uppercase tracking-wide text-[var(--color-ink-muted)]">Vehicle warranty</h4>
@@ -159,7 +170,8 @@
 
     @if (risk(); as r) {
       <section class="flex flex-col gap-4">
-        <h3 class="font-display font-semibold text-lg">Risk indicators</h3>
+        <p class="font-mono text-[0.7rem] tracking-[0.2em] uppercase text-[var(--color-accent-strong)]">Reliability</p>
+        <h3 class="font-display font-bold text-lg -mt-2">Risk indicators</h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 flex flex-col gap-1.5">
@@ -170,11 +182,14 @@
 
           <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 flex flex-col gap-1.5">
             <h4 class="text-xs font-medium uppercase tracking-wide text-[var(--color-ink-muted)]">Battery retained</h4>
-            <p class="font-mono text-xl font-semibold tabular-nums">{{ r.batteryDegradation.estimatedRetentionAt100kKm }}%</p>
-            <app-meter
-              [value]="r.batteryDegradation.estimatedRetentionAt100kKm"
-              [tone]="batteryTone(r.batteryDegradation.estimatedRetentionAt100kKm)"
-            />
+            <div class="flex items-center gap-3">
+              <app-meter
+                [value]="r.batteryDegradation.estimatedRetentionAt100kKm"
+                [tone]="batteryTone(r.batteryDegradation.estimatedRetentionAt100kKm)"
+                [showLabel]="false"
+              />
+              <p class="font-mono text-xl font-semibold tabular-nums">{{ r.batteryDegradation.estimatedRetentionAt100kKm }}%</p>
+            </div>
             <p class="text-xs text-[var(--color-ink-muted)] leading-snug">{{ r.batteryDegradation.note }}</p>
           </div>
 
@@ -192,7 +207,7 @@
       </section>
 
       <section class="flex flex-col gap-3">
-        <h3 class="font-display font-semibold text-lg">Further reading</h3>
+        <h3 class="font-display font-bold text-lg">Further reading</h3>
         <ul class="flex flex-col divide-y divide-[var(--color-border)] rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] overflow-hidden">
           @for (link of r.reviewLinks; track link.url) {
             <li>
