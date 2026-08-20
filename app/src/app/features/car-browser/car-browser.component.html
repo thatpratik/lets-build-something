@@ -61,6 +61,14 @@
           @for (car of recommendedCars(); track car.id) {
             <article class="card recommended">
               <span class="badge">Recommended</span>
+              <label class="compare-toggle">
+                <input
+                  type="checkbox"
+                  [checked]="comparisonService.isSelected(car.id)"
+                  (change)="comparisonService.toggle(car.id)"
+                />
+                Compare
+              </label>
               <h4>{{ car.brand }} {{ car.model }}</h4>
               <p class="country">{{ car.country }}</p>
               <p class="price">{{ car.price | number }} DKK</p>
@@ -84,6 +92,14 @@
       <div class="cards">
         @for (car of otherCars(); track car.id) {
           <article class="card">
+            <label class="compare-toggle">
+              <input
+                type="checkbox"
+                [checked]="comparisonService.isSelected(car.id)"
+                (change)="comparisonService.toggle(car.id)"
+              />
+              Compare
+            </label>
             <h4>{{ car.brand }} {{ car.model }}</h4>
             <p class="country">{{ car.country }}</p>
             <p class="price">{{ car.price | number }} DKK</p>
@@ -98,4 +114,19 @@
       </div>
     </section>
   </main>
+
+  @if (comparisonService.selectionCount() > 0) {
+    <div class="compare-bar">
+      <span>{{ comparisonService.selectionCount() }} selected</span>
+      <button type="button" (click)="comparisonService.clearSelection()">Clear</button>
+      <button
+        type="button"
+        class="primary"
+        [disabled]="comparisonService.selectionCount() < 2"
+        (click)="comparisonService.openComparison()"
+      >
+        Compare
+      </button>
+    </div>
+  }
 </div>

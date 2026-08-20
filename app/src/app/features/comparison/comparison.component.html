@@ -1,0 +1,62 @@
+<div class="comparison">
+  <header>
+    <h2>Compare EVs</h2>
+    <button type="button" (click)="close()">Back to browse</button>
+  </header>
+
+  @if (comparedCars().length === 0) {
+    <p class="empty">No cars selected. Go back and pick at least two to compare.</p>
+  } @else {
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th class="row-label">Model</th>
+            @for (car of comparedCars(); track car.id) {
+              <th>
+                {{ car.brand }} {{ car.model }}
+                <button type="button" class="remove" (click)="removeFromComparison(car.id)">Remove</button>
+              </th>
+            }
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="row-label">Country</th>
+            @for (car of comparedCars(); track car.id) {
+              <td>{{ car.country }}</td>
+            }
+          </tr>
+          <tr>
+            <th class="row-label">Range</th>
+            @for (car of comparedCars(); track car.id) {
+              <td>{{ car.range }} km</td>
+            }
+          </tr>
+          <tr class="price-row">
+            <th class="row-label">Price (with selected features)</th>
+            @for (car of comparedCars(); track car.id) {
+              <td>{{ priceFor(car.id) | number }} DKK</td>
+            }
+          </tr>
+          @for (feature of allFeatures(); track feature) {
+            <tr>
+              <th class="row-label">{{ feature }}</th>
+              @for (car of comparedCars(); track car.id) {
+                <td>
+                  <label class="feature-toggle">
+                    <input
+                      type="checkbox"
+                      [checked]="hasFeature(car.id, feature)"
+                      (change)="toggleFeature(car.id, feature)"
+                    />
+                  </label>
+                </td>
+              }
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

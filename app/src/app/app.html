@@ -1,1 +1,5 @@
-<app-car-browser />
+@if (comparisonService.isOpen()) {
+  <app-comparison />
+} @else {
+  <app-car-browser />
+}

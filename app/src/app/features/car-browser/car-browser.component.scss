@@ -96,3 +96,45 @@
 .empty {
   color: #666;
 }
+
+.compare-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+.compare-bar {
+  grid-column: 1 / -1;
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #222;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  margin: 1rem 2rem 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+  button {
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: #444;
+    color: white;
+
+    &.primary {
+      background: #2e7d32;
+
+      &:disabled {
+        background: #555;
+        cursor: not-allowed;
+      }
+    }
+  }
+}

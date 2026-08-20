@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { Car } from '../../core/models/car.model';
 import { CarService } from '../../core/services/car.service';
+import { ComparisonService } from '../../core/services/comparison.service';
 
 const BUDGET_TOLERANCE_DKK = 50000;
 const RANGE_TOLERANCE_KM = 50;
@@ -16,6 +17,7 @@ const RANGE_TOLERANCE_KM = 50;
 })
 export class CarBrowserComponent {
   private readonly carService = inject(CarService);
+  protected readonly comparisonService = inject(ComparisonService);
 
   protected readonly cars = signal<Car[]>([]);
 
