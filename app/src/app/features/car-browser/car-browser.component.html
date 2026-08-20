@@ -220,15 +220,24 @@
               }
             </ul>
 
-            <label class="flex items-center gap-1.5 text-xs font-medium text-[var(--color-ink-muted)] cursor-pointer mt-1 pt-3 border-t border-[var(--color-border)]">
-              <input
-                type="checkbox"
-                class="h-4 w-4 rounded border-[var(--color-border)] accent-[var(--color-accent)]"
-                [checked]="comparisonService.isSelected(car.id)"
-                (change)="comparisonService.toggle(car.id)"
-              />
-              Compare
-            </label>
+            <div class="flex items-center justify-between gap-2 mt-1 pt-3 border-t border-[var(--color-border)]">
+              <label class="flex items-center gap-1.5 text-xs font-medium text-[var(--color-ink-muted)] cursor-pointer">
+                <input
+                  type="checkbox"
+                  class="h-4 w-4 rounded border-[var(--color-border)] accent-[var(--color-accent)]"
+                  [checked]="comparisonService.isSelected(car.id)"
+                  (change)="comparisonService.toggle(car.id)"
+                />
+                Compare
+              </label>
+              <button
+                type="button"
+                class="rounded-lg border border-[var(--color-border)] px-3 py-1.5 text-xs font-medium hover:border-[var(--color-accent)] hover:text-[var(--color-accent-strong)] transition-colors cursor-pointer"
+                (click)="detailService.openDetail(car.id)"
+              >
+                View details
+              </button>
+            </div>
           </article>
         }
       </div>
