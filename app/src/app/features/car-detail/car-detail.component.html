@@ -18,20 +18,8 @@
 
   @if (car(); as c) {
     <section class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] overflow-hidden flex flex-col">
-      <div class="aspect-[16/9] bg-[var(--color-bg)]">
-        @if (imageUrl() && !imageFailed()) {
-          <img
-            [src]="imageUrl()"
-            [alt]="c.brand + ' ' + c.model"
-            loading="lazy"
-            class="h-full w-full object-cover"
-            (error)="markImageFailed()"
-          />
-        } @else {
-          <div class="h-full w-full flex items-center justify-center text-sm font-medium text-[var(--color-ink-muted)]">
-            {{ c.brand }} {{ c.model }}
-          </div>
-        }
+      <div class="aspect-[16/9]">
+        <app-car-image [src]="imageUrl()" [alt]="c.brand + ' ' + c.model" [fallbackText]="c.brand + ' ' + c.model" />
       </div>
 
       <div class="bg-[var(--color-ink)] text-[var(--color-bg)] px-6 py-5 flex flex-col gap-4">

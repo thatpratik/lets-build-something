@@ -6,10 +6,11 @@ import { Car } from '../../core/models/car.model';
 import { carTotalPrice } from '../../core/pricing';
 import { CarService } from '../../core/services/car.service';
 import { ComparisonService } from '../../core/services/comparison.service';
+import { CarImageComponent } from '../../shared/car-image/car-image.component';
 
 @Component({
   selector: 'app-comparison',
-  imports: [DecimalPipe],
+  imports: [DecimalPipe, CarImageComponent],
   templateUrl: './comparison.component.html',
   styleUrl: './comparison.component.scss',
 })
@@ -20,7 +21,6 @@ export class ComparisonComponent {
   private readonly allCars = signal<Car[]>([]);
   private readonly featurePricing = signal<Record<string, number>>({});
   protected readonly carImages = signal<Record<string, string>>({});
-  protected readonly failedImageIds = signal<Set<string>>(new Set());
 
   private readonly activeFeatures = signal<Map<string, Set<string>>>(new Map());
 
@@ -53,12 +53,8 @@ export class ComparisonComponent {
     this.carService.getCarImages().subscribe((images) => this.carImages.set(images));
   }
 
-  protected thumbnailFor(url: string): string {
-    return thumbnail(url, 200);
-  }
-
-  protected markImageFailed(carId: string): void {
-    this.failedImageIds.update((current) => new Set(current).add(carId));
+  protected thumbnailFor(url: string | undefined): string | null {
+    return url ? thumbnail(url, 200) : null;
   }
 
   private resetActiveFeatures(cars: Car[]): void {

@@ -8,6 +8,7 @@ import { carTotalPrice } from '../../core/pricing';
 import { CarService } from '../../core/services/car.service';
 import { ComparisonService } from '../../core/services/comparison.service';
 import { DetailService } from '../../core/services/detail.service';
+import { CarImageComponent } from '../../shared/car-image/car-image.component';
 import { MeterComponent } from '../../shared/meter/meter.component';
 import { RangeSliderComponent } from '../../shared/range-slider/range-slider.component';
 
@@ -27,7 +28,7 @@ function rangeBoundsOf(cars: Car[]): { min: number; max: number } {
 
 @Component({
   selector: 'app-car-browser',
-  imports: [FormsModule, DecimalPipe, MeterComponent, RangeSliderComponent],
+  imports: [FormsModule, DecimalPipe, CarImageComponent, MeterComponent, RangeSliderComponent],
   templateUrl: './car-browser.component.html',
   styleUrl: './car-browser.component.scss',
 })
@@ -40,7 +41,6 @@ export class CarBrowserComponent {
   protected readonly cars = signal<Car[]>([]);
   protected readonly carImages = signal<Record<string, string>>({});
   private readonly featurePricing = signal<Record<string, number>>({});
-  protected readonly failedImageIds = signal<Set<string>>(new Set());
   protected readonly loaded = signal(false);
   protected readonly skeletonCards = Array.from({ length: 6 });
 
@@ -103,12 +103,8 @@ export class CarBrowserComponent {
     this.carService.getFeaturePricing().subscribe((pricing) => this.featurePricing.set(pricing));
   }
 
-  protected thumbnailFor(url: string): string {
-    return thumbnail(url, 480);
-  }
-
-  protected markImageFailed(carId: string): void {
-    this.failedImageIds.update((current) => new Set(current).add(carId));
+  protected thumbnailFor(url: string | undefined): string | null {
+    return url ? thumbnail(url, 480) : null;
   }
 
   protected totalPriceFor(car: Car): number {

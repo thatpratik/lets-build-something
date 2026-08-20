@@ -52,6 +52,16 @@ body {
   outline-offset: 2px;
 }
 
+@keyframes charge-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  60%,
+  100% {
+    transform: translateX(340%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

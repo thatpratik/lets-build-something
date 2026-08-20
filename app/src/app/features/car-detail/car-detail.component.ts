@@ -1,5 +1,5 @@
 import { DecimalPipe } from '@angular/common';
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, afterNextRender, computed, inject, signal } from '@angular/core';
 
 import { thumbnail } from '../../core/image';
 import { Accessory } from '../../core/models/accessory.model';
@@ -10,13 +10,14 @@ import { WarrantyInfo } from '../../core/models/warranty.model';
 import { carFeatureLineItems, carTotalPrice } from '../../core/pricing';
 import { CarService } from '../../core/services/car.service';
 import { DetailService } from '../../core/services/detail.service';
+import { CarImageComponent } from '../../shared/car-image/car-image.component';
 import { MeterComponent } from '../../shared/meter/meter.component';
 
 const MAX_DISPLAY_RANGE_KM = 700;
 
 @Component({
   selector: 'app-car-detail',
-  imports: [DecimalPipe, MeterComponent],
+  imports: [DecimalPipe, CarImageComponent, MeterComponent],
   templateUrl: './car-detail.component.html',
   styleUrl: './car-detail.component.scss',
 })
@@ -33,7 +34,6 @@ export class CarDetailComponent {
   private readonly featurePricing = signal<Record<string, number>>({});
   protected readonly accessories = signal<Accessory[]>([]);
   protected readonly carImages = signal<Record<string, string>>({});
-  protected readonly imageFailed = signal(false);
 
   protected readonly imageUrl = computed(() => {
     const url = this.carImages()[this.detailService.carId() ?? ''];
@@ -89,6 +89,7 @@ export class CarDetailComponent {
   });
 
   constructor() {
+    afterNextRender(() => window.scrollTo({ top: 0 }));
     this.carService.getCars().subscribe((cars) => this.allCars.set(cars));
     this.carService.getRiskIndicators().subscribe((indicators) => this.riskIndicators.set(indicators));
     this.carService.getAccessories().subscribe((accessories) => this.accessories.set(accessories));
@@ -108,10 +109,6 @@ export class CarDetailComponent {
       return;
     }
     this.selectedColorByCarId.update((current) => ({ ...current, [carId]: colorName }));
-  }
-
-  protected markImageFailed(): void {
-    this.imageFailed.set(true);
   }
 
   protected warrantyLabel(years: number, km: number): string {

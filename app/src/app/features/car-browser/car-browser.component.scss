@@ -11,3 +11,10 @@ input[type='number'] {
 
   appearance: textfield;
 }
+
+// The gold underline (border-b + focus-within glow) is this input's focus
+// indicator; the browser's default focus-visible outline just doubles up
+// with it as a mismatched gold rectangle, so it's suppressed here.
+.budget-input:focus-visible {
+  outline: none;
+}
