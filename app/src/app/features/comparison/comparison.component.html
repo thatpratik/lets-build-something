@@ -1,55 +1,90 @@
-<div class="comparison">
-  <header>
-    <h2>Compare EVs</h2>
-    <button type="button" (click)="close()">Back to browse</button>
+<div class="mx-auto max-w-6xl px-5 sm:px-8 py-8 flex flex-col gap-8">
+  <header class="flex items-center justify-between">
+    <h2 class="font-display font-semibold text-xl">Compare EVs</h2>
+    <button
+      type="button"
+      class="flex items-center gap-1.5 rounded-lg border border-[var(--color-border)] px-3 py-1.5 text-sm font-medium hover:border-[var(--color-ink-faint)] transition-colors cursor-pointer"
+      (click)="close()"
+    >
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M10 12.5 5.5 8 10 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      Back to browse
+    </button>
   </header>
 
   @if (comparedCars().length === 0) {
-    <p class="empty">No cars selected. Go back and pick at least two to compare.</p>
+    <p class="rounded-xl border border-dashed border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-8 text-center text-sm text-[var(--color-ink-muted)]">
+      No cars selected. Go back and pick at least two to compare.
+    </p>
   } @else {
-    <div class="table-scroll">
-      <table>
+    <div class="overflow-x-auto rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]">
+      <table class="w-full border-collapse text-sm">
         <thead>
           <tr>
-            <th class="row-label">Model</th>
+            <th class="sticky left-0 bg-[var(--color-surface)] text-left font-medium text-[var(--color-ink-muted)] px-4 py-3.5 align-top whitespace-normal w-40">
+              Model
+            </th>
             @for (car of comparedCars(); track car.id) {
-              <th>
-                {{ car.brand }} {{ car.model }}
-                <button type="button" class="remove" (click)="removeFromComparison(car.id)">Remove</button>
+              <th class="text-left align-top px-4 py-3.5 border-b border-[var(--color-border)] whitespace-nowrap min-w-[180px]">
+                <div class="flex items-start justify-between gap-3">
+                  <span class="font-display font-semibold text-base">{{ car.brand }} {{ car.model }}</span>
+                  <button
+                    type="button"
+                    class="shrink-0 rounded-md p-1 text-[var(--color-ink-faint)] hover:bg-[var(--color-bg)] hover:text-[var(--color-danger)] transition-colors cursor-pointer"
+                    (click)="removeFromComparison(car.id)"
+                    [attr.aria-label]="'Remove ' + car.brand + ' ' + car.model + ' from comparison'"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                    </svg>
+                  </button>
+                </div>
               </th>
             }
           </tr>
         </thead>
         <tbody>
           <tr>
-            <th class="row-label">Country</th>
+            <th class="sticky left-0 bg-[var(--color-surface)] text-left font-medium text-[var(--color-ink-muted)] px-4 py-3 border-b border-[var(--color-border)]">Country</th>
             @for (car of comparedCars(); track car.id) {
-              <td>{{ car.country }}</td>
+              <td class="px-4 py-3 border-b border-[var(--color-border)] whitespace-nowrap">{{ car.country }}</td>
             }
           </tr>
           <tr>
-            <th class="row-label">Range</th>
+            <th class="sticky left-0 bg-[var(--color-surface)] text-left font-medium text-[var(--color-ink-muted)] px-4 py-3 border-b border-[var(--color-border)]">Range</th>
             @for (car of comparedCars(); track car.id) {
-              <td>{{ car.range }} km</td>
+              <td class="px-4 py-3 border-b border-[var(--color-border)] font-mono tabular-nums whitespace-nowrap">{{ car.range }} km</td>
             }
           </tr>
-          <tr class="price-row">
-            <th class="row-label">Price (with selected features)</th>
+          <tr>
+            <th class="sticky left-0 bg-[var(--color-accent-soft)] text-left font-semibold text-[var(--color-accent-strong)] px-4 py-3 border-b border-[var(--color-border)]">
+              Price (with selected features)
+            </th>
             @for (car of comparedCars(); track car.id) {
-              <td>{{ priceFor(car.id) | number }} DKK</td>
+              <td class="px-4 py-3 border-b border-[var(--color-border)] font-mono font-semibold tabular-nums whitespace-nowrap bg-[var(--color-accent-soft)]">
+                {{ priceFor(car.id) | number }} DKK
+              </td>
             }
           </tr>
           @for (feature of allFeatures(); track feature) {
             <tr>
-              <th class="row-label">{{ feature }}</th>
+              <th class="sticky left-0 bg-[var(--color-surface)] text-left font-medium text-[var(--color-ink-muted)] px-4 py-3 border-b border-[var(--color-border)] whitespace-normal">
+                {{ feature }}
+              </th>
               @for (car of comparedCars(); track car.id) {
-                <td>
-                  <label class="feature-toggle">
+                <td class="px-4 py-3 border-b border-[var(--color-border)]">
+                  <label class="inline-flex items-center cursor-pointer">
                     <input
                       type="checkbox"
+                      class="sr-only peer"
                       [checked]="hasFeature(car.id, feature)"
                       (change)="toggleFeature(car.id, feature)"
+                      [attr.aria-label]="feature + ' on ' + car.brand + ' ' + car.model"
                     />
+                    <span class="h-5 w-9 rounded-full bg-[var(--color-border)] peer-checked:bg-[var(--color-accent)] transition-colors relative">
+                      <span class="absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white shadow-sm transition-transform peer-checked:translate-x-4"></span>
+                    </span>
                   </label>
                 </td>
               }

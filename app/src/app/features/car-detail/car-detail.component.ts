@@ -5,14 +5,18 @@ import { Car } from '../../core/models/car.model';
 import { RiskIndicator } from '../../core/models/risk-indicator.model';
 import { CarService } from '../../core/services/car.service';
 import { DetailService } from '../../core/services/detail.service';
+import { MeterComponent } from '../../shared/meter/meter.component';
+
+const MAX_DISPLAY_RANGE_KM = 600;
 
 @Component({
   selector: 'app-car-detail',
-  imports: [DecimalPipe],
+  imports: [DecimalPipe, MeterComponent],
   templateUrl: './car-detail.component.html',
   styleUrl: './car-detail.component.scss',
 })
 export class CarDetailComponent {
+  protected readonly maxDisplayRangeKm = MAX_DISPLAY_RANGE_KM;
   private readonly carService = inject(CarService);
   protected readonly detailService = inject(DetailService);
 
@@ -34,5 +38,26 @@ export class CarDetailComponent {
 
   protected close(): void {
     this.detailService.closeDetail();
+  }
+
+  protected batteryTone(retentionPercent: number): 'accent' | 'warning' | 'danger' {
+    if (retentionPercent < 80) {
+      return 'danger';
+    }
+    if (retentionPercent < 90) {
+      return 'warning';
+    }
+    return 'accent';
+  }
+
+  protected resaleToneClasses(rating: RiskIndicator['resaleValue']['rating']): string {
+    switch (rating) {
+      case 'Strong':
+        return 'bg-[var(--color-accent-soft)] text-[var(--color-accent-strong)]';
+      case 'Average':
+        return 'bg-[var(--color-warning-soft)] text-[var(--color-warning)]';
+      case 'Weak':
+        return 'bg-[var(--color-danger-soft)] text-[var(--color-danger)]';
+    }
   }
 }

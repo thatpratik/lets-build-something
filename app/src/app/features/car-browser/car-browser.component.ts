@@ -6,17 +6,20 @@ import { Car } from '../../core/models/car.model';
 import { CarService } from '../../core/services/car.service';
 import { ComparisonService } from '../../core/services/comparison.service';
 import { DetailService } from '../../core/services/detail.service';
+import { MeterComponent } from '../../shared/meter/meter.component';
 
 const BUDGET_TOLERANCE_DKK = 50000;
 const RANGE_TOLERANCE_KM = 50;
+const MAX_DISPLAY_RANGE_KM = 600;
 
 @Component({
   selector: 'app-car-browser',
-  imports: [FormsModule, DecimalPipe],
+  imports: [FormsModule, DecimalPipe, MeterComponent],
   templateUrl: './car-browser.component.html',
   styleUrl: './car-browser.component.scss',
 })
 export class CarBrowserComponent {
+  protected readonly maxDisplayRangeKm = MAX_DISPLAY_RANGE_KM;
   private readonly carService = inject(CarService);
   protected readonly comparisonService = inject(ComparisonService);
   protected readonly detailService = inject(DetailService);

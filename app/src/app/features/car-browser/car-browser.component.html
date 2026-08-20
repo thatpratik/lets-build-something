@@ -1,117 +1,189 @@
-<div class="browser">
-  <aside class="filters">
-    <h2>Find your EV</h2>
+<div class="mx-auto max-w-6xl px-5 sm:px-8 py-8 grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-8">
+  <aside class="lg:sticky lg:top-8 lg:self-start rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 flex flex-col gap-6">
+    <div class="flex items-center justify-between">
+      <h2 class="font-display font-semibold text-base">Find your EV</h2>
+      <button
+        type="button"
+        class="text-xs font-medium text-[var(--color-ink-muted)] hover:text-[var(--color-accent)] transition-colors cursor-pointer"
+        (click)="clearFilters()"
+      >
+        Clear
+      </button>
+    </div>
 
-    <label class="field">
-      Budget (DKK)
+    <label class="flex flex-col gap-1.5">
+      <span class="text-xs font-medium text-[var(--color-ink-muted)]">Budget (DKK)</span>
       <input
         type="number"
-        placeholder="e.g. 350000"
+        placeholder="e.g. 350,000"
+        class="h-11 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] px-3 text-sm font-medium tabular-nums placeholder:font-normal placeholder:text-[var(--color-ink-faint)] focus:border-[var(--color-accent)] focus:bg-[var(--color-surface)] focus:outline-none transition-colors"
         [ngModel]="budget()"
         (ngModelChange)="budget.set($event)"
       />
     </label>
 
-    <label class="field">
-      Desired range (km)
+    <label class="flex flex-col gap-1.5">
+      <span class="text-xs font-medium text-[var(--color-ink-muted)]">Desired range (km)</span>
       <input
         type="number"
         placeholder="e.g. 400"
+        class="h-11 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] px-3 text-sm font-medium tabular-nums placeholder:font-normal placeholder:text-[var(--color-ink-faint)] focus:border-[var(--color-accent)] focus:bg-[var(--color-surface)] focus:outline-none transition-colors"
         [ngModel]="desiredRange()"
         (ngModelChange)="desiredRange.set($event)"
       />
     </label>
 
-    <fieldset class="field">
-      <legend>Country of origin</legend>
-      @for (country of allCountries(); track country) {
-        <label class="checkbox">
-          <input
-            type="checkbox"
-            [checked]="selectedCountries().has(country)"
-            (change)="toggleCountry(country)"
-          />
-          {{ country }}
-        </label>
-      }
+    <fieldset class="flex flex-col gap-2 border-0 p-0 m-0">
+      <legend class="text-xs font-medium text-[var(--color-ink-muted)] mb-0.5 p-0">Country of origin</legend>
+      <div class="flex flex-wrap gap-1.5">
+        @for (country of allCountries(); track country) {
+          <label
+            class="cursor-pointer select-none rounded-full border px-3 py-1.5 text-xs font-medium transition-colors"
+            [class]="selectedCountries().has(country)
+              ? 'border-[var(--color-accent)] bg-[var(--color-accent-soft)] text-[var(--color-accent-strong)]'
+              : 'border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-ink-muted)] hover:border-[var(--color-ink-faint)]'"
+          >
+            <input
+              type="checkbox"
+              class="sr-only"
+              [checked]="selectedCountries().has(country)"
+              (change)="toggleCountry(country)"
+            />
+            {{ country }}
+          </label>
+        }
+      </div>
     </fieldset>
 
-    <fieldset class="field">
-      <legend>Features</legend>
-      @for (feature of allFeatures(); track feature) {
-        <label class="checkbox">
-          <input
-            type="checkbox"
-            [checked]="selectedFeatures().has(feature)"
-            (change)="toggleFeature(feature)"
-          />
-          {{ feature }}
-        </label>
-      }
+    <fieldset class="flex flex-col gap-2 border-0 p-0 m-0">
+      <legend class="text-xs font-medium text-[var(--color-ink-muted)] mb-0.5 p-0">Features</legend>
+      <div class="flex flex-wrap gap-1.5">
+        @for (feature of allFeatures(); track feature) {
+          <label
+            class="cursor-pointer select-none rounded-full border px-3 py-1.5 text-xs font-medium transition-colors"
+            [class]="selectedFeatures().has(feature)
+              ? 'border-[var(--color-accent)] bg-[var(--color-accent-soft)] text-[var(--color-accent-strong)]'
+              : 'border-[var(--color-border)] bg-[var(--color-bg)] text-[var(--color-ink-muted)] hover:border-[var(--color-ink-faint)]'"
+          >
+            <input
+              type="checkbox"
+              class="sr-only"
+              [checked]="selectedFeatures().has(feature)"
+              (change)="toggleFeature(feature)"
+            />
+            {{ feature }}
+          </label>
+        }
+      </div>
     </fieldset>
-
-    <button type="button" (click)="clearFilters()">Clear filters</button>
   </aside>
 
-  <main class="results">
+  <main class="flex flex-col gap-10 pb-28">
     @if (hasPreferences() && recommendedCars().length > 0) {
-      <section>
-        <h3>Recommended for you</h3>
-        <div class="cards">
+      <section class="flex flex-col gap-4">
+        <h3 class="font-display font-semibold text-lg">Recommended for you</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
           @for (car of recommendedCars(); track car.id) {
-            <article class="card recommended">
-              <span class="badge">Recommended</span>
-              <label class="compare-toggle">
-                <input
-                  type="checkbox"
-                  [checked]="comparisonService.isSelected(car.id)"
-                  (change)="comparisonService.toggle(car.id)"
-                />
-                Compare
-              </label>
-              <h4>{{ car.brand }} {{ car.model }}</h4>
-              <p class="country">{{ car.country }}</p>
-              <p class="price">{{ car.price | number }} DKK</p>
-              <p class="range">{{ car.range }} km range</p>
-              <ul class="features">
+            <article class="relative rounded-2xl border border-[var(--color-accent)] bg-[var(--color-surface)] p-5 flex flex-col gap-3 shadow-[0_1px_2px_rgba(15,110,92,0.06)]">
+              <span class="absolute -top-2.5 right-4 rounded-full bg-[var(--color-accent)] px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-wide text-white">
+                Recommended
+              </span>
+
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <h4 class="font-display font-semibold text-base leading-tight">
+                    {{ car.brand }} {{ car.model }}
+                  </h4>
+                  <p class="text-sm text-[var(--color-ink-muted)]">{{ car.country }}</p>
+                </div>
+              </div>
+
+              <p class="font-mono text-xl font-semibold tabular-nums">{{ car.price | number }} <span class="text-sm font-normal text-[var(--color-ink-muted)]">DKK</span></p>
+
+              <div class="flex flex-col gap-1">
+                <div class="flex items-baseline justify-between">
+                  <span class="text-xs text-[var(--color-ink-muted)]">Range</span>
+                  <span class="font-mono text-xs tabular-nums text-[var(--color-ink-muted)]">{{ car.range }} km</span>
+                </div>
+                <app-meter [value]="(car.range / maxDisplayRangeKm) * 100" />
+              </div>
+
+              <ul class="flex flex-wrap gap-1.5">
                 @for (feature of car.features; track feature) {
-                  <li>{{ feature }}</li>
+                  <li class="rounded-md bg-[var(--color-bg)] px-2 py-0.5 text-xs text-[var(--color-ink-muted)]">{{ feature }}</li>
                 }
               </ul>
-              <button type="button" class="details-link" (click)="detailService.openDetail(car.id)">
-                View details
-              </button>
+
+              <div class="flex items-center justify-between gap-2 mt-1 pt-3 border-t border-[var(--color-border)]">
+                <label class="flex items-center gap-1.5 text-xs font-medium text-[var(--color-ink-muted)] cursor-pointer">
+                  <input
+                    type="checkbox"
+                    class="h-4 w-4 rounded border-[var(--color-border)] accent-[var(--color-accent)]"
+                    [checked]="comparisonService.isSelected(car.id)"
+                    (change)="comparisonService.toggle(car.id)"
+                  />
+                  Compare
+                </label>
+                <button
+                  type="button"
+                  class="rounded-lg border border-[var(--color-border)] px-3 py-1.5 text-xs font-medium hover:border-[var(--color-accent)] hover:text-[var(--color-accent-strong)] transition-colors cursor-pointer"
+                  (click)="detailService.openDetail(car.id)"
+                >
+                  View details
+                </button>
+              </div>
             </article>
           }
         </div>
       </section>
     }
 
-    <section>
-      <h3>{{ hasPreferences() ? 'Other options' : 'All cars' }}</h3>
+    <section class="flex flex-col gap-4">
+      <h3 class="font-display font-semibold text-lg">
+        {{ hasPreferences() ? 'Other options' : 'All cars' }}
+      </h3>
+
       @if (otherCars().length === 0) {
-        <p class="empty">No cars match your filters.</p>
+        <p class="rounded-xl border border-dashed border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-8 text-center text-sm text-[var(--color-ink-muted)]">
+          No cars match your filters.
+        </p>
       }
-      <div class="cards">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
         @for (car of otherCars(); track car.id) {
-          <article class="card">
-            <label class="compare-toggle">
+          <article class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 flex flex-col gap-3 hover:border-[var(--color-ink-faint)] transition-colors">
+            <div>
+              <h4 class="font-display font-semibold text-base leading-tight">
+                {{ car.brand }} {{ car.model }}
+              </h4>
+              <p class="text-sm text-[var(--color-ink-muted)]">{{ car.country }}</p>
+            </div>
+
+            <p class="font-mono text-xl font-semibold tabular-nums">{{ car.price | number }} <span class="text-sm font-normal text-[var(--color-ink-muted)]">DKK</span></p>
+
+            <div class="flex flex-col gap-1">
+              <div class="flex items-baseline justify-between">
+                <span class="text-xs text-[var(--color-ink-muted)]">Range</span>
+                <span class="font-mono text-xs tabular-nums text-[var(--color-ink-muted)]">{{ car.range }} km</span>
+              </div>
+              <app-meter [value]="(car.range / maxDisplayRangeKm) * 100" />
+            </div>
+
+            <ul class="flex flex-wrap gap-1.5">
+              @for (feature of car.features; track feature) {
+                <li class="rounded-md bg-[var(--color-bg)] px-2 py-0.5 text-xs text-[var(--color-ink-muted)]">{{ feature }}</li>
+              }
+            </ul>
+
+            <label class="flex items-center gap-1.5 text-xs font-medium text-[var(--color-ink-muted)] cursor-pointer mt-1 pt-3 border-t border-[var(--color-border)]">
               <input
                 type="checkbox"
+                class="h-4 w-4 rounded border-[var(--color-border)] accent-[var(--color-accent)]"
                 [checked]="comparisonService.isSelected(car.id)"
                 (change)="comparisonService.toggle(car.id)"
               />
               Compare
             </label>
-            <h4>{{ car.brand }} {{ car.model }}</h4>
-            <p class="country">{{ car.country }}</p>
-            <p class="price">{{ car.price | number }} DKK</p>
-            <p class="range">{{ car.range }} km range</p>
-            <ul class="features">
-              @for (feature of car.features; track feature) {
-                <li>{{ feature }}</li>
-              }
-            </ul>
           </article>
         }
       </div>
@@ -119,17 +191,25 @@
   </main>
 
   @if (comparisonService.selectionCount() > 0) {
-    <div class="compare-bar">
-      <span>{{ comparisonService.selectionCount() }} selected</span>
-      <button type="button" (click)="comparisonService.clearSelection()">Clear</button>
-      <button
-        type="button"
-        class="primary"
-        [disabled]="comparisonService.selectionCount() < 2"
-        (click)="comparisonService.openComparison()"
-      >
-        Compare
-      </button>
+    <div class="fixed inset-x-0 bottom-0 z-20 flex justify-center px-4 pb-4 sm:pb-6">
+      <div class="flex items-center gap-4 rounded-2xl bg-[var(--color-ink)] px-5 py-3 text-white shadow-lg">
+        <span class="text-sm font-medium">{{ comparisonService.selectionCount() }} selected</span>
+        <button
+          type="button"
+          class="rounded-lg px-3 py-1.5 text-sm font-medium text-white/80 hover:text-white transition-colors cursor-pointer"
+          (click)="comparisonService.clearSelection()"
+        >
+          Clear
+        </button>
+        <button
+          type="button"
+          class="rounded-lg bg-[var(--color-accent)] px-4 py-1.5 text-sm font-semibold disabled:bg-white/15 disabled:text-white/40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+          [disabled]="comparisonService.selectionCount() < 2"
+          (click)="comparisonService.openComparison()"
+        >
+          Compare
+        </button>
+      </div>
     </div>
   }
 </div>
