@@ -2,6 +2,7 @@ import { DecimalPipe } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 
 import { Car } from '../../core/models/car.model';
+import { carTotalPrice } from '../../core/pricing';
 import { CarService } from '../../core/services/car.service';
 import { ComparisonService } from '../../core/services/comparison.service';
 
@@ -34,19 +35,7 @@ export class ComparisonComponent {
 
     for (const car of this.comparedCars()) {
       const carActiveFeatures = active.get(car.id) ?? new Set(car.features);
-      let price = car.price;
-
-      for (const feature of this.allFeatures()) {
-        const hadFeature = car.features.includes(feature);
-        const hasFeatureNow = carActiveFeatures.has(feature);
-        if (hasFeatureNow && !hadFeature) {
-          price += pricing[feature] ?? 0;
-        } else if (!hasFeatureNow && hadFeature) {
-          price -= pricing[feature] ?? 0;
-        }
-      }
-
-      prices.set(car.id, price);
+      prices.set(car.id, carTotalPrice(car, pricing, carActiveFeatures));
     }
 
     return prices;

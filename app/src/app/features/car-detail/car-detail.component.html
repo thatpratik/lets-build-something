@@ -37,7 +37,7 @@
       </div>
 
       <p class="font-mono text-3xl font-semibold tabular-nums">
-        {{ c.price | number }} <span class="text-base font-normal text-[var(--color-ink-muted)]">DKK</span>
+        {{ carPrice() | number }} <span class="text-base font-normal text-[var(--color-ink-muted)]">DKK</span>
       </p>
 
       <div class="flex flex-col gap-1.5 max-w-xs">
@@ -63,9 +63,15 @@
       <h3 class="font-display font-semibold text-lg">Pricing breakdown</h3>
       <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] divide-y divide-[var(--color-border)] overflow-hidden">
         <div class="flex items-center justify-between px-4 py-3 text-sm">
-          <span class="text-[var(--color-ink-muted)]">Standard market price</span>
-          <span class="font-mono tabular-nums">{{ c.price | number }} DKK</span>
+          <span class="text-[var(--color-ink-muted)]">Base price</span>
+          <span class="font-mono tabular-nums">{{ c.basePrice | number }} DKK</span>
         </div>
+        @for (item of featureLineItems(); track item.name) {
+          <div class="flex items-center justify-between px-4 py-3 text-sm">
+            <span class="text-[var(--color-ink-muted)]">{{ item.name }}</span>
+            <span class="font-mono tabular-nums">+{{ item.price | number }} DKK</span>
+          </div>
+        }
         @for (accessory of accessories(); track accessory.name) {
           <div class="flex items-center justify-between px-4 py-3 text-sm">
             <span class="text-[var(--color-ink-muted)]">{{ accessory.name }}</span>
@@ -78,7 +84,7 @@
         </div>
       </div>
       <p class="text-xs text-[var(--color-ink-muted)] leading-snug">
-        Accessory and service charges are typical add-ons in the Danish market and are not included in the standard market price above.
+        Price varies by which features are fitted; accessory and service charges are typical add-ons in the Danish market on top of that.
       </p>
     </section>
 

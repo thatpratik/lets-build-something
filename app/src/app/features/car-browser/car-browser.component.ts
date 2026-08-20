@@ -3,6 +3,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { Car } from '../../core/models/car.model';
+import { carTotalPrice } from '../../core/pricing';
 import { CarService } from '../../core/services/car.service';
 import { ComparisonService } from '../../core/services/comparison.service';
 import { DetailService } from '../../core/services/detail.service';
@@ -37,6 +38,7 @@ export class CarBrowserComponent {
 
   protected readonly cars = signal<Car[]>([]);
   protected readonly carImages = signal<Record<string, string>>({});
+  private readonly featurePricing = signal<Record<string, number>>({});
   protected readonly failedImageIds = signal<Set<string>>(new Set());
 
   protected readonly budget = signal<number | null>(null);
@@ -94,15 +96,20 @@ export class CarBrowserComponent {
       this.desiredRangeMax.set(bounds.max);
     });
     this.carService.getCarImages().subscribe((images) => this.carImages.set(images));
+    this.carService.getFeaturePricing().subscribe((pricing) => this.featurePricing.set(pricing));
   }
 
   protected markImageFailed(carId: string): void {
     this.failedImageIds.update((current) => new Set(current).add(carId));
   }
 
+  protected totalPriceFor(car: Car): number {
+    return carTotalPrice(car, this.featurePricing());
+  }
+
   private isWithinTolerance(car: Car): boolean {
     const budget = this.budget();
-    const withinBudget = budget === null || Math.abs(car.price - budget) <= BUDGET_TOLERANCE_DKK;
+    const withinBudget = budget === null || Math.abs(this.totalPriceFor(car) - budget) <= BUDGET_TOLERANCE_DKK;
 
     if (!this.hasRangePreference()) {
       return withinBudget;

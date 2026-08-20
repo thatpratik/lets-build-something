@@ -8,7 +8,7 @@ export interface Car {
   brand: string;
   model: string;
   country: string;
-  price: number;
+  basePrice: number;
   range: CarRange;
   features: string[];
 }

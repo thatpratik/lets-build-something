@@ -18,5 +18,5 @@ For projects with a UI or user-facing surface: strongly prefer getting something
 For non-visual projects (CLIs, background workers, data pipelines): apply the same principle but in terms of runnability — get something that executes end-to-end with mocked internals before wiring up the real pieces.
 
 ## After an iteration ships
-
+do a /diary after the iteration is built, to capture what worked, what didn't, and what warrants review. Then clear the context
 The next step is **not** another iteration — don't suggest one. After the chosen iteration is built, the user runs `/diary`, then clears the context and starts a new session to run `/suggest-next-iteration` again. These are the user's actions, not yours; just don't mislead them by proposing a different next step.

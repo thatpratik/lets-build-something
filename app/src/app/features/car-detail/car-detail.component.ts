@@ -4,6 +4,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { Accessory } from '../../core/models/accessory.model';
 import { Car } from '../../core/models/car.model';
 import { RiskIndicator } from '../../core/models/risk-indicator.model';
+import { carFeatureLineItems, carTotalPrice } from '../../core/pricing';
 import { CarService } from '../../core/services/car.service';
 import { DetailService } from '../../core/services/detail.service';
 import { MeterComponent } from '../../shared/meter/meter.component';
@@ -23,6 +24,7 @@ export class CarDetailComponent {
 
   private readonly allCars = signal<Car[]>([]);
   private readonly riskIndicators = signal<Record<string, RiskIndicator>>({});
+  private readonly featurePricing = signal<Record<string, number>>({});
   protected readonly accessories = signal<Accessory[]>([]);
   protected readonly carImages = signal<Record<string, string>>({});
   protected readonly imageFailed = signal(false);
@@ -41,9 +43,19 @@ export class CarDetailComponent {
     this.accessories().reduce((sum, accessory) => sum + accessory.price, 0)
   );
 
-  protected readonly totalEstimatedCost = computed(() => {
+  protected readonly featureLineItems = computed(() => {
     const car = this.car();
-    return car === null ? null : car.price + this.accessoriesTotal();
+    return car === null ? [] : carFeatureLineItems(car, this.featurePricing());
+  });
+
+  protected readonly carPrice = computed(() => {
+    const car = this.car();
+    return car === null ? null : carTotalPrice(car, this.featurePricing());
+  });
+
+  protected readonly totalEstimatedCost = computed(() => {
+    const price = this.carPrice();
+    return price === null ? null : price + this.accessoriesTotal();
   });
 
   constructor() {
@@ -51,6 +63,7 @@ export class CarDetailComponent {
     this.carService.getRiskIndicators().subscribe((indicators) => this.riskIndicators.set(indicators));
     this.carService.getAccessories().subscribe((accessories) => this.accessories.set(accessories));
     this.carService.getCarImages().subscribe((images) => this.carImages.set(images));
+    this.carService.getFeaturePricing().subscribe((pricing) => this.featurePricing.set(pricing));
   }
 
   protected close(): void {

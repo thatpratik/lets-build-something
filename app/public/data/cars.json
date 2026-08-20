@@ -4,224 +4,403 @@
     "brand": "Toyota",
     "model": "bZ4X",
     "country": "Japan",
-    "price": 349000,
-    "range": { "min": 355, "max": 436 },
-    "features": ["Adaptive Cruise Control", "Heated Seats", "Advanced Security Suite"]
+    "basePrice": 325000,
+    "range": {
+      "min": 355,
+      "max": 436
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Heated Seats",
+      "Advanced Security Suite"
+    ]
   },
   {
     "id": "nissan-ariya",
     "brand": "Nissan",
     "model": "Ariya",
     "country": "Japan",
-    "price": 379000,
-    "range": { "min": 380, "max": 533 },
-    "features": ["Adaptive Cruise Control", "Head-Up Display", "Premium Sound System"]
+    "basePrice": 352000,
+    "range": {
+      "min": 380,
+      "max": 533
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Head-Up Display",
+      "Premium Sound System"
+    ]
   },
   {
     "id": "honda-e",
     "brand": "Honda",
     "model": "e",
     "country": "Japan",
-    "price": 299000,
-    "range": { "min": 210, "max": 225 },
-    "features": ["Heated Seats", "Premium Sound System"]
+    "basePrice": 286000,
+    "range": {
+      "min": 210,
+      "max": 225
+    },
+    "features": [
+      "Heated Seats",
+      "Premium Sound System"
+    ]
   },
   {
     "id": "lexus-rz",
     "brand": "Lexus",
     "model": "RZ",
     "country": "Japan",
-    "price": 599000,
-    "range": { "min": 380, "max": 436 },
-    "features": ["Adaptive Cruise Control", "Head-Up Display", "Sunroof", "Advanced Security Suite", "Premium Sound System"]
+    "basePrice": 553000,
+    "range": {
+      "min": 380,
+      "max": 436
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Head-Up Display",
+      "Sunroof",
+      "Advanced Security Suite",
+      "Premium Sound System"
+    ]
   },
   {
     "id": "vw-id4",
     "brand": "Volkswagen",
     "model": "ID.4",
     "country": "Germany",
-    "price": 369000,
-    "range": { "min": 348, "max": 522 },
-    "features": ["Adaptive Cruise Control", "Heated Seats"]
+    "basePrice": 357000,
+    "range": {
+      "min": 348,
+      "max": 522
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Heated Seats"
+    ]
   },
   {
     "id": "bmw-i4",
     "brand": "BMW",
     "model": "i4",
     "country": "Germany",
-    "price": 499000,
-    "range": { "min": 460, "max": 590 },
-    "features": ["Adaptive Cruise Control", "Head-Up Display", "Sunroof", "Premium Sound System"]
+    "basePrice": 465000,
+    "range": {
+      "min": 460,
+      "max": 590
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Head-Up Display",
+      "Sunroof",
+      "Premium Sound System"
+    ]
   },
   {
     "id": "audi-q4",
     "brand": "Audi",
     "model": "Q4 e-tron",
     "country": "Germany",
-    "price": 459000,
-    "range": { "min": 350, "max": 520 },
-    "features": ["Adaptive Cruise Control", "Head-Up Display", "Advanced Security Suite"]
+    "basePrice": 429000,
+    "range": {
+      "min": 350,
+      "max": 520
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Head-Up Display",
+      "Advanced Security Suite"
+    ]
   },
   {
     "id": "mercedes-eqa",
     "brand": "Mercedes-Benz",
     "model": "EQA",
     "country": "Germany",
-    "price": 429000,
-    "range": { "min": 400, "max": 560 },
-    "features": ["Heated Seats", "Premium Sound System", "Advanced Security Suite"]
+    "basePrice": 404000,
+    "range": {
+      "min": 400,
+      "max": 560
+    },
+    "features": [
+      "Heated Seats",
+      "Premium Sound System",
+      "Advanced Security Suite"
+    ]
   },
   {
     "id": "porsche-taycan",
     "brand": "Porsche",
     "model": "Taycan",
     "country": "Germany",
-    "price": 899000,
-    "range": { "min": 400, "max": 630 },
-    "features": ["Adaptive Cruise Control", "Head-Up Display", "Sunroof", "Premium Sound System", "Advanced Security Suite"]
+    "basePrice": 853000,
+    "range": {
+      "min": 400,
+      "max": 630
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Head-Up Display",
+      "Sunroof",
+      "Premium Sound System",
+      "Advanced Security Suite"
+    ]
   },
   {
     "id": "hyundai-ioniq5",
     "brand": "Hyundai",
     "model": "IONIQ 5",
     "country": "South Korea",
-    "price": 339000,
-    "range": { "min": 384, "max": 507 },
-    "features": ["Adaptive Cruise Control", "Head-Up Display", "Heated Seats"]
+    "basePrice": 317000,
+    "range": {
+      "min": 384,
+      "max": 507
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Head-Up Display",
+      "Heated Seats"
+    ]
   },
   {
     "id": "kia-ev6",
     "brand": "Kia",
     "model": "EV6",
     "country": "South Korea",
-    "price": 359000,
-    "range": { "min": 394, "max": 528 },
-    "features": ["Adaptive Cruise Control", "Sunroof", "Premium Sound System"]
+    "basePrice": 335000,
+    "range": {
+      "min": 394,
+      "max": 528
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Sunroof",
+      "Premium Sound System"
+    ]
   },
   {
     "id": "kia-niro-ev",
     "brand": "Kia",
     "model": "Niro EV",
     "country": "South Korea",
-    "price": 289000,
-    "range": { "min": 450, "max": 463 },
-    "features": ["Heated Seats", "Advanced Security Suite"]
+    "basePrice": 273000,
+    "range": {
+      "min": 450,
+      "max": 463
+    },
+    "features": [
+      "Heated Seats",
+      "Advanced Security Suite"
+    ]
   },
   {
     "id": "genesis-gv60",
     "brand": "Genesis",
     "model": "GV60",
     "country": "South Korea",
-    "price": 549000,
-    "range": { "min": 400, "max": 470 },
-    "features": ["Adaptive Cruise Control", "Head-Up Display", "Sunroof", "Premium Sound System", "Advanced Security Suite"]
+    "basePrice": 503000,
+    "range": {
+      "min": 400,
+      "max": 470
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Head-Up Display",
+      "Sunroof",
+      "Premium Sound System",
+      "Advanced Security Suite"
+    ]
   },
   {
     "id": "byd-atto3",
     "brand": "BYD",
     "model": "Atto 3",
     "country": "China",
-    "price": 279000,
-    "range": { "min": 420, "max": 480 },
-    "features": ["Heated Seats", "Premium Sound System"]
+    "basePrice": 266000,
+    "range": {
+      "min": 420,
+      "max": 480
+    },
+    "features": [
+      "Heated Seats",
+      "Premium Sound System"
+    ]
   },
   {
     "id": "mg-4",
     "brand": "MG",
     "model": "MG4",
     "country": "China",
-    "price": 229000,
-    "range": { "min": 350, "max": 450 },
-    "features": ["Adaptive Cruise Control", "Heated Seats"]
+    "basePrice": 217000,
+    "range": {
+      "min": 350,
+      "max": 450
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Heated Seats"
+    ]
   },
   {
     "id": "xpeng-g6",
     "brand": "XPeng",
     "model": "G6",
     "country": "China",
-    "price": 399000,
-    "range": { "min": 435, "max": 570 },
-    "features": ["Adaptive Cruise Control", "Head-Up Display", "Advanced Security Suite"]
+    "basePrice": 369000,
+    "range": {
+      "min": 435,
+      "max": 570
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Head-Up Display",
+      "Advanced Security Suite"
+    ]
   },
   {
     "id": "polestar-2",
     "brand": "Polestar",
     "model": "2",
     "country": "China",
-    "price": 449000,
-    "range": { "min": 500, "max": 635 },
-    "features": ["Adaptive Cruise Control", "Head-Up Display", "Sunroof", "Premium Sound System"]
+    "basePrice": 415000,
+    "range": {
+      "min": 500,
+      "max": 635
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Head-Up Display",
+      "Sunroof",
+      "Premium Sound System"
+    ]
   },
   {
     "id": "tesla-model3",
     "brand": "Tesla",
     "model": "Model 3",
     "country": "USA",
-    "price": 379000,
-    "range": { "min": 513, "max": 629 },
-    "features": ["Adaptive Cruise Control", "Premium Sound System", "Advanced Security Suite"]
+    "basePrice": 350000,
+    "range": {
+      "min": 513,
+      "max": 629
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Premium Sound System",
+      "Advanced Security Suite"
+    ]
   },
   {
     "id": "tesla-modely",
     "brand": "Tesla",
     "model": "Model Y",
     "country": "USA",
-    "price": 419000,
-    "range": { "min": 455, "max": 533 },
-    "features": ["Adaptive Cruise Control", "Sunroof", "Premium Sound System", "Advanced Security Suite"]
+    "basePrice": 383000,
+    "range": {
+      "min": 455,
+      "max": 533
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Sunroof",
+      "Premium Sound System",
+      "Advanced Security Suite"
+    ]
   },
   {
     "id": "ford-mache",
     "brand": "Ford",
     "model": "Mustang Mach-E",
     "country": "USA",
-    "price": 429000,
-    "range": { "min": 400, "max": 490 },
-    "features": ["Adaptive Cruise Control", "Head-Up Display", "Heated Seats"]
+    "basePrice": 407000,
+    "range": {
+      "min": 400,
+      "max": 490
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Head-Up Display",
+      "Heated Seats"
+    ]
   },
   {
     "id": "volvo-ex30",
     "brand": "Volvo",
     "model": "EX30",
     "country": "Sweden",
-    "price": 359000,
-    "range": { "min": 275, "max": 480 },
-    "features": ["Adaptive Cruise Control", "Heated Seats", "Advanced Security Suite"]
+    "basePrice": 335000,
+    "range": {
+      "min": 275,
+      "max": 480
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Heated Seats",
+      "Advanced Security Suite"
+    ]
   },
   {
     "id": "volvo-ex90",
     "brand": "Volvo",
     "model": "EX90",
     "country": "Sweden",
-    "price": 699000,
-    "range": { "min": 570, "max": 600 },
-    "features": ["Adaptive Cruise Control", "Head-Up Display", "Sunroof", "Premium Sound System", "Advanced Security Suite"]
+    "basePrice": 653000,
+    "range": {
+      "min": 570,
+      "max": 600
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Head-Up Display",
+      "Sunroof",
+      "Premium Sound System",
+      "Advanced Security Suite"
+    ]
   },
   {
     "id": "renault-megane",
     "brand": "Renault",
     "model": "Megane E-Tech",
     "country": "France",
-    "price": 319000,
-    "range": { "min": 300, "max": 428 },
-    "features": ["Adaptive Cruise Control", "Heated Seats"]
+    "basePrice": 307000,
+    "range": {
+      "min": 300,
+      "max": 428
+    },
+    "features": [
+      "Adaptive Cruise Control",
+      "Heated Seats"
+    ]
   },
   {
     "id": "peugeot-e2008",
     "brand": "Peugeot",
     "model": "e-2008",
     "country": "France",
-    "price": 329000,
-    "range": { "min": 345, "max": 406 },
-    "features": ["Head-Up Display", "Heated Seats", "Premium Sound System"]
+    "basePrice": 306000,
+    "range": {
+      "min": 345,
+      "max": 406
+    },
+    "features": [
+      "Head-Up Display",
+      "Heated Seats",
+      "Premium Sound System"
+    ]
   },
   {
     "id": "fiat-500e",
     "brand": "Fiat",
     "model": "500e",
     "country": "Italy",
-    "price": 249000,
-    "range": { "min": 190, "max": 320 },
-    "features": ["Heated Seats", "Premium Sound System"]
+    "basePrice": 236000,
+    "range": {
+      "min": 190,
+      "max": 320
+    },
+    "features": [
+      "Heated Seats",
+      "Premium Sound System"
+    ]
   }
 ]
