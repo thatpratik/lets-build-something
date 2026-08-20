@@ -43,5 +43,8 @@ __screenshots__/
 .DS_Store
 Thumbs.db
 .claude/
-/.agents/
-.agents/
+.agents
+docs
+.angular
+.claude
+greenfield
