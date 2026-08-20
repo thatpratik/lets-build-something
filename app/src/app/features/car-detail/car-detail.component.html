@@ -39,6 +39,29 @@
       </ul>
     </section>
 
+    <section class="flex flex-col gap-3">
+      <h3 class="font-display font-semibold text-lg">Pricing breakdown</h3>
+      <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] divide-y divide-[var(--color-border)] overflow-hidden">
+        <div class="flex items-center justify-between px-4 py-3 text-sm">
+          <span class="text-[var(--color-ink-muted)]">Standard market price</span>
+          <span class="font-mono tabular-nums">{{ c.price | number }} DKK</span>
+        </div>
+        @for (accessory of accessories(); track accessory.name) {
+          <div class="flex items-center justify-between px-4 py-3 text-sm">
+            <span class="text-[var(--color-ink-muted)]">{{ accessory.name }}</span>
+            <span class="font-mono tabular-nums">+{{ accessory.price | number }} DKK</span>
+          </div>
+        }
+        <div class="flex items-center justify-between px-4 py-3 text-sm font-semibold">
+          <span>Estimated total</span>
+          <span class="font-mono tabular-nums">{{ totalEstimatedCost() | number }} DKK</span>
+        </div>
+      </div>
+      <p class="text-xs text-[var(--color-ink-muted)] leading-snug">
+        Accessory and service charges are typical add-ons in the Danish market and are not included in the standard market price above.
+      </p>
+    </section>
+
     @if (risk(); as r) {
       <section class="flex flex-col gap-4">
         <h3 class="font-display font-semibold text-lg">Risk indicators</h3>

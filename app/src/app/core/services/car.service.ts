@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, shareReplay } from 'rxjs';
 
+import { Accessory } from '../models/accessory.model';
 import { Car } from '../models/car.model';
 import { RiskIndicator } from '../models/risk-indicator.model';
 
@@ -21,6 +22,10 @@ export class CarService {
     .get<Record<string, RiskIndicator>>('data/risk-indicators.json')
     .pipe(shareReplay(1));
 
+  private readonly accessories$ = this.http
+    .get<Accessory[]>('data/accessories.json')
+    .pipe(shareReplay(1));
+
   getCars(): Observable<Car[]> {
     return this.cars$;
   }
@@ -31,5 +36,9 @@ export class CarService {
 
   getRiskIndicators(): Observable<Record<string, RiskIndicator>> {
     return this.riskIndicators$;
+  }
+
+  getAccessories(): Observable<Accessory[]> {
+    return this.accessories$;
   }
 }

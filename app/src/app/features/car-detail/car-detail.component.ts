@@ -1,6 +1,7 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 
+import { Accessory } from '../../core/models/accessory.model';
 import { Car } from '../../core/models/car.model';
 import { RiskIndicator } from '../../core/models/risk-indicator.model';
 import { CarService } from '../../core/services/car.service';
@@ -22,6 +23,7 @@ export class CarDetailComponent {
 
   private readonly allCars = signal<Car[]>([]);
   private readonly riskIndicators = signal<Record<string, RiskIndicator>>({});
+  protected readonly accessories = signal<Accessory[]>([]);
 
   protected readonly car = computed(() =>
     this.allCars().find((car) => car.id === this.detailService.carId()) ?? null
@@ -31,9 +33,19 @@ export class CarDetailComponent {
     () => this.riskIndicators()[this.detailService.carId() ?? ''] ?? null
   );
 
+  protected readonly accessoriesTotal = computed(() =>
+    this.accessories().reduce((sum, accessory) => sum + accessory.price, 0)
+  );
+
+  protected readonly totalEstimatedCost = computed(() => {
+    const car = this.car();
+    return car === null ? null : car.price + this.accessoriesTotal();
+  });
+
   constructor() {
     this.carService.getCars().subscribe((cars) => this.allCars.set(cars));
     this.carService.getRiskIndicators().subscribe((indicators) => this.riskIndicators.set(indicators));
+    this.carService.getAccessories().subscribe((accessories) => this.accessories.set(accessories));
   }
 
   protected close(): void {

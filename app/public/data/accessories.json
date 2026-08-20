@@ -1,0 +1,6 @@
+[
+  { "name": "Delivery & registration fee", "price": 4500 },
+  { "name": "Winter tire package", "price": 9000 },
+  { "name": "Home charger installation", "price": 12000 },
+  { "name": "Extended service plan (3 years)", "price": 7500 }
+]
