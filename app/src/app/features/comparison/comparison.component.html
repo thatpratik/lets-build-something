@@ -54,7 +54,7 @@
           <tr>
             <th class="sticky left-0 bg-[var(--color-surface)] text-left font-medium text-[var(--color-ink-muted)] px-4 py-3 border-b border-[var(--color-border)]">Range</th>
             @for (car of comparedCars(); track car.id) {
-              <td class="px-4 py-3 border-b border-[var(--color-border)] font-mono tabular-nums whitespace-nowrap">{{ car.range }} km</td>
+              <td class="px-4 py-3 border-b border-[var(--color-border)] font-mono tabular-nums whitespace-nowrap">{{ car.range.min }}–{{ car.range.max }} km</td>
             }
           </tr>
           <tr>

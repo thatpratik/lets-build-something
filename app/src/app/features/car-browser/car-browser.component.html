@@ -22,16 +22,21 @@
       />
     </label>
 
-    <label class="flex flex-col gap-1.5">
-      <span class="text-xs font-medium text-[var(--color-ink-muted)]">Desired range (km)</span>
-      <input
-        type="number"
-        placeholder="e.g. 400"
-        class="h-11 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] px-3 text-sm font-medium tabular-nums placeholder:font-normal placeholder:text-[var(--color-ink-faint)] focus:border-[var(--color-accent)] focus:bg-[var(--color-surface)] focus:outline-none transition-colors"
-        [ngModel]="desiredRange()"
-        (ngModelChange)="desiredRange.set($event)"
+    <div class="flex flex-col gap-2">
+      <div class="flex items-baseline justify-between">
+        <span class="text-xs font-medium text-[var(--color-ink-muted)]">Desired range (km)</span>
+        <span class="font-mono text-xs tabular-nums text-[var(--color-ink-muted)]">
+          {{ desiredRangeMin() }}–{{ desiredRangeMax() }}
+        </span>
+      </div>
+      <app-range-slider
+        [min]="rangeBounds().min"
+        [max]="rangeBounds().max"
+        [step]="5"
+        [(low)]="desiredRangeMin"
+        [(high)]="desiredRangeMax"
       />
-    </label>
+    </div>
 
     <fieldset class="flex flex-col gap-2 border-0 p-0 m-0">
       <legend class="text-xs font-medium text-[var(--color-ink-muted)] mb-0.5 p-0">Country of origin</legend>
@@ -119,9 +124,13 @@
               <div class="flex flex-col gap-1">
                 <div class="flex items-baseline justify-between">
                   <span class="text-xs text-[var(--color-ink-muted)]">Range</span>
-                  <span class="font-mono text-xs tabular-nums text-[var(--color-ink-muted)]">{{ car.range }} km</span>
+                  <span class="font-mono text-xs tabular-nums text-[var(--color-ink-muted)]">{{ car.range.min }}–{{ car.range.max }} km</span>
                 </div>
-                <app-meter [value]="(car.range / maxDisplayRangeKm) * 100" />
+                <app-meter
+                  [rangeStart]="(car.range.min / maxDisplayRangeKm) * 100"
+                  [value]="(car.range.max / maxDisplayRangeKm) * 100"
+                  [showLabel]="false"
+                />
               </div>
 
               <ul class="flex flex-wrap gap-1.5">
@@ -196,9 +205,13 @@
             <div class="flex flex-col gap-1">
               <div class="flex items-baseline justify-between">
                 <span class="text-xs text-[var(--color-ink-muted)]">Range</span>
-                <span class="font-mono text-xs tabular-nums text-[var(--color-ink-muted)]">{{ car.range }} km</span>
+                <span class="font-mono text-xs tabular-nums text-[var(--color-ink-muted)]">{{ car.range.min }}–{{ car.range.max }} km</span>
               </div>
-              <app-meter [value]="(car.range / maxDisplayRangeKm) * 100" />
+              <app-meter
+                [rangeStart]="(car.range.min / maxDisplayRangeKm) * 100"
+                [value]="(car.range.max / maxDisplayRangeKm) * 100"
+                [showLabel]="false"
+              />
             </div>
 
             <ul class="flex flex-wrap gap-1.5">

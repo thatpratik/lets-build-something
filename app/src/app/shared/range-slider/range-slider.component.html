@@ -1,0 +1,28 @@
+<div class="relative h-5 flex items-center">
+  <div class="absolute inset-x-0 h-1.5 rounded-full bg-[var(--color-border)]"></div>
+  <div
+    class="absolute h-1.5 rounded-full bg-[var(--color-accent)]"
+    [style.left.%]="lowPercent()"
+    [style.right.%]="100 - highPercent()"
+  ></div>
+  <input
+    type="range"
+    class="range-thumb"
+    [min]="min()"
+    [max]="max()"
+    [step]="step()"
+    [value]="low()"
+    (input)="onLowInput($any($event.target).valueAsNumber)"
+    aria-label="Minimum range (km)"
+  />
+  <input
+    type="range"
+    class="range-thumb"
+    [min]="min()"
+    [max]="max()"
+    [step]="step()"
+    [value]="high()"
+    (input)="onHighInput($any($event.target).valueAsNumber)"
+    aria-label="Maximum range (km)"
+  />
+</div>

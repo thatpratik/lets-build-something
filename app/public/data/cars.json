@@ -5,7 +5,7 @@
     "model": "bZ4X",
     "country": "Japan",
     "price": 349000,
-    "range": 411,
+    "range": { "min": 355, "max": 436 },
     "features": ["Adaptive Cruise Control", "Heated Seats", "Advanced Security Suite"]
   },
   {
@@ -14,7 +14,7 @@
     "model": "Ariya",
     "country": "Japan",
     "price": 379000,
-    "range": 403,
+    "range": { "min": 380, "max": 533 },
     "features": ["Adaptive Cruise Control", "Head-Up Display", "Premium Sound System"]
   },
   {
@@ -23,7 +23,7 @@
     "model": "e",
     "country": "Japan",
     "price": 299000,
-    "range": 220,
+    "range": { "min": 210, "max": 225 },
     "features": ["Heated Seats", "Premium Sound System"]
   },
   {
@@ -32,7 +32,7 @@
     "model": "RZ",
     "country": "Japan",
     "price": 599000,
-    "range": 395,
+    "range": { "min": 380, "max": 436 },
     "features": ["Adaptive Cruise Control", "Head-Up Display", "Sunroof", "Advanced Security Suite", "Premium Sound System"]
   },
   {
@@ -41,7 +41,7 @@
     "model": "ID.4",
     "country": "Germany",
     "price": 369000,
-    "range": 522,
+    "range": { "min": 348, "max": 522 },
     "features": ["Adaptive Cruise Control", "Heated Seats"]
   },
   {
@@ -50,7 +50,7 @@
     "model": "i4",
     "country": "Germany",
     "price": 499000,
-    "range": 490,
+    "range": { "min": 460, "max": 590 },
     "features": ["Adaptive Cruise Control", "Head-Up Display", "Sunroof", "Premium Sound System"]
   },
   {
@@ -59,7 +59,7 @@
     "model": "Q4 e-tron",
     "country": "Germany",
     "price": 459000,
-    "range": 520,
+    "range": { "min": 350, "max": 520 },
     "features": ["Adaptive Cruise Control", "Head-Up Display", "Advanced Security Suite"]
   },
   {
@@ -68,7 +68,7 @@
     "model": "EQA",
     "country": "Germany",
     "price": 429000,
-    "range": 426,
+    "range": { "min": 400, "max": 560 },
     "features": ["Heated Seats", "Premium Sound System", "Advanced Security Suite"]
   },
   {
@@ -77,7 +77,7 @@
     "model": "Taycan",
     "country": "Germany",
     "price": 899000,
-    "range": 431,
+    "range": { "min": 400, "max": 630 },
     "features": ["Adaptive Cruise Control", "Head-Up Display", "Sunroof", "Premium Sound System", "Advanced Security Suite"]
   },
   {
@@ -86,7 +86,7 @@
     "model": "IONIQ 5",
     "country": "South Korea",
     "price": 339000,
-    "range": 481,
+    "range": { "min": 384, "max": 507 },
     "features": ["Adaptive Cruise Control", "Head-Up Display", "Heated Seats"]
   },
   {
@@ -95,7 +95,7 @@
     "model": "EV6",
     "country": "South Korea",
     "price": 359000,
-    "range": 528,
+    "range": { "min": 394, "max": 528 },
     "features": ["Adaptive Cruise Control", "Sunroof", "Premium Sound System"]
   },
   {
@@ -104,7 +104,7 @@
     "model": "Niro EV",
     "country": "South Korea",
     "price": 289000,
-    "range": 460,
+    "range": { "min": 450, "max": 463 },
     "features": ["Heated Seats", "Advanced Security Suite"]
   },
   {
@@ -113,7 +113,7 @@
     "model": "GV60",
     "country": "South Korea",
     "price": 549000,
-    "range": 470,
+    "range": { "min": 400, "max": 470 },
     "features": ["Adaptive Cruise Control", "Head-Up Display", "Sunroof", "Premium Sound System", "Advanced Security Suite"]
   },
   {
@@ -122,7 +122,7 @@
     "model": "Atto 3",
     "country": "China",
     "price": 279000,
-    "range": 420,
+    "range": { "min": 420, "max": 480 },
     "features": ["Heated Seats", "Premium Sound System"]
   },
   {
@@ -131,7 +131,7 @@
     "model": "MG4",
     "country": "China",
     "price": 229000,
-    "range": 350,
+    "range": { "min": 350, "max": 450 },
     "features": ["Adaptive Cruise Control", "Heated Seats"]
   },
   {
@@ -140,7 +140,7 @@
     "model": "G6",
     "country": "China",
     "price": 399000,
-    "range": 435,
+    "range": { "min": 435, "max": 570 },
     "features": ["Adaptive Cruise Control", "Head-Up Display", "Advanced Security Suite"]
   },
   {
@@ -149,7 +149,7 @@
     "model": "2",
     "country": "China",
     "price": 449000,
-    "range": 551,
+    "range": { "min": 500, "max": 635 },
     "features": ["Adaptive Cruise Control", "Head-Up Display", "Sunroof", "Premium Sound System"]
   },
   {
@@ -158,7 +158,7 @@
     "model": "Model 3",
     "country": "USA",
     "price": 379000,
-    "range": 513,
+    "range": { "min": 513, "max": 629 },
     "features": ["Adaptive Cruise Control", "Premium Sound System", "Advanced Security Suite"]
   },
   {
@@ -167,7 +167,7 @@
     "model": "Model Y",
     "country": "USA",
     "price": 419000,
-    "range": 455,
+    "range": { "min": 455, "max": 533 },
     "features": ["Adaptive Cruise Control", "Sunroof", "Premium Sound System", "Advanced Security Suite"]
   },
   {
@@ -176,7 +176,7 @@
     "model": "Mustang Mach-E",
     "country": "USA",
     "price": 429000,
-    "range": 490,
+    "range": { "min": 400, "max": 490 },
     "features": ["Adaptive Cruise Control", "Head-Up Display", "Heated Seats"]
   },
   {
@@ -185,7 +185,7 @@
     "model": "EX30",
     "country": "Sweden",
     "price": 359000,
-    "range": 344,
+    "range": { "min": 275, "max": 480 },
     "features": ["Adaptive Cruise Control", "Heated Seats", "Advanced Security Suite"]
   },
   {
@@ -194,7 +194,7 @@
     "model": "EX90",
     "country": "Sweden",
     "price": 699000,
-    "range": 600,
+    "range": { "min": 570, "max": 600 },
     "features": ["Adaptive Cruise Control", "Head-Up Display", "Sunroof", "Premium Sound System", "Advanced Security Suite"]
   },
   {
@@ -203,7 +203,7 @@
     "model": "Megane E-Tech",
     "country": "France",
     "price": 319000,
-    "range": 428,
+    "range": { "min": 300, "max": 428 },
     "features": ["Adaptive Cruise Control", "Heated Seats"]
   },
   {
@@ -212,7 +212,7 @@
     "model": "e-2008",
     "country": "France",
     "price": 329000,
-    "range": 406,
+    "range": { "min": 345, "max": 406 },
     "features": ["Head-Up Display", "Heated Seats", "Premium Sound System"]
   },
   {
@@ -221,7 +221,7 @@
     "model": "500e",
     "country": "Italy",
     "price": 249000,
-    "range": 320,
+    "range": { "min": 190, "max": 320 },
     "features": ["Heated Seats", "Premium Sound System"]
   }
 ]

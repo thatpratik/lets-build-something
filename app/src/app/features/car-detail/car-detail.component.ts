@@ -8,7 +8,7 @@ import { CarService } from '../../core/services/car.service';
 import { DetailService } from '../../core/services/detail.service';
 import { MeterComponent } from '../../shared/meter/meter.component';
 
-const MAX_DISPLAY_RANGE_KM = 600;
+const MAX_DISPLAY_RANGE_KM = 700;
 
 @Component({
   selector: 'app-car-detail',

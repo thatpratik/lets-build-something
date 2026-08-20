@@ -7,14 +7,25 @@ import { CarService } from '../../core/services/car.service';
 import { ComparisonService } from '../../core/services/comparison.service';
 import { DetailService } from '../../core/services/detail.service';
 import { MeterComponent } from '../../shared/meter/meter.component';
+import { RangeSliderComponent } from '../../shared/range-slider/range-slider.component';
 
 const BUDGET_TOLERANCE_DKK = 50000;
 const RANGE_TOLERANCE_KM = 50;
-const MAX_DISPLAY_RANGE_KM = 600;
+const MAX_DISPLAY_RANGE_KM = 700;
+
+function rangeBoundsOf(cars: Car[]): { min: number; max: number } {
+  if (cars.length === 0) {
+    return { min: 0, max: MAX_DISPLAY_RANGE_KM };
+  }
+  return {
+    min: Math.min(...cars.map((car) => car.range.min)),
+    max: Math.max(...cars.map((car) => car.range.max)),
+  };
+}
 
 @Component({
   selector: 'app-car-browser',
-  imports: [FormsModule, DecimalPipe, MeterComponent],
+  imports: [FormsModule, DecimalPipe, MeterComponent, RangeSliderComponent],
   templateUrl: './car-browser.component.html',
   styleUrl: './car-browser.component.scss',
 })
@@ -29,9 +40,16 @@ export class CarBrowserComponent {
   protected readonly failedImageIds = signal<Set<string>>(new Set());
 
   protected readonly budget = signal<number | null>(null);
-  protected readonly desiredRange = signal<number | null>(null);
+  protected readonly rangeBounds = computed(() => rangeBoundsOf(this.cars()));
+  protected readonly desiredRangeMin = signal<number>(0);
+  protected readonly desiredRangeMax = signal<number>(MAX_DISPLAY_RANGE_KM);
   protected readonly selectedFeatures = signal<Set<string>>(new Set());
   protected readonly selectedCountries = signal<Set<string>>(new Set());
+
+  protected readonly hasRangePreference = computed(() => {
+    const bounds = this.rangeBounds();
+    return this.desiredRangeMin() > bounds.min || this.desiredRangeMax() < bounds.max;
+  });
 
   protected readonly allFeatures = computed(() =>
     [...new Set(this.cars().flatMap((car) => car.features))].sort()
@@ -53,27 +71,28 @@ export class CarBrowserComponent {
   });
 
   protected readonly recommendedCars = computed(() => {
-    const budget = this.budget();
-    const desiredRange = this.desiredRange();
-    if (budget === null && desiredRange === null) {
+    if (!this.hasPreferences()) {
       return [];
     }
-    return this.strictlyFiltered().filter((car) => this.isWithinTolerance(car, budget, desiredRange));
+    return this.strictlyFiltered().filter((car) => this.isWithinTolerance(car));
   });
 
   protected readonly otherCars = computed(() => {
-    const budget = this.budget();
-    const desiredRange = this.desiredRange();
-    if (budget === null && desiredRange === null) {
+    if (!this.hasPreferences()) {
       return this.strictlyFiltered();
     }
-    return this.strictlyFiltered().filter((car) => !this.isWithinTolerance(car, budget, desiredRange));
+    return this.strictlyFiltered().filter((car) => !this.isWithinTolerance(car));
   });
 
-  protected readonly hasPreferences = computed(() => this.budget() !== null || this.desiredRange() !== null);
+  protected readonly hasPreferences = computed(() => this.budget() !== null || this.hasRangePreference());
 
   constructor() {
-    this.carService.getCars().subscribe((cars) => this.cars.set(cars));
+    this.carService.getCars().subscribe((cars) => {
+      this.cars.set(cars);
+      const bounds = rangeBoundsOf(cars);
+      this.desiredRangeMin.set(bounds.min);
+      this.desiredRangeMax.set(bounds.max);
+    });
     this.carService.getCarImages().subscribe((images) => this.carImages.set(images));
   }
 
@@ -81,12 +100,17 @@ export class CarBrowserComponent {
     this.failedImageIds.update((current) => new Set(current).add(carId));
   }
 
-  private isWithinTolerance(car: Car, budget: number | null, desiredRange: number | null): boolean {
-    const withinBudget =
-      budget === null || Math.abs(car.price - budget) <= BUDGET_TOLERANCE_DKK;
-    const withinRange =
-      desiredRange === null || Math.abs(car.range - desiredRange) <= RANGE_TOLERANCE_KM;
-    return withinBudget && withinRange;
+  private isWithinTolerance(car: Car): boolean {
+    const budget = this.budget();
+    const withinBudget = budget === null || Math.abs(car.price - budget) <= BUDGET_TOLERANCE_DKK;
+
+    if (!this.hasRangePreference()) {
+      return withinBudget;
+    }
+    const desiredMin = this.desiredRangeMin() - RANGE_TOLERANCE_KM;
+    const desiredMax = this.desiredRangeMax() + RANGE_TOLERANCE_KM;
+    const overlapsRange = car.range.max >= desiredMin && car.range.min <= desiredMax;
+    return withinBudget && overlapsRange;
   }
 
   protected toggleFeature(feature: string): void {
@@ -108,8 +132,10 @@ export class CarBrowserComponent {
   }
 
   protected clearFilters(): void {
+    const bounds = this.rangeBounds();
     this.budget.set(null);
-    this.desiredRange.set(null);
+    this.desiredRangeMin.set(bounds.min);
+    this.desiredRangeMax.set(bounds.max);
     this.selectedFeatures.set(new Set());
     this.selectedCountries.set(new Set());
   }
