@@ -55,7 +55,7 @@
                 <div class="aspect-[16/10] w-32 rounded-lg overflow-hidden bg-[var(--color-bg)]">
                   @if (carImages()[car.id] && !failedImageIds().has(car.id)) {
                     <img
-                      [src]="carImages()[car.id]"
+                      [src]="thumbnailFor(carImages()[car.id])"
                       [alt]="car.brand + ' ' + car.model"
                       loading="lazy"
                       class="h-full w-full object-cover"

@@ -2,6 +2,7 @@ import { DecimalPipe } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { thumbnail } from '../../core/image';
 import { Car } from '../../core/models/car.model';
 import { carTotalPrice } from '../../core/pricing';
 import { CarService } from '../../core/services/car.service';
@@ -40,6 +41,8 @@ export class CarBrowserComponent {
   protected readonly carImages = signal<Record<string, string>>({});
   private readonly featurePricing = signal<Record<string, number>>({});
   protected readonly failedImageIds = signal<Set<string>>(new Set());
+  protected readonly loaded = signal(false);
+  protected readonly skeletonCards = Array.from({ length: 6 });
 
   protected readonly budget = signal<number | null>(null);
   protected readonly rangeBounds = computed(() => rangeBoundsOf(this.cars()));
@@ -94,9 +97,14 @@ export class CarBrowserComponent {
       const bounds = rangeBoundsOf(cars);
       this.desiredRangeMin.set(bounds.min);
       this.desiredRangeMax.set(bounds.max);
+      this.loaded.set(true);
     });
     this.carService.getCarImages().subscribe((images) => this.carImages.set(images));
     this.carService.getFeaturePricing().subscribe((pricing) => this.featurePricing.set(pricing));
+  }
+
+  protected thumbnailFor(url: string): string {
+    return thumbnail(url, 480);
   }
 
   protected markImageFailed(carId: string): void {

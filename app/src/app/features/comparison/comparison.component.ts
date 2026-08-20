@@ -1,6 +1,7 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 
+import { thumbnail } from '../../core/image';
 import { Car } from '../../core/models/car.model';
 import { carTotalPrice } from '../../core/pricing';
 import { CarService } from '../../core/services/car.service';
@@ -50,6 +51,10 @@ export class ComparisonComponent {
     });
     this.carService.getFeaturePricing().subscribe((pricing) => this.featurePricing.set(pricing));
     this.carService.getCarImages().subscribe((images) => this.carImages.set(images));
+  }
+
+  protected thumbnailFor(url: string): string {
+    return thumbnail(url, 200);
   }
 
   protected markImageFailed(carId: string): void {

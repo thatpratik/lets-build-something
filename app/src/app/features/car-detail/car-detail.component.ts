@@ -1,6 +1,7 @@
 import { DecimalPipe } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 
+import { thumbnail } from '../../core/image';
 import { Accessory } from '../../core/models/accessory.model';
 import { Car } from '../../core/models/car.model';
 import { ColorOption } from '../../core/models/color.model';
@@ -34,7 +35,10 @@ export class CarDetailComponent {
   protected readonly carImages = signal<Record<string, string>>({});
   protected readonly imageFailed = signal(false);
 
-  protected readonly imageUrl = computed(() => this.carImages()[this.detailService.carId() ?? ''] ?? null);
+  protected readonly imageUrl = computed(() => {
+    const url = this.carImages()[this.detailService.carId() ?? ''];
+    return url ? thumbnail(url, 960) : null;
+  });
 
   protected readonly car = computed(() =>
     this.allCars().find((car) => car.id === this.detailService.carId()) ?? null
