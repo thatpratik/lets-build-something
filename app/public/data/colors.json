@@ -121,28 +121,6 @@
       "priceDelta": 6000
     }
   ],
-  "mercedes-eqa": [
-    {
-      "name": "Cirrus White",
-      "hex": "#f2f2ee",
-      "priceDelta": 0
-    },
-    {
-      "name": "Cosmos Black",
-      "hex": "#16171a",
-      "priceDelta": 5000
-    },
-    {
-      "name": "Denim Blue",
-      "hex": "#2a4363",
-      "priceDelta": 7000
-    },
-    {
-      "name": "Selenite Grey",
-      "hex": "#8f9092",
-      "priceDelta": 6000
-    }
-  ],
   "porsche-taycan": [
     {
       "name": "Carrara White",

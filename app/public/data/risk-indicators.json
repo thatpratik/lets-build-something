@@ -143,30 +143,6 @@
       }
     ]
   },
-  "mercedes-eqa": {
-    "recalls": {
-      "count": 0,
-      "summary": "No recalls reported in Denmark to date."
-    },
-    "batteryDegradation": {
-      "estimatedRetentionAt100kKm": 86,
-      "note": "Owner reports suggest degradation slightly above class average, likely tied to smaller pack size."
-    },
-    "resaleValue": {
-      "rating": "Average",
-      "note": "Premium badge offset by a smaller battery/range than segment rivals."
-    },
-    "reviewLinks": [
-      {
-        "title": "Mercedes-Benz EQA review videos",
-        "url": "https://www.youtube.com/results?search_query=Mercedes-Benz+EQA+review"
-      },
-      {
-        "title": "Mercedes-Benz EQA owner discussions",
-        "url": "https://www.reddit.com/search/?q=Mercedes-Benz%20EQA"
-      }
-    ]
-  },
   "porsche-taycan": {
     "recalls": {
       "count": 1,

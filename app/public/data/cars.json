@@ -98,22 +98,6 @@
     ]
   },
   {
-    "id": "mercedes-eqa",
-    "brand": "Mercedes-Benz",
-    "model": "EQA",
-    "country": "Germany",
-    "basePrice": 404000,
-    "range": {
-      "min": 431,
-      "max": 553
-    },
-    "features": [
-      "Heated Seats",
-      "Premium Sound System",
-      "Advanced Security Suite"
-    ]
-  },
-  {
     "id": "porsche-taycan",
     "brand": "Porsche",
     "model": "Taycan",
