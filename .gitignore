@@ -1,20 +1,50 @@
-.agents/
-docs/diary/2026-08-20-browse-filter-fake-data.md
-docs/diary/2026-08-20-byd-atto3-evo-refresh.md
-docs/diary/2026-08-20-car-detail-risk-and-reviews.md
-docs/diary/2026-08-20-car-images.md
-docs/diary/2026-08-20-comparison-mode.md
-docs/diary/2026-08-20-comparison-table-images.md
-docs/diary/2026-08-20-data-verification-pass.md
-docs/diary/2026-08-20-exterior-color-customization.md
-docs/diary/2026-08-20-followup-data-verification.md
-docs/diary/2026-08-20-price-as-feature-function.md
-docs/diary/2026-08-20-price-breakdown.md
-docs/diary/2026-08-20-range-as-range-slider.md
-docs/diary/2026-08-20-warranty-service-info.md
-greenfield/prep.pdf
-greenfield/idea-to-prototype/instructions.pdf
-greenfield/idea-to-prototype/skills/clarify-constitution/SKILL.md
-greenfield/idea-to-prototype/skills/clarify-prd/SKILL.md
-greenfield/idea-to-prototype/skills/diary/SKILL.md
-greenfield/idea-to-prototype/skills/suggest-next-iteration/SKILL.md
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/mcp.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+__screenshots__/
+
+# System files
+.DS_Store
+Thumbs.db
+.claude/
+.agents
+docs
+.angular
+.claude
+greenfield
