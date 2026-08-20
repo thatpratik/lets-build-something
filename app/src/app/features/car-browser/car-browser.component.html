@@ -1,0 +1,101 @@
+<div class="browser">
+  <aside class="filters">
+    <h2>Find your EV</h2>
+
+    <label class="field">
+      Budget (DKK)
+      <input
+        type="number"
+        placeholder="e.g. 350000"
+        [ngModel]="budget()"
+        (ngModelChange)="budget.set($event)"
+      />
+    </label>
+
+    <label class="field">
+      Desired range (km)
+      <input
+        type="number"
+        placeholder="e.g. 400"
+        [ngModel]="desiredRange()"
+        (ngModelChange)="desiredRange.set($event)"
+      />
+    </label>
+
+    <fieldset class="field">
+      <legend>Country of origin</legend>
+      @for (country of allCountries(); track country) {
+        <label class="checkbox">
+          <input
+            type="checkbox"
+            [checked]="selectedCountries().has(country)"
+            (change)="toggleCountry(country)"
+          />
+          {{ country }}
+        </label>
+      }
+    </fieldset>
+
+    <fieldset class="field">
+      <legend>Features</legend>
+      @for (feature of allFeatures(); track feature) {
+        <label class="checkbox">
+          <input
+            type="checkbox"
+            [checked]="selectedFeatures().has(feature)"
+            (change)="toggleFeature(feature)"
+          />
+          {{ feature }}
+        </label>
+      }
+    </fieldset>
+
+    <button type="button" (click)="clearFilters()">Clear filters</button>
+  </aside>
+
+  <main class="results">
+    @if (hasPreferences() && recommendedCars().length > 0) {
+      <section>
+        <h3>Recommended for you</h3>
+        <div class="cards">
+          @for (car of recommendedCars(); track car.id) {
+            <article class="card recommended">
+              <span class="badge">Recommended</span>
+              <h4>{{ car.brand }} {{ car.model }}</h4>
+              <p class="country">{{ car.country }}</p>
+              <p class="price">{{ car.price | number }} DKK</p>
+              <p class="range">{{ car.range }} km range</p>
+              <ul class="features">
+                @for (feature of car.features; track feature) {
+                  <li>{{ feature }}</li>
+                }
+              </ul>
+            </article>
+          }
+        </div>
+      </section>
+    }
+
+    <section>
+      <h3>{{ hasPreferences() ? 'Other options' : 'All cars' }}</h3>
+      @if (otherCars().length === 0) {
+        <p class="empty">No cars match your filters.</p>
+      }
+      <div class="cards">
+        @for (car of otherCars(); track car.id) {
+          <article class="card">
+            <h4>{{ car.brand }} {{ car.model }}</h4>
+            <p class="country">{{ car.country }}</p>
+            <p class="price">{{ car.price | number }} DKK</p>
+            <p class="range">{{ car.range }} km range</p>
+            <ul class="features">
+              @for (feature of car.features; track feature) {
+                <li>{{ feature }}</li>
+              }
+            </ul>
+          </article>
+        }
+      </div>
+    </section>
+  </main>
+</div>
