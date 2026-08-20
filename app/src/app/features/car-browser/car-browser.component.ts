@@ -25,6 +25,8 @@ export class CarBrowserComponent {
   protected readonly detailService = inject(DetailService);
 
   protected readonly cars = signal<Car[]>([]);
+  protected readonly carImages = signal<Record<string, string>>({});
+  protected readonly failedImageIds = signal<Set<string>>(new Set());
 
   protected readonly budget = signal<number | null>(null);
   protected readonly desiredRange = signal<number | null>(null);
@@ -72,6 +74,11 @@ export class CarBrowserComponent {
 
   constructor() {
     this.carService.getCars().subscribe((cars) => this.cars.set(cars));
+    this.carService.getCarImages().subscribe((images) => this.carImages.set(images));
+  }
+
+  protected markImageFailed(carId: string): void {
+    this.failedImageIds.update((current) => new Set(current).add(carId));
   }
 
   private isWithinTolerance(car: Car, budget: number | null, desiredRange: number | null): boolean {

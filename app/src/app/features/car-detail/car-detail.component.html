@@ -15,6 +15,22 @@
 
   @if (car(); as c) {
     <section class="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6 flex flex-col gap-4">
+      <div class="aspect-[16/9] rounded-xl overflow-hidden bg-[var(--color-bg)]">
+        @if (imageUrl() && !imageFailed()) {
+          <img
+            [src]="imageUrl()"
+            [alt]="c.brand + ' ' + c.model"
+            loading="lazy"
+            class="h-full w-full object-cover"
+            (error)="markImageFailed()"
+          />
+        } @else {
+          <div class="h-full w-full flex items-center justify-center text-sm font-medium text-[var(--color-ink-muted)]">
+            {{ c.brand }} {{ c.model }}
+          </div>
+        }
+      </div>
+
       <div>
         <h3 class="font-display font-semibold text-2xl leading-tight">{{ c.brand }} {{ c.model }}</h3>
         <p class="text-sm text-[var(--color-ink-muted)]">{{ c.country }}</p>

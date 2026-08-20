@@ -26,6 +26,10 @@ export class CarService {
     .get<Accessory[]>('data/accessories.json')
     .pipe(shareReplay(1));
 
+  private readonly carImages$ = this.http
+    .get<Record<string, string>>('data/car-images.json')
+    .pipe(shareReplay(1));
+
   getCars(): Observable<Car[]> {
     return this.cars$;
   }
@@ -40,5 +44,9 @@ export class CarService {
 
   getAccessories(): Observable<Accessory[]> {
     return this.accessories$;
+  }
+
+  getCarImages(): Observable<Record<string, string>> {
+    return this.carImages$;
   }
 }

@@ -24,6 +24,10 @@ export class CarDetailComponent {
   private readonly allCars = signal<Car[]>([]);
   private readonly riskIndicators = signal<Record<string, RiskIndicator>>({});
   protected readonly accessories = signal<Accessory[]>([]);
+  protected readonly carImages = signal<Record<string, string>>({});
+  protected readonly imageFailed = signal(false);
+
+  protected readonly imageUrl = computed(() => this.carImages()[this.detailService.carId() ?? ''] ?? null);
 
   protected readonly car = computed(() =>
     this.allCars().find((car) => car.id === this.detailService.carId()) ?? null
@@ -46,10 +50,15 @@ export class CarDetailComponent {
     this.carService.getCars().subscribe((cars) => this.allCars.set(cars));
     this.carService.getRiskIndicators().subscribe((indicators) => this.riskIndicators.set(indicators));
     this.carService.getAccessories().subscribe((accessories) => this.accessories.set(accessories));
+    this.carService.getCarImages().subscribe((images) => this.carImages.set(images));
   }
 
   protected close(): void {
     this.detailService.closeDetail();
+  }
+
+  protected markImageFailed(): void {
+    this.imageFailed.set(true);
   }
 
   protected batteryTone(retentionPercent: number): 'accent' | 'warning' | 'danger' {
