@@ -78,6 +78,9 @@
                   <li>{{ feature }}</li>
                 }
               </ul>
+              <button type="button" class="details-link" (click)="detailService.openDetail(car.id)">
+                View details
+              </button>
             </article>
           }
         </div>

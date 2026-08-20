@@ -1,4 +1,6 @@
-@if (comparisonService.isOpen()) {
+@if (detailService.isOpen()) {
+  <app-car-detail />
+} @else if (comparisonService.isOpen()) {
   <app-comparison />
 } @else {
   <app-car-browser />

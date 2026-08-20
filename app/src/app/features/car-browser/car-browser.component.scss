@@ -97,6 +97,16 @@
   color: #666;
 }
 
+.details-link {
+  margin-top: 0.5rem;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
+
 .compare-toggle {
   display: flex;
   align-items: center;

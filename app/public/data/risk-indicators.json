@@ -1,0 +1,227 @@
+{
+  "toyota-bz4x": {
+    "recalls": { "count": 1, "summary": "One recall for a wheel-hub bolt issue (2022), resolved via dealer inspection/replacement." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 92, "note": "Toyota's conservative battery management has shown low reported degradation in early fleets." },
+    "resaleValue": { "rating": "Strong", "note": "Toyota's reliability reputation supports above-average resale retention." },
+    "reviewLinks": [
+      { "title": "Toyota bZ4X review videos", "url": "https://www.youtube.com/results?search_query=Toyota+bZ4X+review" },
+      { "title": "Toyota bZ4X owner discussions", "url": "https://www.reddit.com/search/?q=Toyota%20bZ4X" }
+    ]
+  },
+  "nissan-ariya": {
+    "recalls": { "count": 0, "summary": "No recalls reported in Denmark to date." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 89, "note": "Owner reports suggest gradual, predictable degradation in line with class average." },
+    "resaleValue": { "rating": "Average", "note": "Resale tracks the broader mainstream EV segment." },
+    "reviewLinks": [
+      { "title": "Nissan Ariya review videos", "url": "https://www.youtube.com/results?search_query=Nissan+Ariya+review" },
+      { "title": "Nissan Ariya owner discussions", "url": "https://www.reddit.com/search/?q=Nissan%20Ariya" }
+    ]
+  },
+  "honda-e": {
+    "recalls": { "count": 0, "summary": "No recalls reported in Denmark to date." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 85, "note": "Smaller pack size means degradation has a proportionally larger effect on usable range." },
+    "resaleValue": { "rating": "Weak", "note": "Short range and discontinued model status weigh on resale demand." },
+    "reviewLinks": [
+      { "title": "Honda e review videos", "url": "https://www.youtube.com/results?search_query=Honda+e+review" },
+      { "title": "Honda e owner discussions", "url": "https://www.reddit.com/search/?q=Honda%20e" }
+    ]
+  },
+  "lexus-rz": {
+    "recalls": { "count": 0, "summary": "No recalls reported in Denmark to date." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 91, "note": "Shares its powertrain with the bZ4X, with similarly low reported degradation." },
+    "resaleValue": { "rating": "Strong", "note": "Lexus badge and low production volume support strong resale value." },
+    "reviewLinks": [
+      { "title": "Lexus RZ review videos", "url": "https://www.youtube.com/results?search_query=Lexus+RZ+review" },
+      { "title": "Lexus RZ owner discussions", "url": "https://www.reddit.com/search/?q=Lexus%20RZ" }
+    ]
+  },
+  "vw-id4": {
+    "recalls": { "count": 2, "summary": "Two software-related recalls (instrument cluster and charging software), both fixed via over-the-air or dealer update." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 88, "note": "In line with class average; early software issues did not affect the battery itself." },
+    "resaleValue": { "rating": "Average", "note": "High production volume keeps resale in line with the mainstream segment." },
+    "reviewLinks": [
+      { "title": "Volkswagen ID.4 review videos", "url": "https://www.youtube.com/results?search_query=Volkswagen+ID.4+review" },
+      { "title": "Volkswagen ID.4 owner discussions", "url": "https://www.reddit.com/search/?q=Volkswagen%20ID.4" }
+    ]
+  },
+  "bmw-i4": {
+    "recalls": { "count": 0, "summary": "No recalls reported in Denmark to date." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 90, "note": "BMW's fifth-generation eDrive battery has shown strong retention in owner reports." },
+    "resaleValue": { "rating": "Strong", "note": "Premium badge and driver-focused reputation support resale." },
+    "reviewLinks": [
+      { "title": "BMW i4 review videos", "url": "https://www.youtube.com/results?search_query=BMW+i4+review" },
+      { "title": "BMW i4 owner discussions", "url": "https://www.reddit.com/search/?q=BMW%20i4" }
+    ]
+  },
+  "audi-q4": {
+    "recalls": { "count": 1, "summary": "One recall for a potential loss of drive power under specific fault conditions, fixed via software update." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 88, "note": "Shares its platform with the ID.4, with comparable degradation profile." },
+    "resaleValue": { "rating": "Average", "note": "Resale tracks the broader premium mainstream EV segment." },
+    "reviewLinks": [
+      { "title": "Audi Q4 e-tron review videos", "url": "https://www.youtube.com/results?search_query=Audi+Q4+e-tron+review" },
+      { "title": "Audi Q4 e-tron owner discussions", "url": "https://www.reddit.com/search/?q=Audi%20Q4%20e-tron" }
+    ]
+  },
+  "mercedes-eqa": {
+    "recalls": { "count": 0, "summary": "No recalls reported in Denmark to date." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 86, "note": "Owner reports suggest degradation slightly above class average, likely tied to smaller pack size." },
+    "resaleValue": { "rating": "Average", "note": "Premium badge offset by a smaller battery/range than segment rivals." },
+    "reviewLinks": [
+      { "title": "Mercedes-Benz EQA review videos", "url": "https://www.youtube.com/results?search_query=Mercedes-Benz+EQA+review" },
+      { "title": "Mercedes-Benz EQA owner discussions", "url": "https://www.reddit.com/search/?q=Mercedes-Benz%20EQA" }
+    ]
+  },
+  "porsche-taycan": {
+    "recalls": { "count": 1, "summary": "One recall addressing a rear axle steering fault, fixed via software update." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 93, "note": "Sophisticated thermal management has produced some of the lowest reported degradation in the segment." },
+    "resaleValue": { "rating": "Strong", "note": "Strong brand desirability keeps resale well above the segment average." },
+    "reviewLinks": [
+      { "title": "Porsche Taycan review videos", "url": "https://www.youtube.com/results?search_query=Porsche+Taycan+review" },
+      { "title": "Porsche Taycan owner discussions", "url": "https://www.reddit.com/search/?q=Porsche%20Taycan" }
+    ]
+  },
+  "hyundai-ioniq5": {
+    "recalls": { "count": 1, "summary": "One recall for a potential wiring short in the charging port, resolved via dealer inspection." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 91, "note": "800V architecture and active thermal management support strong retention." },
+    "resaleValue": { "rating": "Strong", "note": "Design distinctiveness and strong reviews support above-average resale." },
+    "reviewLinks": [
+      { "title": "Hyundai IONIQ 5 review videos", "url": "https://www.youtube.com/results?search_query=Hyundai+IONIQ+5+review" },
+      { "title": "Hyundai IONIQ 5 owner discussions", "url": "https://www.reddit.com/search/?q=Hyundai%20IONIQ%205" }
+    ]
+  },
+  "kia-ev6": {
+    "recalls": { "count": 0, "summary": "No recalls reported in Denmark to date." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 91, "note": "Shares its platform and battery chemistry with the IONIQ 5, with similar retention." },
+    "resaleValue": { "rating": "Strong", "note": "Sporty positioning and shared platform strengths support resale." },
+    "reviewLinks": [
+      { "title": "Kia EV6 review videos", "url": "https://www.youtube.com/results?search_query=Kia+EV6+review" },
+      { "title": "Kia EV6 owner discussions", "url": "https://www.reddit.com/search/?q=Kia%20EV6" }
+    ]
+  },
+  "kia-niro-ev": {
+    "recalls": { "count": 0, "summary": "No recalls reported in Denmark to date." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 89, "note": "Mature battery chemistry (shared with earlier Kia EVs) has a solid long-term track record." },
+    "resaleValue": { "rating": "Average", "note": "Practical but unremarkable positioning keeps resale in line with the segment." },
+    "reviewLinks": [
+      { "title": "Kia Niro EV review videos", "url": "https://www.youtube.com/results?search_query=Kia+Niro+EV+review" },
+      { "title": "Kia Niro EV owner discussions", "url": "https://www.reddit.com/search/?q=Kia%20Niro%20EV" }
+    ]
+  },
+  "genesis-gv60": {
+    "recalls": { "count": 0, "summary": "No recalls reported in Denmark to date." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 91, "note": "Shares its platform with the IONIQ 5/EV6, with comparable retention." },
+    "resaleValue": { "rating": "Average", "note": "Newer luxury brand in Denmark; resale data is still limited." },
+    "reviewLinks": [
+      { "title": "Genesis GV60 review videos", "url": "https://www.youtube.com/results?search_query=Genesis+GV60+review" },
+      { "title": "Genesis GV60 owner discussions", "url": "https://www.reddit.com/search/?q=Genesis%20GV60" }
+    ]
+  },
+  "byd-atto3": {
+    "recalls": { "count": 0, "summary": "No recalls reported in Denmark to date." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 92, "note": "BYD's Blade LFP battery has shown strong degradation resistance in early markets." },
+    "resaleValue": { "rating": "Weak", "note": "Newer entrant to the Danish market; resale value and demand data are still limited." },
+    "reviewLinks": [
+      { "title": "BYD Atto 3 review videos", "url": "https://www.youtube.com/results?search_query=BYD+Atto+3+review" },
+      { "title": "BYD Atto 3 owner discussions", "url": "https://www.reddit.com/search/?q=BYD%20Atto%203" }
+    ]
+  },
+  "mg-4": {
+    "recalls": { "count": 0, "summary": "No recalls reported in Denmark to date." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 90, "note": "LFP battery variants have shown solid early retention figures." },
+    "resaleValue": { "rating": "Weak", "note": "Budget positioning and limited track record weigh on resale." },
+    "reviewLinks": [
+      { "title": "MG4 review videos", "url": "https://www.youtube.com/results?search_query=MG4+EV+review" },
+      { "title": "MG4 owner discussions", "url": "https://www.reddit.com/search/?q=MG4%20EV" }
+    ]
+  },
+  "xpeng-g6": {
+    "recalls": { "count": 0, "summary": "No recalls reported in Denmark to date." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 90, "note": "800V architecture is promising, but long-term data is limited due to the model's recent introduction." },
+    "resaleValue": { "rating": "Weak", "note": "Very new to the Danish market; resale value is largely unproven." },
+    "reviewLinks": [
+      { "title": "XPeng G6 review videos", "url": "https://www.youtube.com/results?search_query=XPeng+G6+review" },
+      { "title": "XPeng G6 owner discussions", "url": "https://www.reddit.com/search/?q=XPeng%20G6" }
+    ]
+  },
+  "polestar-2": {
+    "recalls": { "count": 2, "summary": "Two recalls (a rear-view camera software fault and a potential loss of propulsion), both fixed via over-the-air update." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 90, "note": "Shares its platform with the Volvo XC40 Recharge, with comparable retention." },
+    "resaleValue": { "rating": "Average", "note": "Distinct styling helps, but resale tracks the broader premium EV segment." },
+    "reviewLinks": [
+      { "title": "Polestar 2 review videos", "url": "https://www.youtube.com/results?search_query=Polestar+2+review" },
+      { "title": "Polestar 2 owner discussions", "url": "https://www.reddit.com/search/?q=Polestar%202" }
+    ]
+  },
+  "tesla-model3": {
+    "recalls": { "count": 3, "summary": "Three recalls to date (seatbelt chime, trunk latch, and a software-based warning-light fix), all resolved via over-the-air update or dealer visit." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 90, "note": "Large owner-report datasets show consistent, well-understood degradation curves." },
+    "resaleValue": { "rating": "Average", "note": "High production volume and frequent price adjustments have softened resale value industry-wide." },
+    "reviewLinks": [
+      { "title": "Tesla Model 3 review videos", "url": "https://www.youtube.com/results?search_query=Tesla+Model+3+review" },
+      { "title": "Tesla Model 3 owner discussions", "url": "https://www.reddit.com/search/?q=Tesla%20Model%203" }
+    ]
+  },
+  "tesla-modely": {
+    "recalls": { "count": 2, "summary": "Two recalls to date (seatbelt chime and a software-based warning-light fix), both resolved via over-the-air update." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 90, "note": "Shares its platform and battery chemistry with the Model 3, with comparable retention." },
+    "resaleValue": { "rating": "Average", "note": "High production volume and frequent price adjustments have softened resale value industry-wide." },
+    "reviewLinks": [
+      { "title": "Tesla Model Y review videos", "url": "https://www.youtube.com/results?search_query=Tesla+Model+Y+review" },
+      { "title": "Tesla Model Y owner discussions", "url": "https://www.reddit.com/search/?q=Tesla%20Model%20Y" }
+    ]
+  },
+  "ford-mache": {
+    "recalls": { "count": 2, "summary": "Two recalls (a high-voltage contactor overheating issue and a battery pack fuse fault), fixed via dealer software/hardware update." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 87, "note": "Owner reports show slightly above-average degradation tied to the contactor issue in early units." },
+    "resaleValue": { "rating": "Average", "note": "Resale tracks the broader mainstream EV segment, with the recall history a minor drag." },
+    "reviewLinks": [
+      { "title": "Ford Mustang Mach-E review videos", "url": "https://www.youtube.com/results?search_query=Ford+Mustang+Mach-E+review" },
+      { "title": "Ford Mustang Mach-E owner discussions", "url": "https://www.reddit.com/search/?q=Ford%20Mustang%20Mach-E" }
+    ]
+  },
+  "volvo-ex30": {
+    "recalls": { "count": 0, "summary": "No recalls reported in Denmark to date." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 90, "note": "Too new for long-term data; early estimates are based on its shared platform with sibling models." },
+    "resaleValue": { "rating": "Average", "note": "Strong initial demand in Denmark, but long-term resale data is still limited." },
+    "reviewLinks": [
+      { "title": "Volvo EX30 review videos", "url": "https://www.youtube.com/results?search_query=Volvo+EX30+review" },
+      { "title": "Volvo EX30 owner discussions", "url": "https://www.reddit.com/search/?q=Volvo%20EX30" }
+    ]
+  },
+  "volvo-ex90": {
+    "recalls": { "count": 1, "summary": "One recall for a software fault affecting the safety restraint system, fixed via over-the-air update." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 91, "note": "Too new for long-term data; early estimates are based on its NMC pack and active thermal management." },
+    "resaleValue": { "rating": "Strong", "note": "Volvo's safety reputation and premium positioning support resale, despite a slow initial rollout." },
+    "reviewLinks": [
+      { "title": "Volvo EX90 review videos", "url": "https://www.youtube.com/results?search_query=Volvo+EX90+review" },
+      { "title": "Volvo EX90 owner discussions", "url": "https://www.reddit.com/search/?q=Volvo%20EX90" }
+    ]
+  },
+  "renault-megane": {
+    "recalls": { "count": 0, "summary": "No recalls reported in Denmark to date." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 89, "note": "In line with class average for its battery chemistry and size." },
+    "resaleValue": { "rating": "Average", "note": "Resale tracks the broader mainstream European EV segment." },
+    "reviewLinks": [
+      { "title": "Renault Megane E-Tech review videos", "url": "https://www.youtube.com/results?search_query=Renault+Megane+E-Tech+review" },
+      { "title": "Renault Megane E-Tech owner discussions", "url": "https://www.reddit.com/search/?q=Renault%20Megane%20E-Tech" }
+    ]
+  },
+  "peugeot-e2008": {
+    "recalls": { "count": 0, "summary": "No recalls reported in Denmark to date." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 88, "note": "In line with class average for its shared PSA-group battery platform." },
+    "resaleValue": { "rating": "Weak", "note": "Below-average range for the segment weighs on resale demand." },
+    "reviewLinks": [
+      { "title": "Peugeot e-2008 review videos", "url": "https://www.youtube.com/results?search_query=Peugeot+e-2008+review" },
+      { "title": "Peugeot e-2008 owner discussions", "url": "https://www.reddit.com/search/?q=Peugeot%20e-2008" }
+    ]
+  },
+  "fiat-500e": {
+    "recalls": { "count": 0, "summary": "No recalls reported in Denmark to date." },
+    "batteryDegradation": { "estimatedRetentionAt100kKm": 87, "note": "Small pack size means degradation has a proportionally larger effect on usable range." },
+    "resaleValue": { "rating": "Weak", "note": "Short range limits resale demand outside dense urban markets." },
+    "reviewLinks": [
+      { "title": "Fiat 500e review videos", "url": "https://www.youtube.com/results?search_query=Fiat+500e+review" },
+      { "title": "Fiat 500e owner discussions", "url": "https://www.reddit.com/search/?q=Fiat%20500e" }
+    ]
+  }
+}

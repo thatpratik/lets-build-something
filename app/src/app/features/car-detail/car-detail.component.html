@@ -1,0 +1,55 @@
+<div class="detail">
+  <header>
+    <h2>Car details</h2>
+    <button type="button" (click)="close()">Back</button>
+  </header>
+
+  @if (car(); as c) {
+    <section class="overview">
+      <h3>{{ c.brand }} {{ c.model }}</h3>
+      <p class="country">{{ c.country }}</p>
+      <p class="price">{{ c.price | number }} DKK</p>
+      <p class="range">{{ c.range }} km range</p>
+      <ul class="features">
+        @for (feature of c.features; track feature) {
+          <li>{{ feature }}</li>
+        }
+      </ul>
+    </section>
+
+    @if (risk(); as r) {
+      <section class="risk">
+        <h3>Risk indicators</h3>
+
+        <div class="risk-item">
+          <h4>Recalls</h4>
+          <p class="risk-value">{{ r.recalls.count }} recall{{ r.recalls.count === 1 ? '' : 's' }}</p>
+          <p class="risk-note">{{ r.recalls.summary }}</p>
+        </div>
+
+        <div class="risk-item">
+          <h4>Battery degradation</h4>
+          <p class="risk-value">{{ r.batteryDegradation.estimatedRetentionAt100kKm }}% capacity retained at 100,000 km</p>
+          <p class="risk-note">{{ r.batteryDegradation.note }}</p>
+        </div>
+
+        <div class="risk-item">
+          <h4>Resale value</h4>
+          <p class="risk-value" [class]="'rating-' + r.resaleValue.rating.toLowerCase()">{{ r.resaleValue.rating }}</p>
+          <p class="risk-note">{{ r.resaleValue.note }}</p>
+        </div>
+      </section>
+
+      <section class="reviews">
+        <h3>Further reading</h3>
+        <ul>
+          @for (link of r.reviewLinks; track link.url) {
+            <li><a [href]="link.url" target="_blank" rel="noopener">{{ link.title }}</a></li>
+          }
+        </ul>
+      </section>
+    }
+  } @else {
+    <p class="empty">Car not found.</p>
+  }
+</div>

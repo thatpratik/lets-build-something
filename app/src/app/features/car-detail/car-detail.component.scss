@@ -1,0 +1,102 @@
+.detail {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+
+    h2 {
+      margin: 0;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      background: white;
+      cursor: pointer;
+    }
+  }
+
+  .empty {
+    color: #666;
+  }
+
+  h3 {
+    margin: 0 0 0.5rem;
+  }
+
+  section {
+    margin-bottom: 1.5rem;
+  }
+
+  .overview {
+    .country {
+      color: #666;
+      margin: 0;
+    }
+
+    .price,
+    .range {
+      margin: 0.25rem 0;
+    }
+
+    .features {
+      margin: 0.5rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.9rem;
+      color: #444;
+    }
+  }
+
+  .risk-item {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
+
+    h4 {
+      margin: 0 0 0.25rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      color: #666;
+    }
+
+    .risk-value {
+      margin: 0 0 0.25rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+
+      &.rating-strong {
+        color: #2e7d32;
+      }
+
+      &.rating-average {
+        color: #b8860b;
+      }
+
+      &.rating-weak {
+        color: #c62828;
+      }
+    }
+
+    .risk-note {
+      margin: 0;
+      color: #444;
+      font-size: 0.9rem;
+    }
+  }
+
+  .reviews ul {
+    margin: 0;
+    padding-left: 1.1rem;
+
+    a {
+      color: #1a56db;
+    }
+  }
+}

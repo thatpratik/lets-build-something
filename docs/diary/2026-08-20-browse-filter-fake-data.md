@@ -63,3 +63,49 @@ Getting the tolerance logic's UX right without over-building: rather than a sing
 
 - Real data population (replacing the hand-written `cars.json` with researched Danish-market data) is a separate, later task per the constitution — not implied by this iteration's code, but the obvious next dependency for anything beyond this fake-data slice.
 - Comparison mode, images, and risk indicators remain out of scope for this iteration per the `/suggest-next-iteration` decision and should be picked up in a fresh session's `/suggest-next-iteration` run, not appended here.
+
+## Step 2: Widen sample data to more countries of origin
+
+**Author:** main
+
+### Prompt Context
+
+**Verbatim prompt:** "Want to add more countries? That's one suggestion. USA, Sweden, or any other country which has the cars, like maybe France or something or italy."
+
+**Interpretation:** The existing 17-car sample dataset only covered Japan, Germany, South Korea, and China. The user wants the country-of-origin filter to be exercised by a wider real-world spread, naming USA, Sweden, France, and Italy as examples.
+
+**Inferred intent:** Make the fake dataset a more convincing stand-in for the eventual real Danish-market data, so the country filter (and the app in general) feels less narrow during review/demo, without changing any app code.
+
+### What I did
+
+Appended 8 more cars to `/app/public/data/cars.json`: Tesla Model 3 and Model Y and Ford Mustang Mach-E (USA), Volvo EX30 and EX90 (Sweden), Renault Megane E-Tech and Peugeot e-2008 (France), and Fiat 500e (Italy) — each with plausible DKK price, range, and a feature subset drawn from the same fixed feature vocabulary already used (Adaptive Cruise Control, Head-Up Display, Sunroof, Premium Sound System, Heated Seats, Advanced Security Suite). Validated the file with `python3 -c "import json; json.load(open(...))"`, which confirmed valid JSON, 25 total cars, and 8 distinct countries (`China, France, Germany, Italy, Japan, South Korea, Sweden, USA`).
+
+No component or service code changed — `car-browser.component.ts` derives `allCountries()` from whatever countries are present in the fetched data, so the new entries surfaced in the UI automatically.
+
+### Why
+
+The country-of-origin filter (PRD user story 2) is one of the app's core dimensions, and a 4-country dataset understated how the filter behaves with a wider, more realistic spread — this was purely a data-breadth fix, not a behavior change.
+
+### What worked
+
+Because `CarService`/`CarBrowserComponent` never hardcode the list of countries or features (both are computed from the dataset via `computed()` signals), adding new countries required touching only the JSON file — no code change, no rebuild-and-fix cycle.
+
+### What didn't work
+
+Nothing failed in this step; the only check performed was the JSON validation above, which passed on the first try.
+
+### What I learned
+
+Nothing new technically — this reinforced that keeping the "known countries/features" lists derived from data rather than hardcoded (as built in Step 1) pays off immediately when the dataset grows.
+
+### What was tricky
+
+Nothing tricky — this was a small, mechanical data addition.
+
+### What warrants review
+
+`/app/public/data/cars.json` — the new entries' prices/ranges are plausible estimates, not researched figures, same caveat as the original 17 cars from Step 1.
+
+### Future work
+
+No new follow-ups beyond what Step 1 already identified (real data population, comparison mode, images, risk indicators).
