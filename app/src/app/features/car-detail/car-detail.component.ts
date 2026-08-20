@@ -126,6 +126,12 @@ export class CarDetailComponent {
     return 'good';
   }
 
+  protected recallToneClasses(count: number): string {
+    return count > 0
+      ? 'bg-[var(--color-danger-soft)] text-[var(--color-danger)]'
+      : 'bg-[var(--color-good-soft)] text-[var(--color-good)]';
+  }
+
   protected resaleToneClasses(rating: RiskIndicator['resaleValue']['rating']): string {
     switch (rating) {
       case 'Strong':

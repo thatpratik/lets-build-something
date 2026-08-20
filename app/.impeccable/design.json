@@ -4,33 +4,163 @@
   "title": "Design System: Volt Index",
   "extensions": {
     "colorMeta": {
-      "voltage-gold": { "role": "primary", "displayName": "Voltage Gold", "canonical": "#f5b700", "tonalRamp": ["#4c3900", "#876500", "#c19000", "#fbbc00", "#ffcc37", "#ffdb71", "#ffeaab", "#fff9e5"] },
-      "cockpit-ink": { "role": "neutral", "displayName": "Cockpit Ink", "canonical": "#17130f", "tonalRamp": ["#2e261e", "#524335", "#75614c", "#987e63", "#b09b86", "#c7b8a9", "#ded5cc", "#f5f2f0"] },
-      "warm-fog": { "role": "neutral", "displayName": "Warm Fog", "canonical": "#f4f3ef", "tonalRamp": ["#2d2a1f", "#504b37", "#726b4f", "#958c66", "#ada688", "#c5c0ab", "#dddacd", "#f5f4f0"] },
-      "circuit-green": { "role": "status-good", "displayName": "Circuit Green", "canonical": "#1f5e2d", "tonalRamp": ["#133a1c", "#216531", "#309146", "#3ebd5a", "#68cd7f", "#94dca4", "#c0eac9", "#ecf9ef"] },
-      "amber-warn": { "role": "status-warning", "displayName": "Amber Warn", "canonical": "#b5650a", "tonalRamp": ["#482804", "#804707", "#b7660a", "#ee850d", "#f5a141", "#f8bc78", "#fbd8b0", "#fef3e7"] },
-      "fault-red": { "role": "status-danger", "displayName": "Fault Red", "canonical": "#c63c24", "tonalRamp": ["#41140c", "#722315", "#a3321e", "#d54027", "#e06a55", "#e99587", "#f2c1b8", "#fbece9"] }
+      "voltage-gold": {
+        "role": "primary",
+        "displayName": "Voltage Gold",
+        "canonical": "#f5b700",
+        "tonalRamp": [
+          "#4c3900",
+          "#876500",
+          "#c19000",
+          "#fbbc00",
+          "#ffcc37",
+          "#ffdb71",
+          "#ffeaab",
+          "#fff9e5"
+        ]
+      },
+      "cockpit-ink": {
+        "role": "neutral",
+        "displayName": "Cockpit Ink",
+        "canonical": "#17130f",
+        "tonalRamp": [
+          "#2e261e",
+          "#524335",
+          "#75614c",
+          "#987e63",
+          "#b09b86",
+          "#c7b8a9",
+          "#ded5cc",
+          "#f5f2f0"
+        ]
+      },
+      "warm-fog": {
+        "role": "neutral",
+        "displayName": "Warm Fog",
+        "canonical": "#f4f3ef",
+        "tonalRamp": [
+          "#2d2a1f",
+          "#504b37",
+          "#726b4f",
+          "#958c66",
+          "#ada688",
+          "#c5c0ab",
+          "#dddacd",
+          "#f5f4f0"
+        ]
+      },
+      "circuit-green": {
+        "role": "status-good",
+        "displayName": "Circuit Green",
+        "canonical": "#1f5e2d",
+        "tonalRamp": [
+          "#133a1c",
+          "#216531",
+          "#309146",
+          "#3ebd5a",
+          "#68cd7f",
+          "#94dca4",
+          "#c0eac9",
+          "#ecf9ef"
+        ]
+      },
+      "amber-warn": {
+        "role": "status-warning",
+        "displayName": "Amber Warn",
+        "canonical": "#b5650a",
+        "tonalRamp": [
+          "#482804",
+          "#804707",
+          "#b7660a",
+          "#ee850d",
+          "#f5a141",
+          "#f8bc78",
+          "#fbd8b0",
+          "#fef3e7"
+        ]
+      },
+      "fault-red": {
+        "role": "status-danger",
+        "displayName": "Fault Red",
+        "canonical": "#c63c24",
+        "tonalRamp": [
+          "#41140c",
+          "#722315",
+          "#a3321e",
+          "#d54027",
+          "#e06a55",
+          "#e99587",
+          "#f2c1b8",
+          "#fbece9"
+        ]
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Page/section headings, wordmark, car names on cards." },
-      "data": { "displayName": "Data", "purpose": "Every numeric value in the product — prices, ranges, percentages, warranty terms — always tabular." },
-      "body": { "displayName": "Body", "purpose": "Filter labels, copy, button text, table cells." },
-      "eyebrow": { "displayName": "Eyebrow", "purpose": "Mono uppercase section kickers paired with a display headline directly beneath." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page/section headings, wordmark, car names on cards."
+      },
+      "data": {
+        "displayName": "Data",
+        "purpose": "Every numeric value in the product \u2014 prices, ranges, percentages, warranty terms \u2014 always tabular."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Filter labels, copy, button text, table cells."
+      },
+      "eyebrow": {
+        "displayName": "Eyebrow",
+        "purpose": "Mono uppercase section kickers paired with a display headline directly beneath."
+      }
     },
     "shadows": [
-      { "name": "recommended-glow", "value": "0 4px 20px rgba(245,183,0,0.15)", "purpose": "Border-adjacent glow marking the 'Recommended for you' card." },
-      { "name": "slider-fill-glow", "value": "0 0 12px rgba(245,183,0,0.55)", "purpose": "Active gold segment of the dual-thumb range slider." },
-      { "name": "swatch-selected-ring", "value": "0 0 0 2px var(--color-surface)", "purpose": "White spacer ring around a selected exterior-color swatch." },
-      { "name": "floating-surface", "value": "0 8px 30px rgba(0,0,0,0.35)", "purpose": "The fixed bottom compare bar — the one neutral (non-gold) shadow, meaning 'floating chrome' not 'important'." }
+      {
+        "name": "recommended-glow",
+        "value": "0 4px 20px rgba(245,183,0,0.15)",
+        "purpose": "Border-adjacent glow marking the 'Recommended for you' card."
+      },
+      {
+        "name": "slider-fill-glow",
+        "value": "0 0 12px rgba(245,183,0,0.55)",
+        "purpose": "Active gold segment of the dual-thumb range slider."
+      },
+      {
+        "name": "swatch-selected-ring",
+        "value": "0 0 0 2px var(--color-surface)",
+        "purpose": "White spacer ring around a selected exterior-color swatch."
+      },
+      {
+        "name": "floating-surface",
+        "value": "0 8px 30px rgba(0,0,0,0.35)",
+        "purpose": "The fixed bottom compare bar \u2014 the one neutral (non-gold) shadow, meaning 'floating chrome' not 'important'."
+      }
     ],
     "motion": [
-      { "name": "ease-standard", "value": "150-200ms ease (Tailwind default 'transition-colors'/'transition-opacity')", "purpose": "Hover/focus color and opacity transitions across buttons, chips, borders." },
-      { "name": "charge-sweep", "value": "@keyframes charge-sweep { 0% { transform: translateX(-100%) } 60%,100% { transform: translateX(340%) } }, 1.1s ease-in-out infinite", "purpose": "The gold bar sweeping inside the image-loading placeholder, read as 'charging' rather than a generic spinner." },
-      { "name": "image-crossfade", "value": "opacity transition, 500ms ease-out", "purpose": "Car photo fades in once loaded instead of popping in." }
+      {
+        "name": "ease-standard",
+        "value": "150-200ms ease (Tailwind default 'transition-colors'/'transition-opacity')",
+        "purpose": "Hover/focus color and opacity transitions across buttons, chips, borders."
+      },
+      {
+        "name": "charge-sweep",
+        "value": "@keyframes charge-sweep { 0% { transform: translateX(-100%) } 60%,100% { transform: translateX(340%) } }, 1.1s ease-in-out infinite",
+        "purpose": "The gold bar sweeping inside the image-loading placeholder, read as 'charging' rather than a generic spinner."
+      },
+      {
+        "name": "image-crossfade",
+        "value": "opacity transition, 500ms ease-out",
+        "purpose": "Car photo fades in once loaded instead of popping in."
+      }
     ],
     "breakpoints": [
-      { "name": "sm", "value": "640px" },
-      { "name": "xl", "value": "1280px" }
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
     ]
   },
   "components": [
@@ -59,7 +189,7 @@
       "css": ".ds-chip { display: inline-flex; align-items: center; cursor: pointer; user-select: none; border-radius: 9999px; border: 1px solid var(--color-border, #e2ded2); background: var(--color-surface, #fff); color: var(--color-ink-muted, #6b6459); font-family: 'Inter Tight', ui-sans-serif, sans-serif; font-weight: 500; font-size: 0.75rem; padding: 4px 10px; transition: border-color 0.18s ease, color 0.18s ease; } .ds-chip:hover { border-color: var(--color-ink-faint, #a39c8e); } .ds-chip-input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }"
     },
     {
-      "name": "Filter Chip — Active",
+      "name": "Filter Chip \u2014 Active",
       "kind": "chip",
       "refersTo": "filter-chip-active",
       "description": "Selected state of the filter chip: gold wash fill, gold ember text, gold border.",
@@ -78,15 +208,15 @@
       "name": "Budget Readout Input",
       "kind": "input",
       "refersTo": "input-underline",
-      "description": "The cockpit hero's budget field — a boxless mono readout with an underline focus treatment instead of a bordered box.",
+      "description": "The cockpit hero's budget field \u2014 a boxless mono readout on the hero's light Oat Surface band, with an underline focus treatment instead of a bordered box.",
       "html": "<label class=\"ds-input-label\"><span class=\"ds-input-caption\">Budget</span><div class=\"ds-input-wrap\"><input type=\"number\" class=\"ds-input\" placeholder=\"0\" /><span class=\"ds-input-suffix\">DKK</span></div></label>",
-      "css": ".ds-input-label { display: flex; flex-direction: column; gap: 6px; } .ds-input-caption { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(244,243,239,0.45); } .ds-input-wrap { display: flex; align-items: baseline; gap: 8px; border-bottom: 2px solid rgba(255,255,255,0.15); padding-bottom: 4px; transition: border-color 0.18s ease; } .ds-input-wrap:focus-within { border-color: var(--color-accent, #f5b700); } .ds-input { background: transparent; border: none; font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 600; font-size: 1.875rem; color: var(--color-bg, #f4f3ef); font-variant-numeric: tabular-nums; outline: none; min-width: 0; flex: 1; } .ds-input::placeholder { color: rgba(255,255,255,0.25); } .ds-input-suffix { font-size: 0.875rem; color: rgba(244,243,239,0.45); }"
+      "css": ".ds-input-label { display: flex; flex-direction: column; gap: 6px; } .ds-input-caption { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-ink-muted, #6b6459); } .ds-input-wrap { display: flex; align-items: baseline; gap: 8px; border-bottom: 2px solid var(--color-border, #e2ded2); padding-bottom: 4px; transition: border-color 0.18s ease; } .ds-input-wrap:focus-within { border-color: var(--color-accent, #f5b700); } .ds-input { background: transparent; border: none; font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 600; font-size: 1.875rem; color: var(--color-ink, #17130f); font-variant-numeric: tabular-nums; outline: none; min-width: 0; flex: 1; } .ds-input::placeholder { color: var(--color-ink-faint, #a39c8e); } .ds-input-suffix { font-size: 0.875rem; color: var(--color-ink-muted, #6b6459); }"
     },
     {
       "name": "Charge Gauge",
       "kind": "custom",
       "refersTo": null,
-      "description": "The system's signature component: a semicircle arc standing in for any progress bar — a single value from zero (battery retention) or a band between two values (range window).",
+      "description": "The system's signature component: a semicircle arc standing in for any progress bar \u2014 a single value from zero (battery retention) or a band between two values (range window).",
       "html": "<svg class=\"ds-gauge\" viewBox=\"0 0 100 54\"><path class=\"ds-gauge-track\" d=\"M 8 50 A 40 40 0 0 1 92 50\" /><path class=\"ds-gauge-fill\" d=\"M 8 50 A 40 40 0 0 1 92 50\" stroke-dasharray=\"0 40 60 126\" /></svg>",
       "css": ".ds-gauge { width: 64px; height: auto; } .ds-gauge-track, .ds-gauge-fill { fill: none; stroke-width: 9; stroke-linecap: round; } .ds-gauge-track { stroke: var(--color-border, #e2ded2); } .ds-gauge-fill { stroke: var(--color-accent, #f5b700); }"
     },
@@ -101,32 +231,59 @@
   ],
   "narrative": {
     "northStar": "The Instrument Cluster",
-    "overview": "Volt Index treats every screen the way an EV treats its dashboard: numbers you can trust, read at a glance, glowing exactly where they matter and nowhere else. The system is built around a single semicircle \"charge gauge\" — the one custom-drawn element in the whole app — reused everywhere a range or a percentage needs to be shown, so range windows and battery-retention figures read with the same authority a driver already trusts from the car itself. Everything around that signature stays quiet: a warm graphite-and-paper palette, one disciplined gold accent, and monospaced data set in tabular figures so prices and ranges never jitter as they update.\n\nThis is a decision tool for a first-time EV buyer, not a marketing surface, so the system was deliberately built to reject two defaults at once: the cream-paper-and-serif \"AI generic\" look, and the near-black-plus-neon-green \"every EV app\" look. Warm graphite ink stands in for near-black without going cold; voltage gold stands in for the neon accent without borrowing the green that every competing EV product already claims for itself — freeing green to mean exactly one thing in this system: a battery or resale rating that is actually good.",
+    "overview": "Volt Index treats every screen the way an EV treats its dashboard: numbers you can trust, read at a glance, glowing exactly where they matter and nowhere else. The system is built around a single semicircle \"charge gauge\" \u2014 the one custom-drawn element in the whole app \u2014 reused everywhere a range or a percentage needs to be shown, so range windows and battery-retention figures read with the same authority a driver already trusts from the car itself. Everything around that signature stays quiet: a warm graphite-and-paper palette, one disciplined gold accent, and monospaced data set in tabular figures so prices and ranges never jitter as they update.\n\nThis is a decision tool for a first-time EV buyer, not a marketing surface, so the system was deliberately built to reject two defaults at once: the cream-paper-and-serif \"AI generic\" look, and the near-black-plus-neon-green \"every EV app\" look. Warm graphite ink stands in for near-black without going cold; voltage gold stands in for the neon accent without borrowing the green that every competing EV product already claims for itself \u2014 freeing green to mean exactly one thing in this system: a battery or resale rating that is actually good.",
     "keyCharacteristics": [
-      "One accent color, used sparingly and only for brand/interactive moments — never for status.",
+      "One accent color, used sparingly and only for brand/interactive moments \u2014 never for status.",
       "A semicircle SVG gauge, not a flat progress bar, wherever a range or percentage appears.",
-      "Dark 'cockpit' ink bands mark the moments where the user is setting or reviewing the numbers that drive a decision — never used as a general content background.",
-      "All numeric data — prices, ranges, percentages, warranty terms — set in JetBrains Mono with tabular figures."
+      "Dark 'cockpit' ink bands mark the moments where the user is setting or reviewing the numbers that drive a decision \u2014 never used as a general content background.",
+      "All numeric data \u2014 prices, ranges, percentages, warranty terms \u2014 set in JetBrains Mono with tabular figures."
     ],
     "rules": [
-      { "name": "The One Gold Rule", "body": "Voltage gold is the system's only accent. It never shares a screen with a second brand hue, and it never carries status meaning (good/warning/bad) — those are always circuit-green / amber-warn / fault-red, kept visually and semantically separate from the brand color.", "section": "colors" },
-      { "name": "The Text-on-Paper Rule", "body": "Gold text on a light surface is always Gold Ember (#7a5400), never the base Voltage Gold (#f5b700) — the base value is a fill/glow color, not a text color; using it as type fails contrast.", "section": "colors" },
-      { "name": "The Tabular-Numerals Rule", "body": "Every place a number can change (price as features toggle, range as filters move) uses tabular-nums so digits never shift width and cause layout jitter.", "section": "typography" },
-      { "name": "The Glow-Means-Something Rule", "body": "A shadow never appears just to lift a card off the page. Gold glow = this is the important/selected one; neutral shadow = this is physically floating (fixed/sticky chrome only).", "section": "elevation" }
+      {
+        "name": "The One Gold Rule",
+        "body": "Voltage gold is the system's only accent. It never shares a screen with a second brand hue, and it never carries status meaning (good/warning/bad) \u2014 those are always circuit-green / amber-warn / fault-red, kept visually and semantically separate from the brand color.",
+        "section": "colors"
+      },
+      {
+        "name": "The Text-on-Paper Rule",
+        "body": "Gold text on a light surface is always Gold Ember (#7a5400), never the base Voltage Gold (#f5b700) \u2014 the base value is a fill/glow color, not a text color; using it as type fails contrast.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tabular-Numerals Rule",
+        "body": "Every place a number can change (price as features toggle, range as filters move) uses tabular-nums so digits never shift width and cause layout jitter.",
+        "section": "typography"
+      },
+      {
+        "name": "The Glow-Means-Something Rule",
+        "body": "A shadow never appears just to lift a card off the page. Gold glow = this is the important/selected one; neutral shadow = this is physically floating (fixed/sticky chrome only).",
+        "section": "elevation"
+      },
+      {
+        "name": "The Real-Text Floor Rule",
+        "body": "Warm Smoke, not Warm Ash, is the palest color allowed for actual readable text (captions, labels, counts) \u2014 Warm Ash only clears contrast when used for borders, placeholders, or decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Band Rule",
+        "body": "Only one of the two \"important numbers\" bands is dark: the detail price strip and the comparison table header use Cockpit Ink. The browse hero \u2014 where the user is still adjusting inputs, not receiving a result \u2014 uses the light Oat Surface instead.",
+        "section": "layout"
+      }
     ],
     "dos": [
-      "Do use the semicircle charge gauge, not a flat progress bar, for any range or percentage value — the repetition across cards/detail/comparison is what makes it a signature rather than a one-off.",
+      "Do use the semicircle charge gauge, not a flat progress bar, for any range or percentage value \u2014 the repetition across cards/detail/comparison is what makes it a signature rather than a one-off.",
       "Do keep Voltage Gold to brand/interactive moments only; if a color needs to mean 'good/warning/bad,' it's Circuit Green / Amber Warn / Fault Red, never gold.",
-      "Do set every number — prices, ranges, percentages, warranty terms — in JetBrains Mono with tabular figures.",
-      "Do reserve dark cockpit-ink bands for parameter-setting/summary moments (the browse hero, the detail price strip, the comparison table header) — they mark 'these are the numbers that drive the decision,' not general content.",
-      "Do use Gold Ember (#7a5400), never base Voltage Gold, for gold text on a light surface."
+      "Do set every number \u2014 prices, ranges, percentages, warranty terms \u2014 in JetBrains Mono with tabular figures.",
+      "Do use Gold Ember (#7a5400), never base Voltage Gold, for gold text on a light surface.",
+      "Do color-code every risk metric with a clear good/bad reading the same way \u2014 recall count, battery retention, and resale rating all use the same status scale.",
+      "Do reserve dark cockpit-ink bands for the detail price strip and comparison header only \u2014 the browse hero is deliberately light (see The Two-Band Rule)."
     ],
     "donts": [
-      "Don't introduce a second accent hue — the system deliberately spends its 'personality budget' on one color used with discipline, not several used timidly.",
-      "Don't use green anywhere except a genuinely good battery/resale rating — it is not a decorative or 'electric = green' color in this system.",
+      "Don't introduce a second accent hue \u2014 the system deliberately spends its 'personality budget' on one color used with discipline, not several used timidly.",
+      "Don't use green anywhere except a genuinely good battery/resale rating \u2014 it is not a decorative or 'electric = green' color in this system.",
       "Don't add a shadow to lift a card at rest; a shadow here always means either 'this is the important one' (gold glow) or 'this is floating chrome' (neutral shadow), never ambient depth.",
-      "Don't build a sliding/toggling nested element with Tailwind's peer-checked: — it only matches direct siblings. Use group + group-has-checked: for anything nested inside the sibling that changes state.",
-      "Don't let a custom focus treatment (like the budget input's underline glow) coexist with the browser's default :focus-visible outline — pick one visible indicator and suppress the other explicitly."
+      "Don't build a sliding/toggling nested element with Tailwind's peer-checked: \u2014 it only matches direct siblings. Use group + group-has-checked: for anything nested inside the sibling that changes state.",
+      "Don't let a custom focus treatment (like the budget input's underline glow) coexist with the browser's default :focus-visible outline \u2014 pick one visible indicator and suppress the other explicitly."
     ]
   }
 }

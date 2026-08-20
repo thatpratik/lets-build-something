@@ -73,6 +73,25 @@ export class ComparisonComponent {
     return this.activeFeatures().get(carId)?.has(feature) ?? false;
   }
 
+  protected isStandardFeature(carId: string, feature: string): boolean {
+    return this.comparedCars().find((car) => car.id === carId)?.features.includes(feature) ?? false;
+  }
+
+  protected featureStatus(carId: string, feature: string): 'standard' | 'added' | 'removed' | null {
+    const standard = this.isStandardFeature(carId, feature);
+    const active = this.hasFeature(carId, feature);
+    if (standard && active) {
+      return 'standard';
+    }
+    if (standard && !active) {
+      return 'removed';
+    }
+    if (!standard && active) {
+      return 'added';
+    }
+    return null;
+  }
+
   protected priceFor(carId: string): number {
     return this.carPrices().get(carId) ?? 0;
   }

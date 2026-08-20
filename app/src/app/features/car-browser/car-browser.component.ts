@@ -34,6 +34,8 @@ function rangeBoundsOf(cars: Car[]): { min: number; max: number } {
 })
 export class CarBrowserComponent {
   protected readonly maxDisplayRangeKm = MAX_DISPLAY_RANGE_KM;
+  protected readonly budgetToleranceDkk = BUDGET_TOLERANCE_DKK;
+  protected readonly rangeToleranceKm = RANGE_TOLERANCE_KM;
   private readonly carService = inject(CarService);
   protected readonly comparisonService = inject(ComparisonService);
   protected readonly detailService = inject(DetailService);
@@ -111,9 +113,35 @@ export class CarBrowserComponent {
     return carTotalPrice(car, this.featurePricing());
   }
 
+  protected budgetOverBy(car: Car): number | null {
+    const budget = this.budget();
+    if (budget === null) {
+      return null;
+    }
+    const over = this.totalPriceFor(car) - budget;
+    return over > BUDGET_TOLERANCE_DKK ? over : null;
+  }
+
+  protected rangeMismatch(car: Car): { shortBy?: number; overBy?: number } | null {
+    if (!this.hasRangePreference()) {
+      return null;
+    }
+    const desiredMin = this.desiredRangeMin();
+    const desiredMax = this.desiredRangeMax();
+    const toleratedMin = desiredMin - RANGE_TOLERANCE_KM;
+    const toleratedMax = desiredMax + RANGE_TOLERANCE_KM;
+    if (car.range.max < toleratedMin) {
+      return { shortBy: desiredMin - car.range.max };
+    }
+    if (car.range.min > toleratedMax) {
+      return { overBy: car.range.min - desiredMax };
+    }
+    return null;
+  }
+
   private isWithinTolerance(car: Car): boolean {
     const budget = this.budget();
-    const withinBudget = budget === null || Math.abs(this.totalPriceFor(car) - budget) <= BUDGET_TOLERANCE_DKK;
+    const withinBudget = budget === null || this.totalPriceFor(car) - budget <= BUDGET_TOLERANCE_DKK;
 
     if (!this.hasRangePreference()) {
       return withinBudget;
@@ -122,6 +150,14 @@ export class CarBrowserComponent {
     const desiredMax = this.desiredRangeMax() + RANGE_TOLERANCE_KM;
     const overlapsRange = car.range.max >= desiredMin && car.range.min <= desiredMax;
     return withinBudget && overlapsRange;
+  }
+
+  protected setDesiredRangeMin(value: number): void {
+    this.desiredRangeMin.set(Math.min(value, this.desiredRangeMax()));
+  }
+
+  protected setDesiredRangeMax(value: number): void {
+    this.desiredRangeMax.set(Math.max(value, this.desiredRangeMin()));
   }
 
   protected toggleFeature(feature: string): void {

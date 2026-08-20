@@ -17,7 +17,7 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8">
         <label class="flex flex-col gap-1.5">
-          <span class="text-[0.65rem] font-medium uppercase tracking-wide text-[var(--color-ink-faint)]">Budget</span>
+          <span class="text-[0.65rem] font-medium uppercase tracking-wide text-[var(--color-ink-muted)]">Budget</span>
           <div class="flex items-baseline gap-2 border-b-2 border-[var(--color-border)] focus-within:border-[var(--color-accent)] transition-colors pb-1">
             <input
               type="number"
@@ -32,10 +32,25 @@
 
         <div class="flex flex-col gap-1.5">
           <div class="flex items-baseline justify-between">
-            <span class="text-[0.65rem] font-medium uppercase tracking-wide text-[var(--color-ink-faint)]">Desired range</span>
-            <span class="font-mono text-sm font-semibold tabular-nums text-[var(--color-accent-strong)]">
-              {{ desiredRangeMin() }}–{{ desiredRangeMax() }} km
-            </span>
+            <span class="text-[0.65rem] font-medium uppercase tracking-wide text-[var(--color-ink-muted)]">Desired range</span>
+            <div class="flex items-baseline gap-1 font-mono text-sm font-semibold tabular-nums text-[var(--color-accent-strong)]">
+              <input
+                type="number"
+                class="range-number-input w-12 rounded bg-transparent text-right tabular-nums"
+                [ngModel]="desiredRangeMin()"
+                (ngModelChange)="setDesiredRangeMin($event)"
+                [attr.aria-label]="'Minimum range in km'"
+              />
+              <span>–</span>
+              <input
+                type="number"
+                class="range-number-input w-12 rounded bg-transparent tabular-nums"
+                [ngModel]="desiredRangeMax()"
+                (ngModelChange)="setDesiredRangeMax($event)"
+                [attr.aria-label]="'Maximum range in km'"
+              />
+              <span>km</span>
+            </div>
           </div>
           <div class="pt-2.5">
             <app-range-slider
@@ -51,10 +66,10 @@
 
       <div class="flex flex-col gap-2.5 pt-4 border-t border-[var(--color-border)]">
         <fieldset class="flex flex-wrap items-center gap-1.5 border-0 p-0 m-0">
-          <legend class="text-[0.65rem] font-medium uppercase tracking-wide text-[var(--color-ink-faint)] w-full mb-0.5">Country of origin</legend>
+          <legend class="text-[0.65rem] font-medium uppercase tracking-wide text-[var(--color-ink-muted)] w-full mb-0.5">Country of origin</legend>
           @for (country of allCountries(); track country) {
             <label
-              class="cursor-pointer select-none rounded-full border px-2.5 py-1 text-xs font-medium transition-colors"
+              class="cursor-pointer select-none rounded-full border px-3 py-2 text-xs font-medium transition-colors"
               [class]="selectedCountries().has(country)
                 ? 'border-[var(--color-accent-strong)] bg-[var(--color-accent-soft)] text-[var(--color-accent-strong)]'
                 : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-muted)] hover:border-[var(--color-ink-faint)]'"
@@ -71,10 +86,10 @@
         </fieldset>
 
         <fieldset class="flex flex-wrap items-center gap-1.5 border-0 p-0 m-0">
-          <legend class="text-[0.65rem] font-medium uppercase tracking-wide text-[var(--color-ink-faint)] w-full mb-0.5">Features</legend>
+          <legend class="text-[0.65rem] font-medium uppercase tracking-wide text-[var(--color-ink-muted)] w-full mb-0.5">Features</legend>
           @for (feature of allFeatures(); track feature) {
             <label
-              class="cursor-pointer select-none rounded-full border px-2.5 py-1 text-xs font-medium transition-colors"
+              class="cursor-pointer select-none rounded-full border px-3 py-2 text-xs font-medium transition-colors"
               [class]="selectedFeatures().has(feature)
                 ? 'border-[var(--color-accent-strong)] bg-[var(--color-accent-soft)] text-[var(--color-accent-strong)]'
                 : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-muted)] hover:border-[var(--color-ink-faint)]'"
@@ -121,9 +136,14 @@
     } @else {
     @if (hasPreferences() && recommendedCars().length > 0) {
       <section class="flex flex-col gap-4">
-        <div class="flex items-baseline gap-2.5">
-          <h2 class="font-display font-bold text-lg">Recommended for you</h2>
-          <span class="font-mono text-xs tabular-nums text-[var(--color-ink-faint)]">{{ recommendedCars().length }} match{{ recommendedCars().length === 1 ? '' : 'es' }}</span>
+        <div class="flex flex-col gap-1">
+          <div class="flex items-baseline gap-2.5">
+            <h2 class="font-display font-bold text-lg">Recommended for you</h2>
+            <span class="font-mono text-xs tabular-nums text-[var(--color-ink-muted)]">{{ recommendedCars().length }} match{{ recommendedCars().length === 1 ? '' : 'es' }}</span>
+          </div>
+          <p class="text-xs text-[var(--color-ink-muted)]">
+            Includes cars within {{ budgetToleranceDkk | number }} DKK of your budget and {{ rangeToleranceKm }} km of your range — near-misses are worth a look, not hidden.
+          </p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
           @for (car of recommendedCars(); track car.id) {
@@ -153,7 +173,7 @@
                   [showLabel]="false"
                 />
                 <div class="flex flex-col leading-tight">
-                  <span class="text-[0.6rem] uppercase tracking-wide text-[var(--color-ink-faint)]">Range</span>
+                  <span class="text-[0.65rem] uppercase tracking-wide text-[var(--color-ink-muted)]">Range</span>
                   <span class="font-mono text-sm font-semibold tabular-nums">{{ car.range.min }}–{{ car.range.max }} km</span>
                 </div>
               </div>
@@ -165,7 +185,7 @@
               </ul>
 
               <div class="flex items-center justify-between gap-2 mt-1 pt-3 border-t border-[var(--color-border)]">
-                <label class="flex items-center gap-1.5 text-xs font-medium text-[var(--color-ink-muted)] cursor-pointer">
+                <label class="flex items-center gap-1.5 py-2 text-xs font-medium text-[var(--color-ink-muted)] cursor-pointer">
                   <input
                     type="checkbox"
                     class="h-4 w-4 rounded border-[var(--color-border)] accent-[var(--color-accent)]"
@@ -176,7 +196,7 @@
                 </label>
                 <button
                   type="button"
-                  class="rounded-lg border border-[var(--color-border)] px-3 py-1.5 text-xs font-semibold hover:border-[var(--color-ink)] transition-colors cursor-pointer"
+                  class="rounded-lg border border-[var(--color-border)] px-3 py-2.5 text-xs font-semibold hover:border-[var(--color-ink)] transition-colors cursor-pointer"
                   (click)="detailService.openDetail(car.id)"
                 >
                   View details
@@ -189,11 +209,16 @@
     }
 
     <section class="flex flex-col gap-4">
-      <div class="flex items-baseline gap-2.5">
-        <h2 class="font-display font-bold text-lg">
-          {{ hasPreferences() ? 'Other options' : 'All cars' }}
-        </h2>
-        <span class="font-mono text-xs tabular-nums text-[var(--color-ink-faint)]">{{ otherCars().length }}</span>
+      <div class="flex flex-col gap-1">
+        <div class="flex items-baseline gap-2.5">
+          <h2 class="font-display font-bold text-lg">
+            {{ hasPreferences() ? 'Other options' : 'All cars' }}
+          </h2>
+          <span class="font-mono text-xs tabular-nums text-[var(--color-ink-muted)]">{{ otherCars().length }}</span>
+        </div>
+        @if (hasPreferences()) {
+          <p class="text-xs text-[var(--color-ink-muted)]">Outside your tolerance window, not necessarily a worse car — see how far below each one.</p>
+        }
       </div>
 
       @if (otherCars().length === 0) {
@@ -223,6 +248,21 @@
               <p class="font-mono text-lg font-semibold tabular-nums shrink-0">{{ totalPriceFor(car) | number }}<span class="text-xs font-normal text-[var(--color-ink-muted)]"> DKK</span></p>
             </div>
 
+            @if (budgetOverBy(car); as over) {
+              <span class="w-fit rounded-full bg-[var(--color-danger-soft)] px-2 py-0.5 font-mono text-[0.65rem] font-semibold tabular-nums text-[var(--color-danger)]">
+                +{{ over | number }} DKK over budget
+              </span>
+            }
+            @if (rangeMismatch(car); as gap) {
+              <span class="w-fit rounded-full bg-[var(--color-danger-soft)] px-2 py-0.5 font-mono text-[0.65rem] font-semibold tabular-nums text-[var(--color-danger)]">
+                @if (gap.shortBy) {
+                  {{ gap.shortBy | number }} km short of your range
+                } @else {
+                  {{ gap.overBy | number }} km over your range
+                }
+              </span>
+            }
+
             <div class="flex items-center gap-3 rounded-xl bg-[var(--color-bg)] px-3 py-2">
               <app-meter
                 [rangeStart]="(car.range.min / maxDisplayRangeKm) * 100"
@@ -230,7 +270,7 @@
                 [showLabel]="false"
               />
               <div class="flex flex-col leading-tight">
-                <span class="text-[0.6rem] uppercase tracking-wide text-[var(--color-ink-faint)]">Range</span>
+                <span class="text-[0.65rem] uppercase tracking-wide text-[var(--color-ink-muted)]">Range</span>
                 <span class="font-mono text-sm font-semibold tabular-nums">{{ car.range.min }}–{{ car.range.max }} km</span>
               </div>
             </div>
@@ -242,7 +282,7 @@
             </ul>
 
             <div class="flex items-center justify-between gap-2 mt-1 pt-3 border-t border-[var(--color-border)]">
-              <label class="flex items-center gap-1.5 text-xs font-medium text-[var(--color-ink-muted)] cursor-pointer">
+              <label class="flex items-center gap-1.5 py-2 text-xs font-medium text-[var(--color-ink-muted)] cursor-pointer">
                 <input
                   type="checkbox"
                   class="h-4 w-4 rounded border-[var(--color-border)] accent-[var(--color-accent)]"
@@ -253,7 +293,7 @@
               </label>
               <button
                 type="button"
-                class="rounded-lg border border-[var(--color-border)] px-3 py-1.5 text-xs font-semibold hover:border-[var(--color-ink)] transition-colors cursor-pointer"
+                class="rounded-lg border border-[var(--color-border)] px-3 py-2.5 text-xs font-semibold hover:border-[var(--color-ink)] transition-colors cursor-pointer"
                 (click)="detailService.openDetail(car.id)"
               >
                 View details
@@ -268,7 +308,7 @@
 
   @if (comparisonService.selectionCount() > 0) {
     <div class="fixed inset-x-0 bottom-0 z-20 flex justify-center px-4 pb-4 sm:pb-6">
-      <div class="flex items-center gap-4 rounded-2xl bg-[var(--color-ink)] px-5 py-3 text-white shadow-[0_8px_30px_rgba(0,0,0,0.35)]">
+      <div class="flex items-center gap-4 rounded-2xl bg-[var(--color-ink)] px-5 py-3 text-white shadow-[0_8px_30px_rgba(0,0,0,0.35)]" aria-live="polite">
         <span class="text-sm font-medium">{{ comparisonService.selectionCount() }} selected</span>
         <button
           type="button"

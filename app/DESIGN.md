@@ -120,8 +120,8 @@ Warm graphite and paper carry the system; a single voltage-gold accent is spent 
 
 ### Neutral
 - **Cockpit Ink** (`#17130f`): a warm near-black, never pure black. Used for the header logo badge, the dark cockpit bands, primary body text, and text-on-gold.
-- **Warm Smoke** (`#6b6459`): secondary/muted text — captions, helper copy, labels.
-- **Warm Ash** (`#a39c8e`): tertiary/faint text — counts, de-emphasized numerals, disabled-adjacent labels.
+- **Warm Smoke** (`#6b6459`): secondary/muted text — captions, helper copy, labels. This is the floor for small real text on a light surface (5.85:1 on paper, 4.95:1 on Oat Surface — both clear WCAG AA).
+- **Warm Ash** (`#a39c8e`): decorative/structural use only — hover-border tints, placeholder text, disabled states, decorative icon strokes. **Never** small body/caption text: at 2.3–2.7:1 against paper or Oat Surface it fails WCAG AA outright. Every caption, count, and label in the app uses Warm Smoke instead.
 - **Warm Fog** (`#f4f3ef`): the page background and the inset "readout" wells inside cards (image placeholders, the range/gauge tile).
 - **Paper** (`#ffffff`): card and header surfaces.
 - **Oat Surface** (`#efece2`): reserved secondary surface (table stripes, deeper insets) — currently defined, lightly used.
@@ -138,6 +138,10 @@ Warm graphite and paper carry the system; a single voltage-gold accent is spent 
 
 **The Text-on-Paper Rule.** Gold text on a light surface is always Gold Ember (`#7a5400`), never the base Voltage Gold (`#f5b700`) — the base value is a fill/glow color, not a text color; using it as type fails contrast.
 
+**The Real-Text Floor Rule.** Warm Smoke, not Warm Ash, is the palest color allowed for actual readable text (captions, labels, counts) — Warm Ash only clears contrast when used for borders, placeholders, or decoration.
+
+**The Two-Band Rule.** Only one of the two "important numbers" bands is dark: the detail price strip and the comparison table header use Cockpit Ink (a high-stakes, "here's the number that matters" moment). The browse hero — where the user is still adjusting inputs, not receiving a result — uses the light Oat Surface instead. A component styled for one band's context (e.g. a translucent-on-dark track color) must be re-checked before reuse in the other.
+
 ## Typography
 
 **Display Font:** Bricolage Grotesque (with ui-sans-serif, system-ui fallback)
@@ -150,14 +154,14 @@ Warm graphite and paper carry the system; a single voltage-gold accent is spent 
 - **Display** (800, `text-xl`–`text-2xl` / `text-2xl`–`text-3xl` on section heroes, 1.15 line-height, −0.01em tracking): page and section headings, the "Volt Index" wordmark, car names on cards.
 - **Data** (600, `text-lg`–`text-4xl` depending on prominence, tabular-nums): every number in the product — prices, ranges, percentages, warranty terms. Always JetBrains Mono, never the body face, regardless of size.
 - **Body** (500, `text-sm`, 1.5 line-height): filter labels, copy, button text, table cells.
-- **Eyebrow/Label** (500, `0.65rem`–`0.7rem`, 0.2em tracking, uppercase): section kickers ("Set your numbers", "Spec sheet", "Side by side") set in mono, always paired with a display headline directly beneath.
+- **Eyebrow/Label** (500, `0.65rem`, 0.2em tracking, uppercase): section kickers ("Set your numbers", "Spec sheet", "Side by side") set in mono, always paired with a display headline directly beneath. One fixed size, not a range — normalize any variant (e.g. an old `0.6rem`/`0.7rem`) to this value rather than letting eyebrow sizes drift.
 
 ### Named Rules
 **The Tabular-Numerals Rule.** Every place a number can change (price as features toggle, range as filters move) uses `tabular-nums` so digits never shift width and cause layout jitter.
 
 ## Layout
 
-A single centered column, `max-w-6xl` (browse, comparison) or `max-w-3xl` (detail — narrower because it's a linear spec sheet, not a grid), with responsive horizontal padding (`px-5` mobile, `px-8` ≥sm). The browse page opens with a full-bleed dark cockpit band (budget, range, filters) ahead of the constrained column, so the "set your parameters" moment reads as its own zone before the results grid begins. Card grids step 1 → 2 → 3 columns at `sm` / `xl`. Section rhythm uses generous outer gaps (`gap-8`–`gap-12` between major sections) but tightened internal gaps (`gap-1.5`–`gap-3` between a label and its control, or between chips) — density lives inside a group, air lives between groups. A `sticky top-0` header stays pinned regardless of scroll direction; a floating pill bar (`fixed bottom`) surfaces the comparison selection count once ≥1 car is selected.
+A single centered column, `max-w-6xl` (browse, comparison) or `max-w-3xl` (detail — narrower because it's a linear spec sheet, not a grid), with responsive horizontal padding (`px-5` mobile, `px-8` ≥sm). The browse page opens with a full-bleed parameter band (budget, range, filters) ahead of the constrained column, so the "set your parameters" moment reads as its own zone before the results grid begins — this band uses the light Oat Surface, distinct from the dark cockpit-ink treatment reserved for the detail price strip and comparison header (see Colors → Named Rules and Do's and Don'ts). Card grids step 1 → 2 → 3 columns at `sm` / `xl`. Section rhythm uses generous outer gaps (`gap-8`–`gap-12` between major sections) but tightened internal gaps (`gap-1.5`–`gap-3` between a label and its control, or between chips) — density lives inside a group, air lives between groups. A `sticky top-0` header stays pinned regardless of scroll direction; a floating pill bar (`fixed bottom`) surfaces the comparison selection count once ≥1 car is selected.
 
 ## Elevation & Depth
 
@@ -186,7 +190,7 @@ Two deliberate registers, chosen by what a form does rather than mixed freely: s
 
 ### Chips (filter chips)
 - **Style:** pill, hairline border, `text-xs font-medium`, `px-2.5 py-1`.
-- **State:** unselected = paper/transparent background, warm-smoke text, hairline border (or `white/[0.04]` + `white/15` border on the dark cockpit band); selected = Gold Wash background, Gold Ember text, Voltage Gold border. Backed by a visually-hidden native checkbox for correct semantics, not a div with a click handler.
+- **State:** unselected = paper background, warm-smoke text, hairline border; selected = Gold Wash background, Gold Ember text, Voltage Gold border. Backed by a visually-hidden native checkbox for correct semantics, not a div with a click handler.
 
 ### Cards / Containers
 - **Corner Style:** `rounded-2xl` (16px).
@@ -196,7 +200,7 @@ Two deliberate registers, chosen by what a form does rather than mixed freely: s
 
 ### Inputs / Fields
 - **Style (budget input):** no box at all — transparent background, large JetBrains Mono numerals, sitting on a 2px bottom border only. This is deliberate: it reads as a dashboard readout being edited, not a form field.
-- **Focus:** the bottom border transitions from `white/15` to Voltage Gold (`focus-within` on the wrapping label). Because that transition *is* the focus indicator, the input explicitly suppresses the browser's default `:focus-visible` outline (`.budget-input:focus-visible { outline: none }`) rather than showing both — two competing focus treatments read as a bug, not emphasis.
+- **Focus:** the bottom border transitions from Hairline Tan to Voltage Gold (`focus-within` on the wrapping label). Because that transition *is* the focus indicator, the input explicitly suppresses the browser's default `:focus-visible` outline (`.budget-input:focus-visible { outline: none }`) rather than showing both — two competing focus treatments read as a bug, not emphasis. The range slider's thumb applies the same principle: the invisible full-width native `<input type=range>` suppresses its own outline and draws a focus ring on the visible thumb pseudo-element instead, so a keyboard user sees a ring around the thumb, not a rectangle spanning the whole track.
 - **Error / Disabled:** not yet defined; no form validation exists in the product today.
 
 ### Navigation
@@ -206,7 +210,10 @@ Two deliberate registers, chosen by what a form does rather than mixed freely: s
 A semicircle SVG arc (`viewBox 0 0 100 54`, radius 40, `M 8 50 A 40 40 0 0 1 92 50`) stands in for every plain progress bar in the system. A neutral-track arc sits underneath; a colored arc segment is drawn on top using a `stroke-dasharray` trick (`0 startLen segmentLen totalLen`) so it can represent either a single value from zero (battery retention) or a band between two values (a car's min–max range window). Track color adapts to context (`hairline-tan` on paper, `hairline-on-ink` on cockpit-ink); the fill color is Voltage Gold by default, or one of the three status colors when the gauge is reporting a rating rather than a neutral spec. This is the one place the system draws custom vector art rather than composing utility classes, and it is reused identically across the browse cards, the detail page, and anywhere a range or a percentage needs to be shown — the repetition is the point.
 
 ### Toggle Switch
-Pill track (`h-5 w-9`, hairline-tan, `rounded-full`) with a white circular thumb (`h-4 w-4`) that slides via `translate-x-4` when checked. Built on a visually-hidden native checkbox wrapped by a `group`-marked label, with `group-has-checked:` variants driving both the track color (→ Voltage Gold) and the thumb's translate — not `peer-checked:`, which only reaches direct siblings and silently fails to animate a thumb nested inside the track element. Used for per-feature toggling inside the comparison table.
+Pill track (`h-5 w-9`, hairline-tan, `rounded-full`) with a white circular thumb (`h-4 w-4`) that slides via `translate-x-4` when checked. Built on a visually-hidden native checkbox wrapped by a `group`-marked label, with `group-has-checked:` variants driving both the track color (→ Voltage Gold) and the thumb's translate — not `peer-checked:`, which only reaches direct siblings and silently fails to animate a thumb nested inside the track element. Used for per-feature toggling inside the comparison table, paired with a small status caption (`Standard` / `+ Added` / `Removed`) beneath each switch so a buyer can tell at a glance whether they're looking at what the car actually ships with or a hypothetical change — the switch state alone doesn't carry that distinction.
+
+### Touch Targets
+Interactive controls carry generous padding beyond their visual size — filter chips (`py-2`), the Compare checkbox label (`py-2`), and "View details" (`py-2.5`) all pad well past their text/icon bounds toward a 44px tap target, and detail-page color swatches sit at `h-9 w-9` (36px) rather than a purely decorative smaller size. Visual density and tap comfort are treated as separable: padding grows the hit area without inflating how "big" a control reads.
 
 ## Do's and Don'ts
 
@@ -214,8 +221,9 @@ Pill track (`h-5 w-9`, hairline-tan, `rounded-full`) with a white circular thumb
 - **Do** use the semicircle charge gauge, not a flat progress bar, for any range or percentage value — the repetition across cards/detail/comparison is what makes it a signature rather than a one-off.
 - **Do** keep Voltage Gold to brand/interactive moments only; if a color needs to mean "good/warning/bad," it's Circuit Green / Amber Warn / Fault Red, never gold.
 - **Do** set every number — prices, ranges, percentages, warranty terms — in JetBrains Mono with tabular figures.
-- **Do** reserve dark cockpit-ink bands for parameter-setting/summary moments (the browse hero, the detail price strip, the comparison table header) — they mark "these are the numbers that drive the decision," not general content.
+- **Do** reserve dark cockpit-ink bands for the two highest-stakes result moments (the detail price strip, the comparison table header) — see The Two-Band Rule. The browse hero is deliberately light: it's where the user is still adjusting inputs, not yet looking at a result.
 - **Do** use Gold Ember (`#7a5400`), never base Voltage Gold, for gold text on a light surface.
+- **Do** color-code every risk metric that has a clear good/bad reading the same way — recall count, battery retention, and resale rating all use the Circuit-Green/Amber-Warn/Fault-Red scale identically, so a buyer never has to guess why one number got a color and another didn't.
 
 ### Don't:
 - **Don't** introduce a second accent hue — the system deliberately spends its "personality budget" on one color used with discipline, not several used timidly.

@@ -11,6 +11,13 @@
   background: transparent;
   pointer-events: none;
 
+  // The focus ring belongs on the visible thumb, not on this full-width
+  // invisible input — the default :focus-visible outline would otherwise
+  // draw a rectangle spanning the whole track.
+  &:focus-visible {
+    outline: none;
+  }
+
   &::-webkit-slider-runnable-track {
     appearance: none;
     background: transparent;
@@ -41,5 +48,13 @@
     border: 3px solid var(--color-surface);
     box-shadow: 0 0 0 1px rgba(23, 19, 15, 0.12), 0 2px 6px rgba(245, 183, 0, 0.35);
     cursor: pointer;
+  }
+
+  &:focus-visible::-webkit-slider-thumb {
+    box-shadow: 0 0 0 1px rgba(23, 19, 15, 0.12), 0 0 0 3px var(--color-accent), 0 0 0 5px var(--color-surface);
+  }
+
+  &:focus-visible::-moz-range-thumb {
+    box-shadow: 0 0 0 1px rgba(23, 19, 15, 0.12), 0 0 0 3px var(--color-accent), 0 0 0 5px var(--color-surface);
   }
 }

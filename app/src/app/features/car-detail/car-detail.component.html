@@ -1,7 +1,7 @@
 <div class="mx-auto max-w-3xl px-5 sm:px-8 py-8 flex flex-col gap-10">
   <header class="flex items-center justify-between">
     <div>
-      <p class="font-mono text-[0.7rem] tracking-[0.2em] uppercase text-[var(--color-accent-strong)]">Spec sheet</p>
+      <p class="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-[var(--color-accent-strong)]">Spec sheet</p>
       <h2 class="font-display font-extrabold text-xl mt-0.5">Car details</h2>
     </div>
     <button
@@ -73,7 +73,7 @@
               @for (color of carColors(); track color.name) {
                 <button
                   type="button"
-                  class="h-7 w-7 rounded-full border-2 transition-shadow cursor-pointer"
+                  class="h-9 w-9 rounded-full border-2 transition-shadow cursor-pointer"
                   [class]="selectedColor()?.name === color.name ? 'border-[var(--color-ink)] shadow-[0_0_0_2px_var(--color-surface)]' : 'border-[var(--color-border)]'"
                   [style.background-color]="color.hex"
                   [attr.aria-pressed]="selectedColor()?.name === color.name"
@@ -89,7 +89,7 @@
     </section>
 
     <section class="flex flex-col gap-3">
-      <p class="font-mono text-[0.7rem] tracking-[0.2em] uppercase text-[var(--color-accent-strong)]">Cost</p>
+      <p class="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-[var(--color-accent-strong)]">Cost</p>
       <h3 class="font-display font-bold text-lg -mt-2">Pricing breakdown</h3>
       <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] divide-y divide-[var(--color-border)] overflow-hidden">
         <div class="flex items-center justify-between px-4 py-3 text-sm">
@@ -128,7 +128,7 @@
 
     @if (warrantyInfo(); as w) {
       <section class="flex flex-col gap-3">
-        <p class="font-mono text-[0.7rem] tracking-[0.2em] uppercase text-[var(--color-accent-strong)]">Ownership</p>
+        <p class="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-[var(--color-accent-strong)]">Ownership</p>
         <h3 class="font-display font-bold text-lg -mt-2">Warranty &amp; service</h3>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 flex flex-col gap-1.5">
@@ -158,13 +158,18 @@
 
     @if (risk(); as r) {
       <section class="flex flex-col gap-4">
-        <p class="font-mono text-[0.7rem] tracking-[0.2em] uppercase text-[var(--color-accent-strong)]">Reliability</p>
+        <p class="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-[var(--color-accent-strong)]">Reliability</p>
         <h3 class="font-display font-bold text-lg -mt-2">Risk indicators</h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div class="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 flex flex-col gap-1.5">
             <h4 class="text-xs font-medium uppercase tracking-wide text-[var(--color-ink-muted)]">Recalls</h4>
-            <p class="font-mono text-xl font-semibold tabular-nums">{{ r.recalls.count }}</p>
+            <span
+              class="inline-flex w-fit rounded-full px-2.5 py-0.5 font-mono text-xl font-semibold tabular-nums"
+              [class]="recallToneClasses(r.recalls.count)"
+            >
+              {{ r.recalls.count }}
+            </span>
             <p class="text-xs text-[var(--color-ink-muted)] leading-snug">{{ r.recalls.summary }}</p>
           </div>
 
@@ -206,7 +211,7 @@
                 class="flex items-center justify-between gap-3 px-4 py-3 text-sm font-medium hover:bg-[var(--color-bg)] transition-colors"
               >
                 {{ link.title }}
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" class="shrink-0 text-[var(--color-ink-faint)]" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" class="shrink-0 text-[var(--color-ink-muted)]" aria-hidden="true">
                   <path d="M6 4h6v6M12 4 4 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </a>

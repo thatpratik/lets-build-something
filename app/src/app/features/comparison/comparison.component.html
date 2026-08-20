@@ -1,7 +1,7 @@
 <div class="mx-auto max-w-6xl px-5 sm:px-8 py-8 flex flex-col gap-8">
   <header class="flex items-center justify-between">
     <div>
-      <p class="font-mono text-[0.7rem] tracking-[0.2em] uppercase text-[var(--color-accent-strong)]">Side by side</p>
+      <p class="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-[var(--color-accent-strong)]">Side by side</p>
       <h2 class="font-display font-extrabold text-xl mt-0.5">Compare EVs</h2>
     </div>
     <button
@@ -91,18 +91,31 @@
               </th>
               @for (car of comparedCars(); track car.id) {
                 <td class="px-4 py-3 border-b border-[var(--color-border)]">
-                  <label class="group inline-flex items-center cursor-pointer">
-                    <input
-                      type="checkbox"
-                      class="sr-only"
-                      [checked]="hasFeature(car.id, feature)"
-                      (change)="toggleFeature(car.id, feature)"
-                      [attr.aria-label]="feature + ' on ' + car.brand + ' ' + car.model"
-                    />
-                    <span class="h-5 w-9 rounded-full bg-[var(--color-border)] group-has-checked:bg-[var(--color-accent)] transition-colors relative">
-                      <span class="absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white shadow-sm transition-transform group-has-checked:translate-x-4"></span>
-                    </span>
-                  </label>
+                  <div class="flex flex-col items-start gap-1">
+                    <label class="group inline-flex items-center py-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        class="sr-only"
+                        [checked]="hasFeature(car.id, feature)"
+                        (change)="toggleFeature(car.id, feature)"
+                        [attr.aria-label]="feature + ' on ' + car.brand + ' ' + car.model"
+                      />
+                      <span class="h-5 w-9 rounded-full bg-[var(--color-border)] group-has-checked:bg-[var(--color-accent)] transition-colors relative">
+                        <span class="absolute top-0.5 left-0.5 h-4 w-4 rounded-full bg-white shadow-sm transition-transform group-has-checked:translate-x-4"></span>
+                      </span>
+                    </label>
+                    @switch (featureStatus(car.id, feature)) {
+                      @case ('standard') {
+                        <span class="text-[0.65rem] font-medium text-[var(--color-ink-muted)]">Standard</span>
+                      }
+                      @case ('added') {
+                        <span class="text-[0.65rem] font-medium text-[var(--color-accent-strong)]">+ Added</span>
+                      }
+                      @case ('removed') {
+                        <span class="text-[0.65rem] font-medium text-[var(--color-danger)]">Removed</span>
+                      }
+                    }
+                  </div>
                 </td>
               }
             </tr>
