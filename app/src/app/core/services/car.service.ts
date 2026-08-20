@@ -4,6 +4,7 @@ import { Observable, shareReplay } from 'rxjs';
 
 import { Accessory } from '../models/accessory.model';
 import { Car } from '../models/car.model';
+import { ColorOption } from '../models/color.model';
 import { RiskIndicator } from '../models/risk-indicator.model';
 import { WarrantyInfo } from '../models/warranty.model';
 
@@ -35,6 +36,10 @@ export class CarService {
     .get<Record<string, WarrantyInfo>>('data/warranty.json')
     .pipe(shareReplay(1));
 
+  private readonly colors$ = this.http
+    .get<Record<string, ColorOption[]>>('data/colors.json')
+    .pipe(shareReplay(1));
+
   getCars(): Observable<Car[]> {
     return this.cars$;
   }
@@ -57,5 +62,9 @@ export class CarService {
 
   getWarranty(): Observable<Record<string, WarrantyInfo>> {
     return this.warranty$;
+  }
+
+  getColors(): Observable<Record<string, ColorOption[]>> {
+    return this.colors$;
   }
 }

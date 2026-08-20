@@ -1,0 +1,520 @@
+{
+  "toyota-bz4x": [
+    {
+      "name": "Frost White",
+      "hex": "#f2f3f0",
+      "priceDelta": 0
+    },
+    {
+      "name": "Ash Grey",
+      "hex": "#8b8f92",
+      "priceDelta": 4500
+    },
+    {
+      "name": "Ink Black",
+      "hex": "#1a1a1c",
+      "priceDelta": 4500
+    },
+    {
+      "name": "Cobalt Blue",
+      "hex": "#1f3a63",
+      "priceDelta": 6000
+    }
+  ],
+  "nissan-ariya": [
+    {
+      "name": "Pearl White",
+      "hex": "#f4f3ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Diamond Black",
+      "hex": "#15161a",
+      "priceDelta": 5000
+    },
+    {
+      "name": "Akatsuki Copper",
+      "hex": "#8a3a2b",
+      "priceDelta": 6500
+    }
+  ],
+  "lexus-rz": [
+    {
+      "name": "Sonic White",
+      "hex": "#f1f1ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Sonic Chrome",
+      "hex": "#c9cbcc",
+      "priceDelta": 8500
+    },
+    {
+      "name": "Graphite Black",
+      "hex": "#191a1c",
+      "priceDelta": 5000
+    }
+  ],
+  "vw-id4": [
+    {
+      "name": "Candy White",
+      "hex": "#f1f2ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Manganese Grey",
+      "hex": "#6d6f70",
+      "priceDelta": 4200
+    },
+    {
+      "name": "Kings Red",
+      "hex": "#7c2029",
+      "priceDelta": 4200
+    },
+    {
+      "name": "Starlight Blue",
+      "hex": "#233752",
+      "priceDelta": 4200
+    }
+  ],
+  "bmw-i4": [
+    {
+      "name": "Alpine White",
+      "hex": "#f2f2ef",
+      "priceDelta": 0
+    },
+    {
+      "name": "Black Sapphire",
+      "hex": "#191a1d",
+      "priceDelta": 5500
+    },
+    {
+      "name": "Portimao Blue",
+      "hex": "#1c3a6b",
+      "priceDelta": 7000
+    },
+    {
+      "name": "Frozen Grey",
+      "hex": "#87888a",
+      "priceDelta": 8000
+    }
+  ],
+  "audi-q4": [
+    {
+      "name": "Glacier White",
+      "hex": "#f0f1ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Mythos Black",
+      "hex": "#181819",
+      "priceDelta": 5000
+    },
+    {
+      "name": "Ultra Blue",
+      "hex": "#1f4a72",
+      "priceDelta": 7500
+    },
+    {
+      "name": "Tango Red",
+      "hex": "#7d2027",
+      "priceDelta": 6000
+    }
+  ],
+  "mercedes-eqa": [
+    {
+      "name": "Cirrus White",
+      "hex": "#f2f2ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Cosmos Black",
+      "hex": "#16171a",
+      "priceDelta": 5000
+    },
+    {
+      "name": "Denim Blue",
+      "hex": "#2a4363",
+      "priceDelta": 7000
+    },
+    {
+      "name": "Selenite Grey",
+      "hex": "#8f9092",
+      "priceDelta": 6000
+    }
+  ],
+  "porsche-taycan": [
+    {
+      "name": "Carrara White",
+      "hex": "#f2f2ef",
+      "priceDelta": 0
+    },
+    {
+      "name": "Jet Black",
+      "hex": "#141416",
+      "priceDelta": 6000
+    },
+    {
+      "name": "Frozen Blue",
+      "hex": "#4a5f68",
+      "priceDelta": 9500
+    },
+    {
+      "name": "Cherry Metallic",
+      "hex": "#7a1f2a",
+      "priceDelta": 9500
+    }
+  ],
+  "hyundai-ioniq5": [
+    {
+      "name": "Atlas White",
+      "hex": "#f1f2ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Abyss Black",
+      "hex": "#17181b",
+      "priceDelta": 4500
+    },
+    {
+      "name": "Gravity Gold Matte",
+      "hex": "#8a7856",
+      "priceDelta": 9000
+    },
+    {
+      "name": "Digital Teal",
+      "hex": "#1f4a4a",
+      "priceDelta": 6500
+    }
+  ],
+  "kia-ev6": [
+    {
+      "name": "Snow White Pearl",
+      "hex": "#f2f2ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Aurora Black",
+      "hex": "#16171a",
+      "priceDelta": 4500
+    },
+    {
+      "name": "Yacht Blue",
+      "hex": "#233a52",
+      "priceDelta": 6500
+    },
+    {
+      "name": "Runway Red",
+      "hex": "#7d1f28",
+      "priceDelta": 6500
+    }
+  ],
+  "kia-niro-ev": [
+    {
+      "name": "Snow White Pearl",
+      "hex": "#f2f2ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Steel Grey",
+      "hex": "#75777a",
+      "priceDelta": 4000
+    },
+    {
+      "name": "Cityscape Green",
+      "hex": "#3c4a3a",
+      "priceDelta": 4000
+    }
+  ],
+  "genesis-gv60": [
+    {
+      "name": "Uyuni White",
+      "hex": "#f1f1ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Vik Black",
+      "hex": "#161719",
+      "priceDelta": 5500
+    },
+    {
+      "name": "Mauna Blue",
+      "hex": "#1f3550",
+      "priceDelta": 7500
+    },
+    {
+      "name": "Sao Paulo Lime",
+      "hex": "#7a8a2a",
+      "priceDelta": 7500
+    }
+  ],
+  "byd-atto3": [
+    {
+      "name": "Ski White",
+      "hex": "#f1f2ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Parkour Grey",
+      "hex": "#77787b",
+      "priceDelta": 3500
+    },
+    {
+      "name": "Surf Blue",
+      "hex": "#233c5c",
+      "priceDelta": 5000
+    },
+    {
+      "name": "Boulder Grey",
+      "hex": "#57585b",
+      "priceDelta": 3500
+    }
+  ],
+  "mg-4": [
+    {
+      "name": "Dover White",
+      "hex": "#f1f2ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Volcano Orange",
+      "hex": "#b1481f",
+      "priceDelta": 4500
+    },
+    {
+      "name": "Nova Black",
+      "hex": "#17181b",
+      "priceDelta": 4000
+    },
+    {
+      "name": "Cardiff Blue",
+      "hex": "#22344e",
+      "priceDelta": 4000
+    }
+  ],
+  "xpeng-g6": [
+    {
+      "name": "Nebula White",
+      "hex": "#f1f2ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Stellar Silver",
+      "hex": "#a9abac",
+      "priceDelta": 5000
+    },
+    {
+      "name": "Space Grey",
+      "hex": "#4c4d50",
+      "priceDelta": 5000
+    }
+  ],
+  "polestar-2": [
+    {
+      "name": "Snow",
+      "hex": "#f1f2ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Void",
+      "hex": "#131417",
+      "priceDelta": 4000
+    },
+    {
+      "name": "Thunder",
+      "hex": "#5a5b5e",
+      "priceDelta": 4000
+    },
+    {
+      "name": "Magma Red",
+      "hex": "#7a2418",
+      "priceDelta": 4000
+    }
+  ],
+  "tesla-model3": [
+    {
+      "name": "Pearl White",
+      "hex": "#f2f2ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Solid Black",
+      "hex": "#171819",
+      "priceDelta": 0
+    },
+    {
+      "name": "Deep Blue Metallic",
+      "hex": "#1f2f4a",
+      "priceDelta": 6900
+    },
+    {
+      "name": "Stealth Grey",
+      "hex": "#4f5153",
+      "priceDelta": 6900
+    },
+    {
+      "name": "Ultra Red",
+      "hex": "#7f1f24",
+      "priceDelta": 12900
+    }
+  ],
+  "tesla-modely": [
+    {
+      "name": "Pearl White",
+      "hex": "#f2f2ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Solid Black",
+      "hex": "#171819",
+      "priceDelta": 0
+    },
+    {
+      "name": "Deep Blue Metallic",
+      "hex": "#1f2f4a",
+      "priceDelta": 6900
+    },
+    {
+      "name": "Stealth Grey",
+      "hex": "#4f5153",
+      "priceDelta": 6900
+    },
+    {
+      "name": "Ultra Red",
+      "hex": "#7f1f24",
+      "priceDelta": 12900
+    }
+  ],
+  "ford-mache": [
+    {
+      "name": "Star White",
+      "hex": "#f2f2ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Shadow Black",
+      "hex": "#161719",
+      "priceDelta": 4500
+    },
+    {
+      "name": "Rapid Red",
+      "hex": "#8a1f22",
+      "priceDelta": 6500
+    },
+    {
+      "name": "Grabber Blue",
+      "hex": "#1f4a8a",
+      "priceDelta": 6500
+    }
+  ],
+  "volvo-ex30": [
+    {
+      "name": "Ice White",
+      "hex": "#f1f2ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Onyx Black",
+      "hex": "#17181a",
+      "priceDelta": 5500
+    },
+    {
+      "name": "Cloud Blue",
+      "hex": "#5c7385",
+      "priceDelta": 5500
+    },
+    {
+      "name": "Crystal White Pearl",
+      "hex": "#eceae6",
+      "priceDelta": 8000
+    }
+  ],
+  "volvo-ex90": [
+    {
+      "name": "Ice White",
+      "hex": "#f1f2ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Onyx Black",
+      "hex": "#17181a",
+      "priceDelta": 6000
+    },
+    {
+      "name": "Cloud Blue",
+      "hex": "#5c7385",
+      "priceDelta": 6000
+    },
+    {
+      "name": "Crystal White Pearl",
+      "hex": "#eceae6",
+      "priceDelta": 9000
+    }
+  ],
+  "renault-megane": [
+    {
+      "name": "Glacier White",
+      "hex": "#f1f2ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Shadow Grey",
+      "hex": "#57585b",
+      "priceDelta": 4000
+    },
+    {
+      "name": "Iron Blue",
+      "hex": "#233246",
+      "priceDelta": 5500
+    },
+    {
+      "name": "Flame Red",
+      "hex": "#8a2226",
+      "priceDelta": 5500
+    }
+  ],
+  "peugeot-e2008": [
+    {
+      "name": "Bianca White",
+      "hex": "#f1f2ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Obsidian Black",
+      "hex": "#17181a",
+      "priceDelta": 4500
+    },
+    {
+      "name": "Vertigo Blue",
+      "hex": "#233a56",
+      "priceDelta": 4500
+    },
+    {
+      "name": "Elixir Red",
+      "hex": "#8a1f2a",
+      "priceDelta": 6000
+    }
+  ],
+  "fiat-500e": [
+    {
+      "name": "Gelato White",
+      "hex": "#f2f2ee",
+      "priceDelta": 0
+    },
+    {
+      "name": "Rome Red",
+      "hex": "#9a2a2a",
+      "priceDelta": 3500
+    },
+    {
+      "name": "Vesuvio Black",
+      "hex": "#181818",
+      "priceDelta": 3500
+    },
+    {
+      "name": "Celestial Blue",
+      "hex": "#3a5a8a",
+      "priceDelta": 3500
+    }
+  ]
+}

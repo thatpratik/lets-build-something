@@ -6,8 +6,8 @@
     "country": "Japan",
     "basePrice": 325000,
     "range": {
-      "min": 355,
-      "max": 436
+      "min": 444,
+      "max": 559
     },
     "features": [
       "Adaptive Cruise Control",
@@ -32,29 +32,14 @@
     ]
   },
   {
-    "id": "honda-e",
-    "brand": "Honda",
-    "model": "e",
-    "country": "Japan",
-    "basePrice": 286000,
-    "range": {
-      "min": 210,
-      "max": 225
-    },
-    "features": [
-      "Heated Seats",
-      "Premium Sound System"
-    ]
-  },
-  {
     "id": "lexus-rz",
     "brand": "Lexus",
     "model": "RZ",
     "country": "Japan",
     "basePrice": 553000,
     "range": {
-      "min": 380,
-      "max": 436
+      "min": 440,
+      "max": 559
     },
     "features": [
       "Adaptive Cruise Control",
@@ -71,8 +56,8 @@
     "country": "Germany",
     "basePrice": 357000,
     "range": {
-      "min": 348,
-      "max": 522
+      "min": 400,
+      "max": 558
     },
     "features": [
       "Adaptive Cruise Control",
@@ -103,8 +88,8 @@
     "country": "Germany",
     "basePrice": 429000,
     "range": {
-      "min": 350,
-      "max": 520
+      "min": 430,
+      "max": 565
     },
     "features": [
       "Adaptive Cruise Control",
@@ -119,8 +104,8 @@
     "country": "Germany",
     "basePrice": 404000,
     "range": {
-      "min": 400,
-      "max": 560
+      "min": 431,
+      "max": 553
     },
     "features": [
       "Heated Seats",
@@ -133,10 +118,10 @@
     "brand": "Porsche",
     "model": "Taycan",
     "country": "Germany",
-    "basePrice": 853000,
+    "basePrice": 930000,
     "range": {
-      "min": 400,
-      "max": 630
+      "min": 597,
+      "max": 700
     },
     "features": [
       "Adaptive Cruise Control",
@@ -153,8 +138,8 @@
     "country": "South Korea",
     "basePrice": 317000,
     "range": {
-      "min": 384,
-      "max": 507
+      "min": 410,
+      "max": 570
     },
     "features": [
       "Adaptive Cruise Control",
@@ -265,7 +250,7 @@
     "basePrice": 415000,
     "range": {
       "min": 500,
-      "max": 635
+      "max": 655
     },
     "features": [
       "Adaptive Cruise Control",
@@ -282,7 +267,7 @@
     "basePrice": 350000,
     "range": {
       "min": 513,
-      "max": 629
+      "max": 750
     },
     "features": [
       "Adaptive Cruise Control",
@@ -298,7 +283,7 @@
     "basePrice": 383000,
     "range": {
       "min": 455,
-      "max": 533
+      "max": 629
     },
     "features": [
       "Adaptive Cruise Control",
@@ -315,7 +300,7 @@
     "basePrice": 407000,
     "range": {
       "min": 400,
-      "max": 490
+      "max": 600
     },
     "features": [
       "Adaptive Cruise Control",
@@ -330,7 +315,7 @@
     "country": "Sweden",
     "basePrice": 335000,
     "range": {
-      "min": 275,
+      "min": 344,
       "max": 480
     },
     "features": [
@@ -344,10 +329,10 @@
     "brand": "Volvo",
     "model": "EX90",
     "country": "Sweden",
-    "basePrice": 653000,
+    "basePrice": 710000,
     "range": {
       "min": 570,
-      "max": 600
+      "max": 622
     },
     "features": [
       "Adaptive Cruise Control",
@@ -362,10 +347,10 @@
     "brand": "Renault",
     "model": "Megane E-Tech",
     "country": "France",
-    "basePrice": 307000,
+    "basePrice": 260000,
     "range": {
       "min": 300,
-      "max": 428
+      "max": 500
     },
     "features": [
       "Adaptive Cruise Control",
@@ -377,7 +362,7 @@
     "brand": "Peugeot",
     "model": "e-2008",
     "country": "France",
-    "basePrice": 306000,
+    "basePrice": 235000,
     "range": {
       "min": 345,
       "max": 406

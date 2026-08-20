@@ -15,14 +15,6 @@
     "freeServiceYears": 1,
     "note": "Standard Nissan European vehicle and battery warranty terms."
   },
-  "honda-e": {
-    "vehicleWarrantyYears": 3,
-    "vehicleWarrantyKm": 100000,
-    "batteryWarrantyYears": 8,
-    "batteryWarrantyKm": 160000,
-    "freeServiceYears": 1,
-    "note": "Standard Honda European vehicle and battery warranty terms."
-  },
   "lexus-rz": {
     "vehicleWarrantyYears": 3,
     "vehicleWarrantyKm": 100000,
@@ -32,12 +24,12 @@
     "note": "Battery warranty extends up to 10 years/1,000,000 km via annual Lexus health-check inspection; otherwise defaults to 8 years/160,000 km."
   },
   "vw-id4": {
-    "vehicleWarrantyYears": 3,
-    "vehicleWarrantyKm": 100000,
+    "vehicleWarrantyYears": 5,
+    "vehicleWarrantyKm": 150000,
     "batteryWarrantyYears": 8,
     "batteryWarrantyKm": 160000,
     "freeServiceYears": 1,
-    "note": "Standard Volkswagen European vehicle and battery warranty terms."
+    "note": "Volkswagen Denmark's combined 5-year/150,000 km warranty (2-year factory + 3-year VW Denmark extension) applies to BEVs delivered from December 2024 onward; battery warranty separately covers 8 years/160,000 km against capacity loss below 70%."
   },
   "bmw-i4": {
     "vehicleWarrantyYears": 2,
@@ -121,19 +113,19 @@
   },
   "xpeng-g6": {
     "vehicleWarrantyYears": 4,
-    "vehicleWarrantyKm": 0,
+    "vehicleWarrantyKm": 120000,
     "batteryWarrantyYears": 8,
     "batteryWarrantyKm": 160000,
     "freeServiceYears": 0,
-    "note": "XPeng is newer to the Danish market; warranty terms are less established than legacy competitors and worth reconfirming at purchase."
+    "note": "XPeng's EU Warranty & Maintenance Manual specifies 4 years/120,000 km vehicle coverage (not unlimited mileage); battery warranty is 8 years/160,000 km. XPeng is newer to the Danish market, so terms are worth reconfirming at purchase."
   },
   "polestar-2": {
-    "vehicleWarrantyYears": 3,
-    "vehicleWarrantyKm": 0,
+    "vehicleWarrantyYears": 5,
+    "vehicleWarrantyKm": 150000,
     "batteryWarrantyYears": 8,
     "batteryWarrantyKm": 160000,
     "freeServiceYears": 0,
-    "note": "Standard Polestar European vehicle and battery warranty terms."
+    "note": "Polestar extended its factory vehicle warranty to 5 years/150,000 km effective October 2025 (up from 3 years); battery warranty remains 8 years/160,000 km."
   },
   "tesla-model3": {
     "vehicleWarrantyYears": 4,
@@ -152,51 +144,51 @@
     "note": "Battery/drive-unit warranty km cap varies by trim; 192,000 km reflects the Long Range/Performance figure."
   },
   "ford-mache": {
-    "vehicleWarrantyYears": 3,
+    "vehicleWarrantyYears": 5,
     "vehicleWarrantyKm": 100000,
     "batteryWarrantyYears": 8,
     "batteryWarrantyKm": 160000,
     "freeServiceYears": 0,
-    "note": "Standard Ford European vehicle and battery warranty terms."
+    "note": "Ford Denmark's combined 5-year/100,000 km warranty (2-year factory + automatic 3-year Ford Protect extension) applies to EVs registered from March 2025 onward."
   },
   "volvo-ex30": {
-    "vehicleWarrantyYears": 3,
-    "vehicleWarrantyKm": 0,
+    "vehicleWarrantyYears": 5,
+    "vehicleWarrantyKm": 200000,
     "batteryWarrantyYears": 8,
     "batteryWarrantyKm": 160000,
     "freeServiceYears": 0,
-    "note": "Standard Volvo European vehicle and battery warranty terms."
+    "note": "Volvo's combined 5-year/200,000 km warranty (3-year factory + automatic 2-year extension) applies to cars registered from July 2025 onward; battery warranty remains 8 years/160,000 km."
   },
   "volvo-ex90": {
-    "vehicleWarrantyYears": 3,
-    "vehicleWarrantyKm": 0,
+    "vehicleWarrantyYears": 5,
+    "vehicleWarrantyKm": 200000,
     "batteryWarrantyYears": 8,
     "batteryWarrantyKm": 160000,
     "freeServiceYears": 0,
-    "note": "Standard Volvo European vehicle and battery warranty terms."
+    "note": "Volvo's combined 5-year/200,000 km warranty (3-year factory + automatic 2-year extension) applies to cars registered from July 2025 onward; battery warranty remains 8 years/160,000 km."
   },
   "renault-megane": {
-    "vehicleWarrantyYears": 2,
-    "vehicleWarrantyKm": 0,
+    "vehicleWarrantyYears": 5,
+    "vehicleWarrantyKm": 150000,
     "batteryWarrantyYears": 8,
     "batteryWarrantyKm": 160000,
     "freeServiceYears": 0,
-    "note": "2-year unlimited-mileage EU statutory minimum; km value of 0 denotes unlimited mileage."
+    "note": "Renault Denmark's combined 5-year/150,000 km warranty applies to cars registered from May 2025 onward, up from the prior 2-year EU statutory minimum; battery warranty remains 8 years/160,000 km."
   },
   "peugeot-e2008": {
-    "vehicleWarrantyYears": 2,
-    "vehicleWarrantyKm": 0,
+    "vehicleWarrantyYears": 5,
+    "vehicleWarrantyKm": 150000,
     "batteryWarrantyYears": 8,
     "batteryWarrantyKm": 160000,
     "freeServiceYears": 0,
-    "note": "2-year unlimited-mileage EU statutory minimum; km value of 0 denotes unlimited mileage."
+    "note": "Peugeot Denmark's combined 5-year/150,000 km warranty applies automatically to cars registered from April 2025 onward, up from the prior 2-year EU statutory minimum; battery warranty remains 8 years/160,000 km."
   },
   "fiat-500e": {
-    "vehicleWarrantyYears": 2,
-    "vehicleWarrantyKm": 0,
+    "vehicleWarrantyYears": 5,
+    "vehicleWarrantyKm": 150000,
     "batteryWarrantyYears": 8,
     "batteryWarrantyKm": 160000,
     "freeServiceYears": 0,
-    "note": "2-year unlimited-mileage EU statutory minimum; km value of 0 denotes unlimited mileage."
+    "note": "Fiat's combined 5-year/150,000 km warranty (2-year factory + automatic 3-year Extended Warranty Premium) applies to cars sold from October 2025 onward. Battery warranty is tiered: 8 years/100,000 km on the smaller ~24 kWh pack, 8 years/160,000 km on the larger ~42 kWh pack; figure shown reflects the larger-battery trim."
   }
 }

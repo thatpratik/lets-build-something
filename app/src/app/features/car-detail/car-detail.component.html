@@ -57,6 +57,38 @@
           <li class="rounded-md bg-[var(--color-bg)] px-2.5 py-1 text-xs text-[var(--color-ink-muted)]">{{ feature }}</li>
         }
       </ul>
+
+      @if (carColors().length > 0) {
+        <div class="flex flex-col gap-2 pt-2 border-t border-[var(--color-border)]">
+          <div class="flex items-baseline justify-between">
+            <span class="text-xs font-medium text-[var(--color-ink-muted)]">Exterior colour</span>
+            @if (selectedColor(); as color) {
+              <span class="text-xs text-[var(--color-ink-muted)]">
+                {{ color.name }}
+                @if (color.priceDelta > 0) {
+                  <span class="font-mono tabular-nums">+{{ color.priceDelta | number }} DKK</span>
+                } @else {
+                  included
+                }
+              </span>
+            }
+          </div>
+          <div class="flex flex-wrap gap-2">
+            @for (color of carColors(); track color.name) {
+              <button
+                type="button"
+                class="h-7 w-7 rounded-full border-2 transition-shadow cursor-pointer"
+                [class]="selectedColor()?.name === color.name ? 'border-[var(--color-ink)] shadow-[0_0_0_2px_var(--color-surface)]' : 'border-[var(--color-border)]'"
+                [style.background-color]="color.hex"
+                [attr.aria-pressed]="selectedColor()?.name === color.name"
+                [attr.aria-label]="color.name + (color.priceDelta > 0 ? ' (+' + color.priceDelta + ' DKK)' : ' (included)')"
+                [title]="color.name"
+                (click)="selectColor(color.name)"
+              ></button>
+            }
+          </div>
+        </div>
+      }
     </section>
 
     <section class="flex flex-col gap-3">
@@ -71,6 +103,14 @@
             <span class="text-[var(--color-ink-muted)]">{{ item.name }}</span>
             <span class="font-mono tabular-nums">+{{ item.price | number }} DKK</span>
           </div>
+        }
+        @if (selectedColor(); as color) {
+          @if (color.priceDelta > 0) {
+            <div class="flex items-center justify-between px-4 py-3 text-sm">
+              <span class="text-[var(--color-ink-muted)]">{{ color.name }} paint</span>
+              <span class="font-mono tabular-nums">+{{ color.priceDelta | number }} DKK</span>
+            </div>
+          }
         }
         @for (accessory of accessories(); track accessory.name) {
           <div class="flex items-center justify-between px-4 py-3 text-sm">

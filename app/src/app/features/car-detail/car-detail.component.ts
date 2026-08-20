@@ -3,6 +3,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 
 import { Accessory } from '../../core/models/accessory.model';
 import { Car } from '../../core/models/car.model';
+import { ColorOption } from '../../core/models/color.model';
 import { RiskIndicator } from '../../core/models/risk-indicator.model';
 import { WarrantyInfo } from '../../core/models/warranty.model';
 import { carFeatureLineItems, carTotalPrice } from '../../core/pricing';
@@ -26,6 +27,8 @@ export class CarDetailComponent {
   private readonly allCars = signal<Car[]>([]);
   private readonly riskIndicators = signal<Record<string, RiskIndicator>>({});
   private readonly warranty = signal<Record<string, WarrantyInfo>>({});
+  private readonly colors = signal<Record<string, ColorOption[]>>({});
+  private readonly selectedColorByCarId = signal<Record<string, string>>({});
   private readonly featurePricing = signal<Record<string, number>>({});
   protected readonly accessories = signal<Accessory[]>([]);
   protected readonly carImages = signal<Record<string, string>>({});
@@ -45,6 +48,20 @@ export class CarDetailComponent {
     () => this.warranty()[this.detailService.carId() ?? ''] ?? null
   );
 
+  protected readonly carColors = computed<ColorOption[]>(
+    () => this.colors()[this.detailService.carId() ?? ''] ?? []
+  );
+
+  protected readonly selectedColor = computed<ColorOption | null>(() => {
+    const options = this.carColors();
+    if (options.length === 0) {
+      return null;
+    }
+    const carId = this.detailService.carId() ?? '';
+    const selectedName = this.selectedColorByCarId()[carId];
+    return options.find((option) => option.name === selectedName) ?? options[0];
+  });
+
   protected readonly accessoriesTotal = computed(() =>
     this.accessories().reduce((sum, accessory) => sum + accessory.price, 0)
   );
@@ -56,7 +73,10 @@ export class CarDetailComponent {
 
   protected readonly carPrice = computed(() => {
     const car = this.car();
-    return car === null ? null : carTotalPrice(car, this.featurePricing());
+    if (car === null) {
+      return null;
+    }
+    return carTotalPrice(car, this.featurePricing()) + (this.selectedColor()?.priceDelta ?? 0);
   });
 
   protected readonly totalEstimatedCost = computed(() => {
@@ -71,10 +91,19 @@ export class CarDetailComponent {
     this.carService.getCarImages().subscribe((images) => this.carImages.set(images));
     this.carService.getFeaturePricing().subscribe((pricing) => this.featurePricing.set(pricing));
     this.carService.getWarranty().subscribe((warranty) => this.warranty.set(warranty));
+    this.carService.getColors().subscribe((colors) => this.colors.set(colors));
   }
 
   protected close(): void {
     this.detailService.closeDetail();
+  }
+
+  protected selectColor(colorName: string): void {
+    const carId = this.detailService.carId();
+    if (carId === null) {
+      return;
+    }
+    this.selectedColorByCarId.update((current) => ({ ...current, [carId]: colorName }));
   }
 
   protected markImageFailed(): void {
