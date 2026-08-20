@@ -1,0 +1,202 @@
+{
+  "toyota-bz4x": {
+    "vehicleWarrantyYears": 3,
+    "vehicleWarrantyKm": 100000,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 1,
+    "note": "Vehicle warranty extendable up to 10 years via Toyota Relax with annual dealer servicing."
+  },
+  "nissan-ariya": {
+    "vehicleWarrantyYears": 3,
+    "vehicleWarrantyKm": 100000,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 1,
+    "note": "Standard Nissan European vehicle and battery warranty terms."
+  },
+  "honda-e": {
+    "vehicleWarrantyYears": 3,
+    "vehicleWarrantyKm": 100000,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 1,
+    "note": "Standard Honda European vehicle and battery warranty terms."
+  },
+  "lexus-rz": {
+    "vehicleWarrantyYears": 3,
+    "vehicleWarrantyKm": 100000,
+    "batteryWarrantyYears": 10,
+    "batteryWarrantyKm": 1000000,
+    "freeServiceYears": 1,
+    "note": "Battery warranty extends up to 10 years/1,000,000 km via annual Lexus health-check inspection; otherwise defaults to 8 years/160,000 km."
+  },
+  "vw-id4": {
+    "vehicleWarrantyYears": 3,
+    "vehicleWarrantyKm": 100000,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 1,
+    "note": "Standard Volkswagen European vehicle and battery warranty terms."
+  },
+  "bmw-i4": {
+    "vehicleWarrantyYears": 2,
+    "vehicleWarrantyKm": 0,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 0,
+    "note": "2-year unlimited-mileage EU statutory minimum; km value of 0 denotes unlimited mileage."
+  },
+  "audi-q4": {
+    "vehicleWarrantyYears": 2,
+    "vehicleWarrantyKm": 0,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 0,
+    "note": "2-year unlimited-mileage EU statutory minimum; km value of 0 denotes unlimited mileage."
+  },
+  "mercedes-eqa": {
+    "vehicleWarrantyYears": 2,
+    "vehicleWarrantyKm": 0,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 0,
+    "note": "2-year unlimited-mileage EU statutory minimum; km value of 0 denotes unlimited mileage."
+  },
+  "porsche-taycan": {
+    "vehicleWarrantyYears": 2,
+    "vehicleWarrantyKm": 0,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 0,
+    "note": "2-year unlimited-mileage EU statutory minimum; km value of 0 denotes unlimited mileage."
+  },
+  "hyundai-ioniq5": {
+    "vehicleWarrantyYears": 5,
+    "vehicleWarrantyKm": 0,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 1,
+    "note": "Hyundai's 5-year unlimited-mileage vehicle warranty is a market differentiator in Denmark."
+  },
+  "kia-ev6": {
+    "vehicleWarrantyYears": 7,
+    "vehicleWarrantyKm": 150000,
+    "batteryWarrantyYears": 7,
+    "batteryWarrantyKm": 150000,
+    "freeServiceYears": 1,
+    "note": "Kia's 7-year/150,000 km warranty covers both vehicle and battery in Denmark."
+  },
+  "kia-niro-ev": {
+    "vehicleWarrantyYears": 7,
+    "vehicleWarrantyKm": 150000,
+    "batteryWarrantyYears": 7,
+    "batteryWarrantyKm": 150000,
+    "freeServiceYears": 1,
+    "note": "Kia's 7-year/150,000 km warranty covers both vehicle and battery in Denmark."
+  },
+  "genesis-gv60": {
+    "vehicleWarrantyYears": 5,
+    "vehicleWarrantyKm": 0,
+    "batteryWarrantyYears": 10,
+    "batteryWarrantyKm": 0,
+    "freeServiceYears": 3,
+    "note": "Genesis bundles free scheduled service and valet/pickup for the first several years as part of its ownership program in Denmark."
+  },
+  "byd-atto3": {
+    "vehicleWarrantyYears": 6,
+    "vehicleWarrantyKm": 150000,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 0,
+    "note": "BYD's European vehicle warranty is longer than most legacy brands' statutory minimum."
+  },
+  "mg-4": {
+    "vehicleWarrantyYears": 7,
+    "vehicleWarrantyKm": 150000,
+    "batteryWarrantyYears": 7,
+    "batteryWarrantyKm": 150000,
+    "freeServiceYears": 0,
+    "note": "MG matches Kia's 7-year/150,000 km warranty structure as a value differentiator."
+  },
+  "xpeng-g6": {
+    "vehicleWarrantyYears": 4,
+    "vehicleWarrantyKm": 0,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 0,
+    "note": "XPeng is newer to the Danish market; warranty terms are less established than legacy competitors and worth reconfirming at purchase."
+  },
+  "polestar-2": {
+    "vehicleWarrantyYears": 3,
+    "vehicleWarrantyKm": 0,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 0,
+    "note": "Standard Polestar European vehicle and battery warranty terms."
+  },
+  "tesla-model3": {
+    "vehicleWarrantyYears": 4,
+    "vehicleWarrantyKm": 80000,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 0,
+    "note": "Battery/drive-unit warranty km cap varies by trim (RWD vs Long Range); 160,000 km reflects the RWD figure."
+  },
+  "tesla-modely": {
+    "vehicleWarrantyYears": 4,
+    "vehicleWarrantyKm": 80000,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 192000,
+    "freeServiceYears": 0,
+    "note": "Battery/drive-unit warranty km cap varies by trim; 192,000 km reflects the Long Range/Performance figure."
+  },
+  "ford-mache": {
+    "vehicleWarrantyYears": 3,
+    "vehicleWarrantyKm": 100000,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 0,
+    "note": "Standard Ford European vehicle and battery warranty terms."
+  },
+  "volvo-ex30": {
+    "vehicleWarrantyYears": 3,
+    "vehicleWarrantyKm": 0,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 0,
+    "note": "Standard Volvo European vehicle and battery warranty terms."
+  },
+  "volvo-ex90": {
+    "vehicleWarrantyYears": 3,
+    "vehicleWarrantyKm": 0,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 0,
+    "note": "Standard Volvo European vehicle and battery warranty terms."
+  },
+  "renault-megane": {
+    "vehicleWarrantyYears": 2,
+    "vehicleWarrantyKm": 0,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 0,
+    "note": "2-year unlimited-mileage EU statutory minimum; km value of 0 denotes unlimited mileage."
+  },
+  "peugeot-e2008": {
+    "vehicleWarrantyYears": 2,
+    "vehicleWarrantyKm": 0,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 0,
+    "note": "2-year unlimited-mileage EU statutory minimum; km value of 0 denotes unlimited mileage."
+  },
+  "fiat-500e": {
+    "vehicleWarrantyYears": 2,
+    "vehicleWarrantyKm": 0,
+    "batteryWarrantyYears": 8,
+    "batteryWarrantyKm": 160000,
+    "freeServiceYears": 0,
+    "note": "2-year unlimited-mileage EU statutory minimum; km value of 0 denotes unlimited mileage."
+  }
+}

@@ -4,6 +4,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { Accessory } from '../../core/models/accessory.model';
 import { Car } from '../../core/models/car.model';
 import { RiskIndicator } from '../../core/models/risk-indicator.model';
+import { WarrantyInfo } from '../../core/models/warranty.model';
 import { carFeatureLineItems, carTotalPrice } from '../../core/pricing';
 import { CarService } from '../../core/services/car.service';
 import { DetailService } from '../../core/services/detail.service';
@@ -24,6 +25,7 @@ export class CarDetailComponent {
 
   private readonly allCars = signal<Car[]>([]);
   private readonly riskIndicators = signal<Record<string, RiskIndicator>>({});
+  private readonly warranty = signal<Record<string, WarrantyInfo>>({});
   private readonly featurePricing = signal<Record<string, number>>({});
   protected readonly accessories = signal<Accessory[]>([]);
   protected readonly carImages = signal<Record<string, string>>({});
@@ -37,6 +39,10 @@ export class CarDetailComponent {
 
   protected readonly risk = computed<RiskIndicator | null>(
     () => this.riskIndicators()[this.detailService.carId() ?? ''] ?? null
+  );
+
+  protected readonly warrantyInfo = computed<WarrantyInfo | null>(
+    () => this.warranty()[this.detailService.carId() ?? ''] ?? null
   );
 
   protected readonly accessoriesTotal = computed(() =>
@@ -64,6 +70,7 @@ export class CarDetailComponent {
     this.carService.getAccessories().subscribe((accessories) => this.accessories.set(accessories));
     this.carService.getCarImages().subscribe((images) => this.carImages.set(images));
     this.carService.getFeaturePricing().subscribe((pricing) => this.featurePricing.set(pricing));
+    this.carService.getWarranty().subscribe((warranty) => this.warranty.set(warranty));
   }
 
   protected close(): void {
@@ -72,6 +79,11 @@ export class CarDetailComponent {
 
   protected markImageFailed(): void {
     this.imageFailed.set(true);
+  }
+
+  protected warrantyLabel(years: number, km: number): string {
+    const kmLabel = km > 0 ? `${km.toLocaleString('da-DK')} km` : 'unlimited km';
+    return `${years} yr / ${kmLabel}`;
   }
 
   protected batteryTone(retentionPercent: number): 'accent' | 'warning' | 'danger' {

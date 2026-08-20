@@ -5,6 +5,7 @@ import { Observable, shareReplay } from 'rxjs';
 import { Accessory } from '../models/accessory.model';
 import { Car } from '../models/car.model';
 import { RiskIndicator } from '../models/risk-indicator.model';
+import { WarrantyInfo } from '../models/warranty.model';
 
 @Injectable({ providedIn: 'root' })
 export class CarService {
@@ -30,6 +31,10 @@ export class CarService {
     .get<Record<string, string>>('data/car-images.json')
     .pipe(shareReplay(1));
 
+  private readonly warranty$ = this.http
+    .get<Record<string, WarrantyInfo>>('data/warranty.json')
+    .pipe(shareReplay(1));
+
   getCars(): Observable<Car[]> {
     return this.cars$;
   }
@@ -48,5 +53,9 @@ export class CarService {
 
   getCarImages(): Observable<Record<string, string>> {
     return this.carImages$;
+  }
+
+  getWarranty(): Observable<Record<string, WarrantyInfo>> {
+    return this.warranty$;
   }
 }
