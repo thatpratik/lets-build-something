@@ -1,5 +1,5 @@
 import { DecimalPipe } from '@angular/common';
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, afterNextRender, computed, inject, signal } from '@angular/core';
 
 import { thumbnail } from '../../core/image';
 import { Car } from '../../core/models/car.model';
@@ -45,6 +45,7 @@ export class ComparisonComponent {
   });
 
   constructor() {
+    afterNextRender(() => window.scrollTo({ top: 0 }));
     this.carService.getCars().subscribe((cars) => {
       this.allCars.set(cars);
       this.resetActiveFeatures(cars);
