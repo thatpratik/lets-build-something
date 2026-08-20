@@ -99,9 +99,9 @@
     "vehicleWarrantyYears": 6,
     "vehicleWarrantyKm": 150000,
     "batteryWarrantyYears": 8,
-    "batteryWarrantyKm": 160000,
+    "batteryWarrantyKm": 200000,
     "freeServiceYears": 0,
-    "note": "BYD's European vehicle warranty is longer than most legacy brands' statutory minimum."
+    "note": "Updated 2026-08 for the Atto 3 EVO facelift, which replaced the outgoing Atto 3 in Denmark: battery warranty km limit raised to 200,000km on BYD Denmark's official pricing page. BYD has separately announced a global extension to 250,000km (effective January 2026, applied retroactively to existing owners), but bydauto.dk had not yet reflected that figure as of this pass — worth reconfirming before treating 250,000km as the Danish figure."
   },
   "mg-4": {
     "vehicleWarrantyYears": 7,

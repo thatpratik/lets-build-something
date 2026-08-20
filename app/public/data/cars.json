@@ -199,16 +199,16 @@
   {
     "id": "byd-atto3",
     "brand": "BYD",
-    "model": "Atto 3",
+    "model": "Atto 3 EVO",
     "country": "China",
-    "basePrice": 266000,
+    "basePrice": 268000,
     "range": {
-      "min": 420,
-      "max": 480
+      "min": 470,
+      "max": 510
     },
     "features": [
-      "Heated Seats",
-      "Premium Sound System"
+      "Adaptive Cruise Control",
+      "Heated Seats"
     ]
   },
   {

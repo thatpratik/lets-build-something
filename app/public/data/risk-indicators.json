@@ -294,11 +294,11 @@
     },
     "batteryDegradation": {
       "estimatedRetentionAt100kKm": 92,
-      "note": "BYD's Blade LFP battery has shown strong degradation resistance in early markets."
+      "note": "BYD's Blade LFP battery has shown strong degradation resistance in early markets. The Atto 3 EVO facelift (Danish deliveries from early 2026) carries a larger 76kWh LFP pack than the outgoing model; no independent long-term degradation data exists yet for the EVO specifically, so this estimate is carried over from the prior-generation Blade battery."
     },
     "resaleValue": {
       "rating": "Weak",
-      "note": "Newer entrant to the Danish market; resale value and demand data are still limited."
+      "note": "Newer entrant to the Danish market, and the Atto 3 EVO facelift (2026) is itself too new for resale data of its own; rating carried over from the outgoing model pending real EVO resale history."
     },
     "reviewLinks": [
       {
