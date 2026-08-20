@@ -1,14 +1,14 @@
 <div class="flex flex-col">
-  <section class="bg-[var(--color-ink)] text-[var(--color-bg)]">
+  <section class="bg-[var(--color-surface-2)] text-[var(--color-ink)] border-b border-[var(--color-border)]">
     <div class="mx-auto max-w-6xl px-5 sm:px-8 py-5 sm:py-6 flex flex-col gap-5">
       <div class="flex items-center justify-between gap-4">
         <div>
-          <p class="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-[var(--color-accent)]">Set your numbers</p>
+          <p class="font-mono text-[0.65rem] tracking-[0.2em] uppercase text-[var(--color-accent-strong)]">Set your numbers</p>
           <h1 class="font-display font-extrabold text-xl sm:text-2xl tracking-tight mt-0.5">Find your electric car</h1>
         </div>
         <button
           type="button"
-          class="shrink-0 rounded-full border border-white/15 px-3 py-1.5 text-xs font-medium text-white/70 hover:border-white/30 hover:text-white transition-colors cursor-pointer"
+          class="shrink-0 rounded-full border border-[var(--color-border)] px-3 py-1.5 text-xs font-medium text-[var(--color-ink-muted)] hover:border-[var(--color-ink-faint)] hover:text-[var(--color-ink)] transition-colors cursor-pointer"
           (click)="clearFilters()"
         >
           Reset
@@ -17,23 +17,23 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-8">
         <label class="flex flex-col gap-1.5">
-          <span class="text-[0.65rem] font-medium uppercase tracking-wide text-white/45">Budget</span>
-          <div class="flex items-baseline gap-2 border-b-2 border-white/15 focus-within:border-[var(--color-accent)] transition-colors pb-1">
+          <span class="text-[0.65rem] font-medium uppercase tracking-wide text-[var(--color-ink-faint)]">Budget</span>
+          <div class="flex items-baseline gap-2 border-b-2 border-[var(--color-border)] focus-within:border-[var(--color-accent)] transition-colors pb-1">
             <input
               type="number"
               placeholder="0"
-              class="budget-input min-w-0 flex-1 bg-transparent font-mono text-2xl sm:text-3xl font-semibold tabular-nums text-[var(--color-bg)] placeholder:text-white/25 focus:outline-none"
+              class="budget-input min-w-0 flex-1 bg-transparent font-mono text-2xl sm:text-3xl font-semibold tabular-nums text-[var(--color-ink)] placeholder:text-[var(--color-ink-faint)] focus:outline-none"
               [ngModel]="budget()"
               (ngModelChange)="budget.set($event)"
             />
-            <span class="text-sm text-white/45 shrink-0">DKK</span>
+            <span class="text-sm text-[var(--color-ink-muted)] shrink-0">DKK</span>
           </div>
         </label>
 
         <div class="flex flex-col gap-1.5">
           <div class="flex items-baseline justify-between">
-            <span class="text-[0.65rem] font-medium uppercase tracking-wide text-white/45">Desired range</span>
-            <span class="font-mono text-sm font-semibold tabular-nums text-[var(--color-accent)]">
+            <span class="text-[0.65rem] font-medium uppercase tracking-wide text-[var(--color-ink-faint)]">Desired range</span>
+            <span class="font-mono text-sm font-semibold tabular-nums text-[var(--color-accent-strong)]">
               {{ desiredRangeMin() }}–{{ desiredRangeMax() }} km
             </span>
           </div>
@@ -49,15 +49,15 @@
         </div>
       </div>
 
-      <div class="flex flex-col gap-2.5 pt-4 border-t border-white/10">
+      <div class="flex flex-col gap-2.5 pt-4 border-t border-[var(--color-border)]">
         <fieldset class="flex flex-wrap items-center gap-1.5 border-0 p-0 m-0">
-          <legend class="text-[0.65rem] font-medium uppercase tracking-wide text-white/45 w-full mb-0.5">Country of origin</legend>
+          <legend class="text-[0.65rem] font-medium uppercase tracking-wide text-[var(--color-ink-faint)] w-full mb-0.5">Country of origin</legend>
           @for (country of allCountries(); track country) {
             <label
               class="cursor-pointer select-none rounded-full border px-2.5 py-1 text-xs font-medium transition-colors"
               [class]="selectedCountries().has(country)
-                ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/15 text-[var(--color-accent)]'
-                : 'border-white/15 bg-white/[0.04] text-white/65 hover:border-white/30'"
+                ? 'border-[var(--color-accent-strong)] bg-[var(--color-accent-soft)] text-[var(--color-accent-strong)]'
+                : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-muted)] hover:border-[var(--color-ink-faint)]'"
             >
               <input
                 type="checkbox"
@@ -71,13 +71,13 @@
         </fieldset>
 
         <fieldset class="flex flex-wrap items-center gap-1.5 border-0 p-0 m-0">
-          <legend class="text-[0.65rem] font-medium uppercase tracking-wide text-white/45 w-full mb-0.5">Features</legend>
+          <legend class="text-[0.65rem] font-medium uppercase tracking-wide text-[var(--color-ink-faint)] w-full mb-0.5">Features</legend>
           @for (feature of allFeatures(); track feature) {
             <label
               class="cursor-pointer select-none rounded-full border px-2.5 py-1 text-xs font-medium transition-colors"
               [class]="selectedFeatures().has(feature)
-                ? 'border-[var(--color-accent)] bg-[var(--color-accent)]/15 text-[var(--color-accent)]'
-                : 'border-white/15 bg-white/[0.04] text-white/65 hover:border-white/30'"
+                ? 'border-[var(--color-accent-strong)] bg-[var(--color-accent-soft)] text-[var(--color-accent-strong)]'
+                : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-ink-muted)] hover:border-[var(--color-ink-faint)]'"
             >
               <input
                 type="checkbox"
